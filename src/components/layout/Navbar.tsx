@@ -21,7 +21,7 @@ export function Navbar() {
   const { lang, toggle, t } = useLang();
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#002776]/90 backdrop-blur-md border-b border-white/10">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#006B2D]/90 backdrop-blur-md border-b border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <Link href="/" className="flex items-center gap-2 group">
@@ -39,7 +39,7 @@ export function Navbar() {
                 className={cn(
                   "px-4 py-2 rounded-lg text-sm font-medium transition-colors",
                   pathname === link.href
-                    ? "bg-[#FFDF00] text-[#002776]"
+                    ? "bg-[#FFDF00] text-[#006B2D]"
                     : "text-white/80 hover:text-white hover:bg-white/10"
                 )}
               >
@@ -69,7 +69,7 @@ export function Navbar() {
               <SheetTrigger className="text-white p-2" aria-label="Abrir menu">
                 {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
               </SheetTrigger>
-              <SheetContent side="right" className="bg-[#002776] border-[#002776] w-64">
+              <SheetContent side="right" className="bg-[#006B2D] border-[#006B2D] w-64">
                 <div className="flex flex-col gap-2 mt-8">
                   {navKeys.map((link) => (
                     <Link
@@ -79,7 +79,7 @@ export function Navbar() {
                       className={cn(
                         "px-4 py-3 rounded-lg text-base font-medium transition-colors",
                         pathname === link.href
-                          ? "bg-[#FFDF00] text-[#002776]"
+                          ? "bg-[#FFDF00] text-[#006B2D]"
                           : "text-white/80 hover:text-white hover:bg-white/10"
                       )}
                     >

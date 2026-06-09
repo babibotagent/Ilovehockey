@@ -23,7 +23,7 @@ export default function Home() {
     <>
       {/* Hero */}
       <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#002776] via-[#0a0f1a] to-[#009C3B]/30" />
+        <div className="absolute inset-0 bg-gradient-to-br from-[#006B2D] via-[#071a0e] to-[#009C3B]/30" />
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#FFDF00]/10 rounded-full blur-[120px]" />
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#009C3B]/10 rounded-full blur-[120px]" />
 
@@ -52,7 +52,7 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10">
               <Link
                 href="/elenco"
-                className="bg-[#FFDF00] text-[#002776] px-8 py-3 rounded-xl font-bold text-lg hover:bg-[#FFDF00]/90 transition-colors flex items-center gap-2"
+                className="bg-[#FFDF00] text-[#006B2D] px-8 py-3 rounded-xl font-bold text-lg hover:bg-[#FFDF00]/90 transition-colors flex items-center gap-2"
               >
                 {t("home.cta.elenco")} <ArrowRight className="w-5 h-5" />
               </Link>
@@ -101,7 +101,7 @@ export default function Home() {
       </section>
 
       {/* Destaques */}
-      <section className="py-20 px-4 bg-gradient-to-b from-transparent via-[#002776]/10 to-transparent">
+      <section className="py-20 px-4 bg-gradient-to-b from-transparent via-[#006B2D]/10 to-transparent">
         <div className="max-w-6xl mx-auto">
           <div className="flex items-center justify-between mb-10">
             <div>
@@ -131,7 +131,7 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <div className="relative rounded-2xl overflow-hidden bg-gradient-to-r from-[#009C3B] to-[#002776] p-12 md:p-16">
+            <div className="relative rounded-2xl overflow-hidden bg-gradient-to-r from-[#009C3B] to-[#006B2D] p-12 md:p-16">
               <div className="absolute top-0 right-0 w-64 h-64 bg-[#FFDF00]/10 rounded-full blur-[80px]" />
               <Trophy className="w-12 h-12 text-[#FFDF00] mx-auto mb-6" />
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
@@ -142,7 +142,7 @@ export default function Home() {
               </p>
               <Link
                 href="/historia"
-                className="inline-flex items-center gap-2 bg-[#FFDF00] text-[#002776] px-8 py-3 rounded-xl font-bold hover:bg-[#FFDF00]/90 transition-colors"
+                className="inline-flex items-center gap-2 bg-[#FFDF00] text-[#006B2D] px-8 py-3 rounded-xl font-bold hover:bg-[#FFDF00]/90 transition-colors"
               >
                 {t("home.cta.explorar")} <ArrowRight className="w-5 h-5" />
               </Link>

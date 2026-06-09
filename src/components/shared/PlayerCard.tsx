@@ -26,7 +26,7 @@ export function PlayerCard({ player, variant = "compact", index = 0 }: PlayerCar
         className="relative group"
       >
         <Link href={`/jogador/${player.slug}`}>
-          <div className="relative h-[420px] rounded-2xl overflow-hidden bg-gradient-to-b from-[#009C3B]/20 to-[#002776]/40 border border-white/10 backdrop-blur-sm">
+          <div className="relative h-[420px] rounded-2xl overflow-hidden bg-gradient-to-b from-[#009C3B]/20 to-[#006B2D]/40 border border-white/10 backdrop-blur-sm">
             <div className="absolute inset-0 flex items-center justify-center text-white/10">
               <User className="w-32 h-32" />
             </div>
@@ -49,7 +49,7 @@ export function PlayerCard({ player, variant = "compact", index = 0 }: PlayerCar
               </div>
             </div>
             <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
-              <div className="bg-[#FFDF00] text-[#002776] rounded-full p-2">
+              <div className="bg-[#FFDF00] text-[#006B2D] rounded-full p-2">
                 <ArrowRight className="w-4 h-4" />
               </div>
             </div>
@@ -74,9 +74,9 @@ export function PlayerCard({ player, variant = "compact", index = 0 }: PlayerCar
           )}
         >
           <div className="flex items-center gap-4">
-            <div className="relative w-16 h-16 rounded-full bg-gradient-to-br from-[#009C3B] to-[#002776] flex items-center justify-center shrink-0">
+            <div className="relative w-16 h-16 rounded-full bg-gradient-to-br from-[#009C3B] to-[#006B2D] flex items-center justify-center shrink-0">
               <User className="w-8 h-8 text-white/60" />
-              <span className="absolute -bottom-1 -right-1 bg-[#FFDF00] text-[#002776] text-xs font-bold w-6 h-6 rounded-full flex items-center justify-center">
+              <span className="absolute -bottom-1 -right-1 bg-[#FFDF00] text-[#006B2D] text-xs font-bold w-6 h-6 rounded-full flex items-center justify-center">
                 {player.number}
               </span>
             </div>

@@ -50,19 +50,19 @@
 
 :root {
   --radius: 0.625rem;
-  --background: #0a0f1a;
+  --background: #071a0e;
   --foreground: #ffffff;
-  --card: #0f1729;
+  --card: #0c2414;
   --card-foreground: #ffffff;
-  --popover: #0f1729;
+  --popover: #0c2414;
   --popover-foreground: #ffffff;
   --primary: #FFDF00;
-  --primary-foreground: #002776;
+  --primary-foreground: #064a1e;
   --secondary: #009C3B;
   --secondary-foreground: #ffffff;
-  --muted: #1a2332;
-  --muted-foreground: #94a3b8;
-  --accent: #002776;
+  --muted: #112e18;
+  --muted-foreground: #94b8a3;
+  --accent: #009C3B;
   --accent-foreground: #ffffff;
   --destructive: #ef4444;
   --border: rgba(255, 255, 255, 0.1);
@@ -73,11 +73,11 @@
   --chart-3: #002776;
   --chart-4: #ffffff;
   --chart-5: #00b4d8;
-  --sidebar: #0f1729;
+  --sidebar: #0c2414;
   --sidebar-foreground: #ffffff;
   --sidebar-primary: #FFDF00;
-  --sidebar-primary-foreground: #002776;
-  --sidebar-accent: #1a2332;
+  --sidebar-primary-foreground: #064a1e;
+  --sidebar-accent: #112e18;
   --sidebar-accent-foreground: #ffffff;
   --sidebar-border: rgba(255, 255, 255, 0.1);
   --sidebar-ring: #FFDF00;
@@ -97,5 +97,5 @@
 
 ::selection {
   background: #FFDF00;
-  color: #002776;
+  color: #064a1e;
 }

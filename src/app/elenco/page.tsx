@@ -53,7 +53,7 @@ export default function ElencoPage() {
                 onClick={() => setPosition(pos)}
                 className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
                   position === pos
-                    ? "bg-[#FFDF00] text-[#002776]"
+                    ? "bg-[#FFDF00] text-[#006B2D]"
                     : "bg-white/5 text-white/60 hover:bg-white/10 border border-white/10"
                 }`}
               >

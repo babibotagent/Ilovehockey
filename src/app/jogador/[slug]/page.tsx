@@ -39,13 +39,13 @@ export default function JogadorPage() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="relative rounded-2xl overflow-hidden bg-gradient-to-br from-[#009C3B]/20 to-[#002776]/30 border border-white/10 p-8 md:p-12 mb-8"
+          className="relative rounded-2xl overflow-hidden bg-gradient-to-br from-[#009C3B]/20 to-[#006B2D]/30 border border-white/10 p-8 md:p-12 mb-8"
         >
           <span className="absolute top-4 right-6 text-8xl md:text-9xl font-black text-white/5">
             {player.number}
           </span>
           <div className="flex flex-col md:flex-row gap-8 items-start">
-            <div className="w-32 h-32 md:w-40 md:h-40 rounded-2xl bg-gradient-to-br from-[#009C3B] to-[#002776] flex items-center justify-center shrink-0">
+            <div className="w-32 h-32 md:w-40 md:h-40 rounded-2xl bg-gradient-to-br from-[#009C3B] to-[#006B2D] flex items-center justify-center shrink-0">
               <User className="w-16 h-16 md:w-20 md:h-20 text-white/40" />
             </div>
             <div className="flex-1">

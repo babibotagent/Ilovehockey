@@ -13,7 +13,7 @@ export default function HistoriaPage() {
   return (
     <div className="min-h-screen">
       <section className="relative py-20 px-4 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#002776]/30 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#006B2D]/30 to-transparent" />
         <div className="absolute top-0 right-0 w-96 h-96 bg-[#FFDF00]/5 rounded-full blur-[120px]" />
         <div className="relative max-w-4xl mx-auto text-center">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }}>
@@ -52,7 +52,7 @@ export default function HistoriaPage() {
                 </div>
                 <div className="relative">
                   <div className="flex items-center gap-3 mb-4">
-                    <div className="bg-[#FFDF00] text-[#002776] font-black text-lg px-4 py-1 rounded-lg">
+                    <div className="bg-[#FFDF00] text-[#006B2D] font-black text-lg px-4 py-1 rounded-lg">
                       {cup.year}
                     </div>
                     <span className="text-white/40 text-sm">{cup.host}</span>
