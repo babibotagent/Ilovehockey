@@ -13,6 +13,7 @@ const navKeys = [
   { href: "/elenco", key: "nav.elenco" },
   { href: "/historia", key: "nav.historia" },
   { href: "/partidas", key: "nav.partidas" },
+  { href: "/copa2026", key: "nav.copa2026" },
 ];
 
 export function Navbar() {

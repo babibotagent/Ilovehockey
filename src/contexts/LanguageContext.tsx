@@ -16,6 +16,7 @@ const translations: Record<string, Record<Lang, string>> = {
   "nav.elenco": { pt: "Elenco", en: "Squad" },
   "nav.historia": { pt: "História", en: "History" },
   "nav.partidas": { pt: "Partidas", en: "Matches" },
+  "nav.copa2026": { pt: "Copa 2026", en: "WC 2026" },
 
   // Home
   "home.subtitle": {
