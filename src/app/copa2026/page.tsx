@@ -1,9 +1,10 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Trophy, MapPin, Clock, Calendar, Filter, Star } from "lucide-react";
+import { Trophy, MapPin, Clock, Calendar, Filter, Star, RefreshCw, Wifi, WifiOff } from "lucide-react";
 import { copa2026Groups, copa2026Matches, Copa2026Match } from "@/data/copa2026";
+import { fetchLiveMatches, LiveMatch } from "@/lib/worldcup-api";
 import { useLang } from "@/contexts/LanguageContext";
 
 const stages = [
@@ -28,12 +29,23 @@ const stagesEn: Record<string, string> = {
   "Final": "Final",
 };
 
-const brazilTeams = ["Brasil", "Escócia", "Marrocos", "Haiti"];
+type UnifiedMatch = {
+  id: number;
+  date: string;
+  timeBrasilia: string;
+  homeTeam: string;
+  awayTeam: string;
+  homeScore: number | null;
+  awayScore: number | null;
+  group: string | null;
+  stage: string;
+  venue: string;
+  city?: string;
+};
 
-function isBrazilMatch(m: Copa2026Match) {
+function isBrazilMatch(m: UnifiedMatch) {
   return m.homeTeam === "Brasil" || m.awayTeam === "Brasil" ||
-    m.homeTeam === "1ºC" || m.awayTeam === "2ºC" ||
-    m.homeTeam === "1ºC" || m.awayTeam === "1ºC";
+    m.homeTeam.includes("1ºC") || m.awayTeam.includes("2ºC");
 }
 
 function formatDate(dateStr: string, lang: string) {
@@ -42,8 +54,9 @@ function formatDate(dateStr: string, lang: string) {
   return d.toLocaleDateString(lang === "pt" ? "pt-BR" : "en-US", options);
 }
 
-function MatchRow({ match, lang }: { match: Copa2026Match; lang: string }) {
+function MatchRow({ match, lang }: { match: UnifiedMatch; lang: string }) {
   const isBrazil = isBrazilMatch(match);
+  const hasScore = match.homeScore !== null && match.awayScore !== null;
 
   return (
     <motion.div
@@ -84,14 +97,20 @@ function MatchRow({ match, lang }: { match: Copa2026Match; lang: string }) {
         </span>
       </div>
 
-      {/* Teams */}
+      {/* Teams & Score */}
       <div className="flex-1 flex items-center gap-2">
         <span className={`font-medium text-sm ${
           match.homeTeam === "Brasil" ? "text-[#FFDF00] font-bold" : "text-white"
         }`}>
           {match.homeTeam}
         </span>
-        <span className="text-white/30 text-xs px-2">vs</span>
+        {hasScore ? (
+          <span className="text-[#FFDF00] font-mono font-black text-base px-3 py-0.5 bg-white/5 rounded-lg">
+            {match.homeScore} - {match.awayScore}
+          </span>
+        ) : (
+          <span className="text-white/30 text-xs px-2">vs</span>
+        )}
         <span className={`font-medium text-sm ${
           match.awayTeam === "Brasil" ? "text-[#FFDF00] font-bold" : "text-white"
         }`}>
@@ -100,12 +119,43 @@ function MatchRow({ match, lang }: { match: Copa2026Match; lang: string }) {
       </div>
 
       {/* Venue */}
-      <div className="flex items-center gap-1 text-[11px] text-white/30 sm:w-56 shrink-0 sm:text-right sm:justify-end">
+      <div className="flex items-center gap-1 text-[11px] text-white/30 sm:w-48 shrink-0 sm:text-right sm:justify-end">
         <MapPin className="w-3 h-3 shrink-0" />
-        <span className="truncate">{match.venue}, {match.city}</span>
+        <span className="truncate">{match.venue}{match.city ? `, ${match.city}` : ""}</span>
       </div>
     </motion.div>
   );
+}
+
+function staticToUnified(m: Copa2026Match): UnifiedMatch {
+  return {
+    id: m.id,
+    date: m.date,
+    timeBrasilia: m.timeBrasilia,
+    homeTeam: m.homeTeam,
+    awayTeam: m.awayTeam,
+    homeScore: m.homeScore ?? null,
+    awayScore: m.awayScore ?? null,
+    group: m.group ?? null,
+    stage: m.stage,
+    venue: m.venue,
+    city: m.city,
+  };
+}
+
+function liveToUnified(m: LiveMatch): UnifiedMatch {
+  return {
+    id: m.id,
+    date: m.date,
+    timeBrasilia: m.timeBrasilia,
+    homeTeam: m.homeTeam,
+    awayTeam: m.awayTeam,
+    homeScore: m.homeScore,
+    awayScore: m.awayScore,
+    group: m.group,
+    stage: m.stage,
+    venue: m.venue,
+  };
 }
 
 export default function Copa2026Page() {
@@ -113,18 +163,46 @@ export default function Copa2026Page() {
   const [stageFilter, setStageFilter] = useState("Todos");
   const [groupFilter, setGroupFilter] = useState("Todos");
   const [onlyBrazil, setOnlyBrazil] = useState(false);
+  const [matches, setMatches] = useState<UnifiedMatch[]>(copa2026Matches.map(staticToUnified));
+  const [isLive, setIsLive] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [lastUpdate, setLastUpdate] = useState<Date | null>(null);
+
+  const loadLiveData = async () => {
+    setLoading(true);
+    try {
+      const liveMatches = await fetchLiveMatches(lang);
+      if (liveMatches.length > 0) {
+        setMatches(liveMatches.map(liveToUnified));
+        setIsLive(true);
+        setLastUpdate(new Date());
+      }
+    } catch {
+      // Fallback to static data
+      setIsLive(false);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    loadLiveData();
+    // Auto-refresh every 5 minutes
+    const interval = setInterval(loadLiveData, 5 * 60 * 1000);
+    return () => clearInterval(interval);
+  }, [lang]);
 
   const filtered = useMemo(() => {
-    return copa2026Matches.filter((m) => {
+    return matches.filter((m) => {
       if (stageFilter !== "Todos" && m.stage !== stageFilter) return false;
       if (groupFilter !== "Todos" && m.group !== groupFilter) return false;
       if (onlyBrazil && !isBrazilMatch(m)) return false;
       return true;
     });
-  }, [stageFilter, groupFilter, onlyBrazil]);
+  }, [matches, stageFilter, groupFilter, onlyBrazil]);
 
   const matchesByDate = useMemo(() => {
-    const map = new Map<string, Copa2026Match[]>();
+    const map = new Map<string, UnifiedMatch[]>();
     filtered.forEach((m) => {
       const key = m.date;
       if (!map.has(key)) map.set(key, []);
@@ -132,6 +210,8 @@ export default function Copa2026Page() {
     });
     return Array.from(map.entries()).sort((a, b) => a[0].localeCompare(b[0]));
   }, [filtered]);
+
+  const gamesWithScores = matches.filter((m) => m.homeScore !== null).length;
 
   return (
     <div className="min-h-screen">
@@ -155,6 +235,38 @@ export default function Copa2026Page() {
               <span>🇺🇸 🇲🇽 🇨🇦 EUA · México · Canadá</span>
               <span>📅 11 {lang === "pt" ? "jun" : "Jun"} – 19 {lang === "pt" ? "jul" : "Jul"} 2026</span>
               <span>⏰ {lang === "pt" ? "Horário de Brasília (BRT / UTC-3)" : "Brasília Time (BRT / UTC-3)"}</span>
+            </div>
+
+            {/* Live status */}
+            <div className="flex items-center justify-center gap-3 mt-4">
+              <span className={`flex items-center gap-1.5 text-xs px-3 py-1 rounded-full ${
+                isLive
+                  ? "bg-[#009C3B]/20 text-[#009C3B]"
+                  : "bg-white/5 text-white/30"
+              }`}>
+                {isLive ? <Wifi className="w-3 h-3" /> : <WifiOff className="w-3 h-3" />}
+                {isLive
+                  ? (lang === "pt" ? "Dados ao vivo" : "Live data")
+                  : (lang === "pt" ? "Dados estáticos" : "Static data")}
+              </span>
+              {gamesWithScores > 0 && (
+                <span className="text-xs text-white/30">
+                  {gamesWithScores} {lang === "pt" ? "jogos com resultado" : "matches with results"}
+                </span>
+              )}
+              <button
+                onClick={loadLiveData}
+                disabled={loading}
+                className="flex items-center gap-1 text-xs text-white/40 hover:text-[#FFDF00] transition-colors"
+              >
+                <RefreshCw className={`w-3 h-3 ${loading ? "animate-spin" : ""}`} />
+                {lang === "pt" ? "Atualizar" : "Refresh"}
+              </button>
+              {lastUpdate && (
+                <span className="text-[10px] text-white/20">
+                  {lastUpdate.toLocaleTimeString(lang === "pt" ? "pt-BR" : "en-US", { hour: "2-digit", minute: "2-digit" })}
+                </span>
+              )}
             </div>
           </motion.div>
         </div>
@@ -209,7 +321,6 @@ export default function Copa2026Page() {
 
           {/* Filters */}
           <div className="flex flex-col gap-3 mb-8">
-            {/* Stage filter */}
             <div className="flex gap-2 flex-wrap justify-center">
               {stages.map((s) => (
                 <button
@@ -226,7 +337,6 @@ export default function Copa2026Page() {
               ))}
             </div>
 
-            {/* Group filter + Brazil toggle */}
             <div className="flex gap-2 flex-wrap justify-center items-center">
               {stageFilter === "Fase de Grupos" && (
                 <>
@@ -269,19 +379,19 @@ export default function Copa2026Page() {
 
           {/* Matches grouped by date */}
           <div className="space-y-6">
-            {matchesByDate.map(([date, matches]) => (
+            {matchesByDate.map(([date, dayMatches]) => (
               <div key={date}>
                 <div className="sticky top-16 z-10 bg-[#071a0e]/90 backdrop-blur-sm py-2 mb-2">
                   <h3 className="text-sm font-bold text-[#FFDF00] flex items-center gap-2">
                     <Calendar className="w-4 h-4" />
                     {formatDate(date, lang)}
                     <span className="text-white/20 font-normal">
-                      ({matches.length} {lang === "pt" ? "jogos" : "matches"})
+                      ({dayMatches.length} {lang === "pt" ? "jogos" : "matches"})
                     </span>
                   </h3>
                 </div>
                 <div className="space-y-2">
-                  {matches.map((m) => (
+                  {dayMatches.map((m) => (
                     <MatchRow key={m.id} match={m} lang={lang} />
                   ))}
                 </div>
