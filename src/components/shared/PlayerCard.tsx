@@ -1,11 +1,40 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { User, ArrowRight } from "lucide-react";
 import { Player } from "@/data/types";
 import { cn } from "@/lib/utils";
 import { useLang } from "@/contexts/LanguageContext";
+import { useState } from "react";
+
+function PlayerAvatar({ player, size = 64 }: { player: Player; size?: number }) {
+  const [imgError, setImgError] = useState(false);
+  const sizeClass = size === 64 ? "w-16 h-16" : "w-full h-full";
+  const iconSize = size === 64 ? "w-8 h-8" : "w-32 h-32";
+
+  if (imgError) {
+    return (
+      <div className={`${sizeClass} rounded-full bg-gradient-to-br from-[#009C3B] to-[#006B2D] flex items-center justify-center shrink-0`}>
+        <User className={`${iconSize} text-white/60`} />
+      </div>
+    );
+  }
+
+  return (
+    <div className={`${sizeClass} rounded-full overflow-hidden bg-gradient-to-br from-[#009C3B] to-[#006B2D] shrink-0 relative`}>
+      <Image
+        src={player.image}
+        alt={player.shortName}
+        fill
+        className="object-cover"
+        sizes={`${size}px`}
+        onError={() => setImgError(true)}
+      />
+    </div>
+  );
+}
 
 interface PlayerCardProps {
   player: Player;
@@ -15,6 +44,7 @@ interface PlayerCardProps {
 
 export function PlayerCard({ player, variant = "compact", index = 0 }: PlayerCardProps) {
   const { t } = useLang();
+  const [imgError, setImgError] = useState(false);
 
   if (variant === "hero") {
     return (
@@ -27,9 +57,20 @@ export function PlayerCard({ player, variant = "compact", index = 0 }: PlayerCar
       >
         <Link href={`/jogador/${player.slug}`}>
           <div className="relative h-[420px] rounded-2xl overflow-hidden bg-gradient-to-b from-[#009C3B]/20 to-[#006B2D]/40 border border-white/10 backdrop-blur-sm">
-            <div className="absolute inset-0 flex items-center justify-center text-white/10">
-              <User className="w-32 h-32" />
-            </div>
+            {!imgError ? (
+              <Image
+                src={player.image}
+                alt={player.shortName}
+                fill
+                className="object-cover object-top"
+                sizes="(max-width: 768px) 100vw, 33vw"
+                onError={() => setImgError(true)}
+              />
+            ) : (
+              <div className="absolute inset-0 flex items-center justify-center text-white/10">
+                <User className="w-32 h-32" />
+              </div>
+            )}
             <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 via-black/40 to-transparent">
               <span className="text-[#FFDF00] text-6xl font-black opacity-30 absolute top-2 right-4">
                 {player.number}
@@ -74,8 +115,8 @@ export function PlayerCard({ player, variant = "compact", index = 0 }: PlayerCar
           )}
         >
           <div className="flex items-center gap-4">
-            <div className="relative w-16 h-16 rounded-full bg-gradient-to-br from-[#009C3B] to-[#006B2D] flex items-center justify-center shrink-0">
-              <User className="w-8 h-8 text-white/60" />
+            <div className="relative">
+              <PlayerAvatar player={player} size={64} />
               <span className="absolute -bottom-1 -right-1 bg-[#FFDF00] text-[#006B2D] text-xs font-bold w-6 h-6 rounded-full flex items-center justify-center">
                 {player.number}
               </span>

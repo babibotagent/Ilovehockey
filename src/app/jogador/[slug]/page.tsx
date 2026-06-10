@@ -2,11 +2,29 @@
 
 import { useParams } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
+import { useState } from "react";
 import { ArrowLeft, User, Calendar, Ruler, MapPin, Star, Trophy } from "lucide-react";
 import { players } from "@/data/players";
 import { Badge } from "@/components/ui/badge";
 import { useLang } from "@/contexts/LanguageContext";
+
+function PlayerPhoto({ image, name }: { image: string; name: string }) {
+  const [err, setErr] = useState(false);
+  if (err) {
+    return (
+      <div className="w-32 h-32 md:w-40 md:h-40 rounded-2xl bg-gradient-to-br from-[#009C3B] to-[#006B2D] flex items-center justify-center shrink-0">
+        <User className="w-16 h-16 md:w-20 md:h-20 text-white/40" />
+      </div>
+    );
+  }
+  return (
+    <div className="w-32 h-32 md:w-40 md:h-40 rounded-2xl overflow-hidden bg-gradient-to-br from-[#009C3B] to-[#006B2D] shrink-0 relative">
+      <Image src={image} alt={name} fill className="object-cover object-top" sizes="160px" onError={() => setErr(true)} />
+    </div>
+  );
+}
 
 export default function JogadorPage() {
   const { slug } = useParams<{ slug: string }>();
@@ -45,9 +63,7 @@ export default function JogadorPage() {
             {player.number}
           </span>
           <div className="flex flex-col md:flex-row gap-8 items-start">
-            <div className="w-32 h-32 md:w-40 md:h-40 rounded-2xl bg-gradient-to-br from-[#009C3B] to-[#006B2D] flex items-center justify-center shrink-0">
-              <User className="w-16 h-16 md:w-20 md:h-20 text-white/40" />
-            </div>
+            <PlayerPhoto image={player.image} name={player.shortName} />
             <div className="flex-1">
               <Badge className="bg-[#FFDF00]/10 text-[#FFDF00] border-[#FFDF00]/20 mb-3">
                 {t(`pos.${player.position}`)}
