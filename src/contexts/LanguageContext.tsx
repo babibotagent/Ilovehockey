@@ -127,7 +127,7 @@ const translations: Record<string, Record<Lang, string>> = {
   },
   "historia.tecnico": { pt: "Técnico:", en: "Coach:", fr: "Entraîneur :", es: "Técnico:" },
   "historia.artilheiro": { pt: "Artilheiro:", en: "Top Scorer:", fr: "Meilleur buteur :", es: "Goleador:" },
-  "historia.todascopas": { pt: "Todas as Copas desde 1950", en: "All World Cups since 1950", fr: "Toutes les Coupes depuis 1950", es: "Todos los Mundiales desde 1950" },
+  "historia.todascopas": { pt: "Todas as Copas desde 1930", en: "All World Cups since 1930", fr: "Toutes les Coupes depuis 1930", es: "Todos los Mundiales desde 1930" },
   "historia.todascopas.sub": {
     pt: "A história completa do Brasil em cada edição do torneio",
     en: "Brazil's complete history in every edition of the tournament",
