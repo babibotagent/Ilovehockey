@@ -9,11 +9,11 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "BrasilFC - A Seleção Brasileira",
+  title: "PaixaoBR - A Seleção Brasileira",
   description:
     "Tudo sobre a Seleção Brasileira de Futebol: elenco, história, partidas e muito mais. Pentacampeã mundial.",
   openGraph: {
-    title: "BrasilFC - A Seleção Brasileira",
+    title: "PaixaoBR - A Seleção Brasileira",
     description: "Pentacampeã mundial. Acompanhe tudo sobre a Seleção Canarinho.",
     type: "website",
   },

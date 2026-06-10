@@ -86,7 +86,7 @@ export function Footer() {
         <div className="border-t border-white/10 mt-8 pt-6 flex flex-col items-center gap-2">
           <VisitorCounter />
           <span className="text-white/40 text-sm">
-            © {new Date().getFullYear()} BrasilFC. {t("footer.copy")}
+            © {new Date().getFullYear()} PaixaoBR. {t("footer.copy")}
           </span>
         </div>
       </div>
