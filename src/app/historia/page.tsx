@@ -238,8 +238,9 @@ export default function HistoriaPage() {
 
       {/* Stats */}
       <section className="py-16 border-y border-white/5 bg-white/[0.02]">
-        <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-5 gap-4">
           <StatBlock value={5} label={t("historia.copas")} suffix="x" />
+          <StatBlock value={22} label={t("historia.participacoes")} delay={100} />
           <StatBlock value={237} label={t("historia.jogoscopas")} delay={200} />
           <StatBlock value={76} label={t("historia.vitorias")} delay={400} />
           <StatBlock value={229} label={t("historia.golscopas")} delay={600} />
