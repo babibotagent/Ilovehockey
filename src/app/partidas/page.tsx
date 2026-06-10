@@ -26,7 +26,7 @@ export default function PartidasPage() {
     (m) => filter === "Todas" || m.competition === filter
   );
 
-  const upcoming = filtered.filter((m) => m.status === "upcoming");
+  const upcoming = filtered.filter((m) => m.status === "upcoming").reverse();
   const finished = filtered.filter((m) => m.status === "finished");
 
   return (
