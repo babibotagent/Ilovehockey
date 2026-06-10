@@ -3,10 +3,11 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useRef, useEffect } from "react";
-import { Menu, X, Trophy, Globe } from "lucide-react";
+import { Menu, X, Trophy, Globe, ChevronDown } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
 import { useLang, Lang, langLabels, langFlags } from "@/contexts/LanguageContext";
+import { selecoes } from "@/data/selecoes";
 
 const navKeys = [
   { href: "/", key: "nav.home" },
@@ -18,18 +19,21 @@ const navKeys = [
 
 const langs: Lang[] = ["pt", "en", "fr", "es"];
 
+function useClickOutside(ref: React.RefObject<HTMLElement | null>, handler: () => void) {
+  useEffect(() => {
+    const listener = (e: MouseEvent) => {
+      if (ref.current && !ref.current.contains(e.target as Node)) handler();
+    };
+    document.addEventListener("mousedown", listener);
+    return () => document.removeEventListener("mousedown", listener);
+  }, [ref, handler]);
+}
+
 function LangDropdown({ className }: { className?: string }) {
   const { lang, setLang } = useLang();
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const handler = (e: MouseEvent) => {
-      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
-    };
-    document.addEventListener("mousedown", handler);
-    return () => document.removeEventListener("mousedown", handler);
-  }, []);
+  useClickOutside(ref, () => setOpen(false));
 
   return (
     <div ref={ref} className={cn("relative", className)}>
@@ -57,6 +61,47 @@ function LangDropdown({ className }: { className?: string }) {
               <span>{langFlags[l]}</span>
               <span>{langLabels[l]}</span>
             </button>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+function OutrasDropdown({ className, onNavigate }: { className?: string; onNavigate?: () => void }) {
+  const { t } = useLang();
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+  const pathname = usePathname();
+  const isActive = pathname.startsWith("/selecoes");
+  useClickOutside(ref, () => setOpen(false));
+
+  return (
+    <div ref={ref} className={cn("relative", className)}>
+      <button
+        onClick={() => setOpen(!open)}
+        className={cn(
+          "flex items-center gap-1 px-4 py-2 rounded-lg text-sm font-medium transition-colors",
+          isActive
+            ? "bg-[#FFDF00] text-[#006B2D]"
+            : "text-white/80 hover:text-white hover:bg-white/10"
+        )}
+      >
+        {t("nav.outras")}
+        <ChevronDown className={cn("w-3.5 h-3.5 transition-transform", open && "rotate-180")} />
+      </button>
+      {open && (
+        <div className="absolute left-0 top-full mt-1 bg-[#0a2618] border border-white/10 rounded-xl shadow-xl overflow-hidden z-50 min-w-[220px] max-h-[400px] overflow-y-auto">
+          {selecoes.map((s) => (
+            <Link
+              key={s.slug}
+              href={`/selecoes/${s.slug}`}
+              onClick={() => { setOpen(false); onNavigate?.(); }}
+              className="flex items-center gap-2.5 px-4 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-[#FFDF00] transition-colors"
+            >
+              <span className="text-base">{s.emoji}</span>
+              <span>{s.name}</span>
+            </Link>
           ))}
         </div>
       )}
@@ -95,6 +140,7 @@ export function Navbar() {
                 {t(link.key)}
               </Link>
             ))}
+            <OutrasDropdown />
             <LangDropdown className="ml-2" />
           </div>
 
@@ -121,6 +167,22 @@ export function Navbar() {
                       {t(link.key)}
                     </Link>
                   ))}
+                  <div className="border-t border-white/10 mt-2 pt-2">
+                    <p className="px-4 py-2 text-xs text-[#FFDF00] font-semibold uppercase tracking-wider">
+                      {t("nav.outras")}
+                    </p>
+                    {selecoes.map((s) => (
+                      <Link
+                        key={s.slug}
+                        href={`/selecoes/${s.slug}`}
+                        onClick={() => setOpen(false)}
+                        className="flex items-center gap-2 px-4 py-2.5 text-sm text-white/70 hover:text-white transition-colors"
+                      >
+                        <span>{s.emoji}</span>
+                        <span>{s.name}</span>
+                      </Link>
+                    ))}
+                  </div>
                 </div>
               </SheetContent>
             </Sheet>

@@ -31,6 +31,15 @@ const translations: Record<string, Record<Lang, string>> = {
   "nav.historia": { pt: "História", en: "History", fr: "Histoire", es: "Historia" },
   "nav.partidas": { pt: "Partidas", en: "Matches", fr: "Matchs", es: "Partidos" },
   "nav.copa2026": { pt: "Copa 2026", en: "WC 2026", fr: "CM 2026", es: "Mundial 2026" },
+  "nav.outras": { pt: "Outras Seleções", en: "Other Teams", fr: "Autres Équipes", es: "Otras Selecciones" },
+  "outras.title": { pt: "Em Construção", en: "Under Construction", fr: "En construction", es: "En construcción" },
+  "outras.desc": {
+    pt: "Esta seção está sendo desenvolvida. Em breve você poderá acompanhar tudo sobre a seleção brasileira de",
+    en: "This section is under development. Soon you'll be able to follow everything about the Brazilian national team of",
+    fr: "Cette section est en cours de développement. Bientôt vous pourrez suivre l'équipe du Brésil de",
+    es: "Esta sección está en desarrollo. Pronto podrás seguir todo sobre la selección brasileña de",
+  },
+  "outras.voltar": { pt: "Voltar ao início", en: "Back to home", fr: "Retour à l'accueil", es: "Volver al inicio" },
 
   // Home
   "home.subtitle": {
