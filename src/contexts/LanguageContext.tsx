@@ -165,6 +165,7 @@ const translations: Record<string, Record<Lang, string>> = {
   "footer.navegacao": { pt: "Navegação", en: "Navigation", fr: "Navigation", es: "Navegación" },
   "footer.institucional": { pt: "Institucional", en: "Institutional", fr: "Institutionnel", es: "Institucional" },
   "footer.copy": { pt: "Projeto educacional. Não oficial.", en: "Educational project. Unofficial.", fr: "Projet éducatif. Non officiel.", es: "Proyecto educativo. No oficial." },
+  "footer.visitantes": { pt: "visitantes", en: "visitors", fr: "visiteurs", es: "visitantes" },
 
   // Copa 2026
   "copa.title": { pt: "Copa do Mundo", en: "World Cup", fr: "Coupe du Monde", es: "Copa del Mundo" },
