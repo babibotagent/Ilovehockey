@@ -97,7 +97,7 @@ function WorldCupCard({ cup, index }: { cup: WorldCupEdition; index: number }) {
           className="flex items-center gap-2 text-sm text-[#FFDF00] hover:text-[#FFDF00]/80 transition-colors font-medium"
         >
           {expanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
-          {expanded ? "Recolher" : t("historia.jogosdobrasil")}
+          {expanded ? t("historia.recolher") : t("historia.jogosdobrasil")}
         </button>
 
         {/* Expanded content */}

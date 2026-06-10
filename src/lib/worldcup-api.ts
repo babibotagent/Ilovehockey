@@ -35,67 +35,66 @@ export interface LiveMatch {
   venue: string;
 }
 
-const teamNamesPt: Record<string, string> = {
-  "Mexico": "México",
-  "South Africa": "África do Sul",
-  "South Korea": "Coreia do Sul",
-  "Czech Republic": "Tchéquia",
-  "Canada": "Canadá",
-  "Bosnia and Herzegovina": "Bósnia e Herzegovina",
-  "Qatar": "Catar",
-  "Switzerland": "Suíça",
-  "Brazil": "Brasil",
-  "Morocco": "Marrocos",
-  "Haiti": "Haiti",
-  "Scotland": "Escócia",
-  "United States": "Estados Unidos",
-  "Paraguay": "Paraguai",
-  "Australia": "Austrália",
-  "Turkey": "Turquia",
-  "Türkiye": "Turquia",
-  "Germany": "Alemanha",
-  "Curaçao": "Curaçao",
-  "Ivory Coast": "Costa do Marfim",
-  "Côte d'Ivoire": "Costa do Marfim",
-  "Ecuador": "Equador",
-  "Netherlands": "Holanda",
-  "Japan": "Japão",
-  "Sweden": "Suécia",
-  "Tunisia": "Tunísia",
-  "Spain": "Espanha",
-  "Cape Verde": "Cabo Verde",
-  "Saudi Arabia": "Arábia Saudita",
-  "Uruguay": "Uruguai",
-  "Belgium": "Bélgica",
-  "Egypt": "Egito",
-  "Iran": "Irã",
-  "New Zealand": "Nova Zelândia",
-  "France": "França",
-  "Senegal": "Senegal",
-  "Iraq": "Iraque",
-  "Norway": "Noruega",
-  "Argentina": "Argentina",
-  "Algeria": "Argélia",
-  "Austria": "Áustria",
-  "Jordan": "Jordânia",
-  "Portugal": "Portugal",
-  "DR Congo": "RD Congo",
-  "Congo DR": "RD Congo",
-  "Uzbekistan": "Uzbequistão",
-  "Colombia": "Colômbia",
-  "England": "Inglaterra",
-  "Croatia": "Croácia",
-  "Ghana": "Gana",
-  "Panama": "Panamá",
+const teamNames: Record<string, Record<string, string>> = {
+  "Mexico": { pt: "México", fr: "Mexique", es: "México" },
+  "South Africa": { pt: "África do Sul", fr: "Afrique du Sud", es: "Sudáfrica" },
+  "South Korea": { pt: "Coreia do Sul", fr: "Corée du Sud", es: "Corea del Sur" },
+  "Czech Republic": { pt: "Tchéquia", fr: "Tchéquie", es: "Chequia" },
+  "Canada": { pt: "Canadá", fr: "Canada", es: "Canadá" },
+  "Bosnia and Herzegovina": { pt: "Bósnia e Herzegovina", fr: "Bosnie-Herzégovine", es: "Bosnia y Herzegovina" },
+  "Qatar": { pt: "Catar", fr: "Qatar", es: "Catar" },
+  "Switzerland": { pt: "Suíça", fr: "Suisse", es: "Suiza" },
+  "Brazil": { pt: "Brasil", fr: "Brésil", es: "Brasil" },
+  "Morocco": { pt: "Marrocos", fr: "Maroc", es: "Marruecos" },
+  "Haiti": { pt: "Haiti", fr: "Haïti", es: "Haití" },
+  "Scotland": { pt: "Escócia", fr: "Écosse", es: "Escocia" },
+  "United States": { pt: "Estados Unidos", fr: "États-Unis", es: "Estados Unidos" },
+  "Paraguay": { pt: "Paraguai", fr: "Paraguay", es: "Paraguay" },
+  "Australia": { pt: "Austrália", fr: "Australie", es: "Australia" },
+  "Turkey": { pt: "Turquia", fr: "Turquie", es: "Turquía" },
+  "Türkiye": { pt: "Turquia", fr: "Turquie", es: "Turquía" },
+  "Germany": { pt: "Alemanha", fr: "Allemagne", es: "Alemania" },
+  "Curaçao": { pt: "Curaçao", fr: "Curaçao", es: "Curazao" },
+  "Ivory Coast": { pt: "Costa do Marfim", fr: "Côte d'Ivoire", es: "Costa de Marfil" },
+  "Côte d'Ivoire": { pt: "Costa do Marfim", fr: "Côte d'Ivoire", es: "Costa de Marfil" },
+  "Ecuador": { pt: "Equador", fr: "Équateur", es: "Ecuador" },
+  "Netherlands": { pt: "Holanda", fr: "Pays-Bas", es: "Países Bajos" },
+  "Japan": { pt: "Japão", fr: "Japon", es: "Japón" },
+  "Sweden": { pt: "Suécia", fr: "Suède", es: "Suecia" },
+  "Tunisia": { pt: "Tunísia", fr: "Tunisie", es: "Túnez" },
+  "Spain": { pt: "Espanha", fr: "Espagne", es: "España" },
+  "Cape Verde": { pt: "Cabo Verde", fr: "Cap-Vert", es: "Cabo Verde" },
+  "Saudi Arabia": { pt: "Arábia Saudita", fr: "Arabie saoudite", es: "Arabia Saudita" },
+  "Uruguay": { pt: "Uruguai", fr: "Uruguay", es: "Uruguay" },
+  "Belgium": { pt: "Bélgica", fr: "Belgique", es: "Bélgica" },
+  "Egypt": { pt: "Egito", fr: "Égypte", es: "Egipto" },
+  "Iran": { pt: "Irã", fr: "Iran", es: "Irán" },
+  "New Zealand": { pt: "Nova Zelândia", fr: "Nouvelle-Zélande", es: "Nueva Zelanda" },
+  "France": { pt: "França", fr: "France", es: "Francia" },
+  "Senegal": { pt: "Senegal", fr: "Sénégal", es: "Senegal" },
+  "Iraq": { pt: "Iraque", fr: "Irak", es: "Irak" },
+  "Norway": { pt: "Noruega", fr: "Norvège", es: "Noruega" },
+  "Argentina": { pt: "Argentina", fr: "Argentine", es: "Argentina" },
+  "Algeria": { pt: "Argélia", fr: "Algérie", es: "Argelia" },
+  "Austria": { pt: "Áustria", fr: "Autriche", es: "Austria" },
+  "Jordan": { pt: "Jordânia", fr: "Jordanie", es: "Jordania" },
+  "Portugal": { pt: "Portugal", fr: "Portugal", es: "Portugal" },
+  "DR Congo": { pt: "RD Congo", fr: "RD Congo", es: "RD Congo" },
+  "Congo DR": { pt: "RD Congo", fr: "RD Congo", es: "RD Congo" },
+  "Uzbekistan": { pt: "Uzbequistão", fr: "Ouzbékistan", es: "Uzbekistán" },
+  "Colombia": { pt: "Colômbia", fr: "Colombie", es: "Colombia" },
+  "England": { pt: "Inglaterra", fr: "Angleterre", es: "Inglaterra" },
+  "Croatia": { pt: "Croácia", fr: "Croatie", es: "Croacia" },
+  "Ghana": { pt: "Gana", fr: "Ghana", es: "Ghana" },
+  "Panama": { pt: "Panamá", fr: "Panama", es: "Panamá" },
 };
 
 function translateTeam(name: string, lang: string): string {
-  if (lang === "pt") return teamNamesPt[name] || name;
-  return name;
+  if (lang === "en") return name;
+  return teamNames[name]?.[lang] || name;
 }
 
 function parseUtcOffset(timeStr: string): { hours: number; minutes: number; utcOffset: number } {
-  // Format: "13:00 UTC-6" or "20:00 UTC-4"
   const match = timeStr.match(/(\d{1,2}):(\d{2})\s*UTC([+-]\d+)/);
   if (!match) return { hours: 12, minutes: 0, utcOffset: 0 };
   return {
@@ -107,9 +106,6 @@ function parseUtcOffset(timeStr: string): { hours: number; minutes: number; utcO
 
 function toBrasiliaTime(timeStr: string): string {
   const { hours, minutes, utcOffset } = parseUtcOffset(timeStr);
-  // BRT = UTC-3. Convert: localTime -> UTC -> BRT
-  // UTC = localTime - utcOffset
-  // BRT = UTC - 3
   const utcHours = hours - utcOffset;
   const brtHours = utcHours - 3;
   const normalized = ((brtHours % 24) + 24) % 24;

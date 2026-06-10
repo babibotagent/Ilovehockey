@@ -18,17 +18,6 @@ const stages = [
   "Final",
 ];
 
-const stagesEn: Record<string, string> = {
-  "Todos": "All",
-  "Fase de Grupos": "Group Stage",
-  "Oitavas (32)": "Round of 32",
-  "16 avos": "Round of 16",
-  "Quartas de Final": "Quarterfinals",
-  "Semifinal": "Semifinals",
-  "3º Lugar": "Third Place",
-  "Final": "Final",
-};
-
 type UnifiedMatch = {
   id: number;
   date: string;
@@ -50,11 +39,12 @@ function isBrazilMatch(m: UnifiedMatch) {
 
 function formatDate(dateStr: string, lang: string) {
   const d = new Date(dateStr + "T12:00:00");
+  const localeMap: Record<string, string> = { pt: "pt-BR", en: "en-US", fr: "fr-FR", es: "es-ES" };
   const options: Intl.DateTimeFormatOptions = { weekday: "short", day: "numeric", month: "short" };
-  return d.toLocaleDateString(lang === "pt" ? "pt-BR" : "en-US", options);
+  return d.toLocaleDateString(localeMap[lang] || "pt-BR", options);
 }
 
-function MatchRow({ match, lang }: { match: UnifiedMatch; lang: string }) {
+function MatchRow({ match, lang, t }: { match: UnifiedMatch; lang: string; t: (k: string) => string }) {
   const isBrazil = isBrazilMatch(match);
   const hasScore = match.homeScore !== null && match.awayScore !== null;
 
@@ -69,23 +59,21 @@ function MatchRow({ match, lang }: { match: UnifiedMatch; lang: string }) {
           : "bg-white/5 border border-white/5 hover:border-white/10"
       }`}
     >
-      {/* Match number & stage */}
       <div className="flex items-center gap-2 sm:w-28 shrink-0">
         <span className="text-[10px] text-white/30 w-6">#{match.id}</span>
         {match.group ? (
           <span className={`text-[10px] font-bold px-2 py-0.5 rounded ${
             match.group === "C" ? "bg-[#FFDF00]/20 text-[#FFDF00]" : "bg-white/10 text-white/50"
           }`}>
-            {lang === "pt" ? "Grupo" : "Group"} {match.group}
+            {t("copa.grupo")} {match.group}
           </span>
         ) : (
           <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-[#009C3B]/20 text-[#009C3B]">
-            {lang === "pt" ? match.stage : stagesEn[match.stage] || match.stage}
+            {t(`stage.${match.stage}`)}
           </span>
         )}
       </div>
 
-      {/* Date & Time */}
       <div className="flex items-center gap-3 sm:w-40 shrink-0 text-xs">
         <span className="text-white/50">
           <Calendar className="w-3 h-3 inline mr-1" />
@@ -97,7 +85,6 @@ function MatchRow({ match, lang }: { match: UnifiedMatch; lang: string }) {
         </span>
       </div>
 
-      {/* Teams & Score */}
       <div className="flex-1 flex items-center gap-2">
         <span className={`font-medium text-sm ${
           match.homeTeam === "Brasil" ? "text-[#FFDF00] font-bold" : "text-white"
@@ -118,7 +105,6 @@ function MatchRow({ match, lang }: { match: UnifiedMatch; lang: string }) {
         </span>
       </div>
 
-      {/* Venue */}
       <div className="flex items-center gap-1 text-[11px] text-white/30 sm:w-48 shrink-0 sm:text-right sm:justify-end">
         <MapPin className="w-3 h-3 shrink-0" />
         <span className="truncate">{match.venue}{match.city ? `, ${match.city}` : ""}</span>
@@ -178,7 +164,6 @@ export default function Copa2026Page() {
         setLastUpdate(new Date());
       }
     } catch {
-      // Fallback to static data
       setIsLive(false);
     } finally {
       setLoading(false);
@@ -187,7 +172,6 @@ export default function Copa2026Page() {
 
   useEffect(() => {
     loadLiveData();
-    // Auto-refresh every 5 minutes
     const interval = setInterval(loadLiveData, 5 * 60 * 1000);
     return () => clearInterval(interval);
   }, [lang]);
@@ -213,6 +197,8 @@ export default function Copa2026Page() {
 
   const gamesWithScores = matches.filter((m) => m.homeScore !== null).length;
 
+  const localeMap: Record<string, string> = { pt: "pt-BR", en: "en-US", fr: "fr-FR", es: "es-ES" };
+
   return (
     <div className="min-h-screen">
       {/* Hero */}
@@ -223,18 +209,16 @@ export default function Copa2026Page() {
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }}>
             <Trophy className="w-12 h-12 text-[#FFDF00] mx-auto mb-4" />
             <h1 className="text-4xl md:text-5xl font-black text-white">
-              {lang === "pt" ? "Copa do Mundo" : "World Cup"}{" "}
+              {t("copa.title")}{" "}
               <span className="text-[#FFDF00]">2026</span>
             </h1>
             <p className="text-white/50 text-lg mt-3 max-w-2xl mx-auto">
-              {lang === "pt"
-                ? "Tabela completa · 104 jogos · 16 cidades · Horários de Brasília (BRT)"
-                : "Full schedule · 104 matches · 16 cities · Brasília time (BRT)"}
+              {t("copa.subtitle")}
             </p>
             <div className="flex flex-wrap justify-center gap-4 mt-6 text-xs text-white/40">
-              <span>🇺🇸 🇲🇽 🇨🇦 EUA · México · Canadá</span>
-              <span>📅 11 {lang === "pt" ? "jun" : "Jun"} – 19 {lang === "pt" ? "jul" : "Jul"} 2026</span>
-              <span>⏰ {lang === "pt" ? "Horário de Brasília (BRT / UTC-3)" : "Brasília Time (BRT / UTC-3)"}</span>
+              <span>🇺🇸 🇲🇽 🇨🇦 {t("copa.hosts")}</span>
+              <span>📅 {t("copa.dates")}</span>
+              <span>⏰ {t("copa.timezone")}</span>
             </div>
 
             {/* Live status */}
@@ -245,13 +229,11 @@ export default function Copa2026Page() {
                   : "bg-white/5 text-white/30"
               }`}>
                 {isLive ? <Wifi className="w-3 h-3" /> : <WifiOff className="w-3 h-3" />}
-                {isLive
-                  ? (lang === "pt" ? "Dados ao vivo" : "Live data")
-                  : (lang === "pt" ? "Dados estáticos" : "Static data")}
+                {isLive ? t("copa.live") : t("copa.static")}
               </span>
               {gamesWithScores > 0 && (
                 <span className="text-xs text-white/30">
-                  {gamesWithScores} {lang === "pt" ? "jogos com resultado" : "matches with results"}
+                  {gamesWithScores} {t("copa.withResults")}
                 </span>
               )}
               <button
@@ -260,11 +242,11 @@ export default function Copa2026Page() {
                 className="flex items-center gap-1 text-xs text-white/40 hover:text-[#FFDF00] transition-colors"
               >
                 <RefreshCw className={`w-3 h-3 ${loading ? "animate-spin" : ""}`} />
-                {lang === "pt" ? "Atualizar" : "Refresh"}
+                {t("copa.refresh")}
               </button>
               {lastUpdate && (
                 <span className="text-[10px] text-white/20">
-                  {lastUpdate.toLocaleTimeString(lang === "pt" ? "pt-BR" : "en-US", { hour: "2-digit", minute: "2-digit" })}
+                  {lastUpdate.toLocaleTimeString(localeMap[lang] || "pt-BR", { hour: "2-digit", minute: "2-digit" })}
                 </span>
               )}
             </div>
@@ -276,7 +258,7 @@ export default function Copa2026Page() {
       <section className="py-10 px-4 border-y border-white/5 bg-white/[0.02]">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-xl font-bold text-white mb-6 text-center">
-            {lang === "pt" ? "12 Grupos · 48 Seleções" : "12 Groups · 48 Teams"}
+            {t("copa.groups")}
           </h2>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
             {copa2026Groups.map((g) => (
@@ -294,7 +276,7 @@ export default function Copa2026Page() {
                 <div className={`font-black text-sm mb-2 ${
                   g.name === "C" ? "text-[#FFDF00]" : "text-white/60"
                 }`}>
-                  {lang === "pt" ? "Grupo" : "Group"} {g.name}
+                  {t("copa.grupo")} {g.name}
                 </div>
                 {g.teams.map((team) => (
                   <div
@@ -316,7 +298,7 @@ export default function Copa2026Page() {
       <section className="py-10 px-4">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-2xl font-bold text-white mb-6 text-center">
-            {lang === "pt" ? "Tabela Completa" : "Full Schedule"}
+            {t("copa.schedule")}
           </h2>
 
           {/* Filters */}
@@ -332,7 +314,7 @@ export default function Copa2026Page() {
                       : "bg-white/5 text-white/50 hover:bg-white/10 border border-white/10"
                   }`}
                 >
-                  {lang === "pt" ? s : stagesEn[s] || s}
+                  {t(`stage.${s}`)}
                 </button>
               ))}
             </div>
@@ -351,7 +333,7 @@ export default function Copa2026Page() {
                           : g === "C" ? "bg-[#FFDF00]/10 text-[#FFDF00] border border-[#FFDF00]/20" : "bg-white/5 text-white/40 border border-white/10"
                       }`}
                     >
-                      {g === "Todos" ? (lang === "pt" ? "Todos" : "All") : g}
+                      {g === "Todos" ? t("stage.Todos") : g}
                     </button>
                   ))}
                 </>
@@ -365,16 +347,16 @@ export default function Copa2026Page() {
                 }`}
               >
                 <Star className="w-3 h-3" />
-                {lang === "pt" ? "Só Brasil" : "Brazil Only"}
+                {t("copa.onlyBrazil")}
               </button>
             </div>
           </div>
 
           {/* Match count */}
           <div className="text-center text-xs text-white/30 mb-6">
-            {filtered.length} {lang === "pt" ? "jogos" : "matches"}
+            {filtered.length} {t("copa.jogos")}
             {" · "}
-            {lang === "pt" ? "Todos os horários em Brasília (BRT / UTC-3)" : "All times in Brasília (BRT / UTC-3)"}
+            {t("copa.allTimes")}
           </div>
 
           {/* Matches grouped by date */}
@@ -386,13 +368,13 @@ export default function Copa2026Page() {
                     <Calendar className="w-4 h-4" />
                     {formatDate(date, lang)}
                     <span className="text-white/20 font-normal">
-                      ({dayMatches.length} {lang === "pt" ? "jogos" : "matches"})
+                      ({dayMatches.length} {t("copa.jogos")})
                     </span>
                   </h3>
                 </div>
                 <div className="space-y-2">
                   {dayMatches.map((m) => (
-                    <MatchRow key={m.id} match={m} lang={lang} />
+                    <MatchRow key={m.id} match={m} lang={lang} t={t} />
                   ))}
                 </div>
               </div>
@@ -401,7 +383,7 @@ export default function Copa2026Page() {
 
           {filtered.length === 0 && (
             <div className="text-center py-20 text-white/40">
-              {lang === "pt" ? "Nenhum jogo encontrado com esses filtros." : "No matches found with these filters."}
+              {t("copa.noMatches")}
             </div>
           )}
         </div>

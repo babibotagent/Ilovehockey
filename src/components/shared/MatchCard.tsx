@@ -9,7 +9,8 @@ import { useLang } from "@/contexts/LanguageContext";
 export function MatchCard({ match, index = 0 }: { match: Match; index?: number }) {
   const { lang, t } = useLang();
   const date = new Date(match.date + "T12:00:00");
-  const formatted = date.toLocaleDateString(lang === "pt" ? "pt-BR" : "en-US", {
+  const localeMap: Record<string, string> = { pt: "pt-BR", en: "en-US", fr: "fr-FR", es: "es-ES" };
+  const formatted = date.toLocaleDateString(localeMap[lang] || "pt-BR", {
     day: "2-digit",
     month: "short",
     year: "numeric",

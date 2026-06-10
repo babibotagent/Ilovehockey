@@ -2,11 +2,11 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Menu, X, Trophy, Globe } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
-import { useLang } from "@/contexts/LanguageContext";
+import { useLang, Lang, langLabels, langFlags } from "@/contexts/LanguageContext";
 
 const navKeys = [
   { href: "/", key: "nav.home" },
@@ -16,10 +16,58 @@ const navKeys = [
   { href: "/copa2026", key: "nav.copa2026" },
 ];
 
+const langs: Lang[] = ["pt", "en", "fr", "es"];
+
+function LangDropdown({ className }: { className?: string }) {
+  const { lang, setLang } = useLang();
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handler = (e: MouseEvent) => {
+      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
+    };
+    document.addEventListener("mousedown", handler);
+    return () => document.removeEventListener("mousedown", handler);
+  }, []);
+
+  return (
+    <div ref={ref} className={cn("relative", className)}>
+      <button
+        onClick={() => setOpen(!open)}
+        className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium bg-white/10 text-white hover:bg-white/20 transition-colors border border-white/10"
+      >
+        <Globe className="w-4 h-4" />
+        <span>{langFlags[lang]}</span>
+        <span className="hidden sm:inline">{lang.toUpperCase()}</span>
+      </button>
+      {open && (
+        <div className="absolute right-0 top-full mt-1 bg-[#0a2618] border border-white/10 rounded-lg shadow-xl overflow-hidden z-50 min-w-[160px]">
+          {langs.map((l) => (
+            <button
+              key={l}
+              onClick={() => { setLang(l); setOpen(false); }}
+              className={cn(
+                "w-full flex items-center gap-2 px-4 py-2.5 text-sm transition-colors",
+                l === lang
+                  ? "bg-[#FFDF00]/10 text-[#FFDF00] font-medium"
+                  : "text-white/70 hover:bg-white/5"
+              )}
+            >
+              <span>{langFlags[l]}</span>
+              <span>{langLabels[l]}</span>
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
 export function Navbar() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
-  const { lang, toggle, t } = useLang();
+  const { t } = useLang();
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-[#006B2D]/90 backdrop-blur-md border-b border-white/10">
@@ -47,25 +95,11 @@ export function Navbar() {
                 {t(link.key)}
               </Link>
             ))}
-            <button
-              onClick={toggle}
-              className="ml-2 flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium bg-white/10 text-white hover:bg-white/20 transition-colors border border-white/10"
-              aria-label="Toggle language"
-            >
-              <Globe className="w-4 h-4" />
-              {lang === "pt" ? "EN" : "PT"}
-            </button>
+            <LangDropdown className="ml-2" />
           </div>
 
           <div className="flex items-center gap-2 md:hidden">
-            <button
-              onClick={toggle}
-              className="flex items-center gap-1 px-2 py-1.5 rounded-lg text-xs font-medium bg-white/10 text-white border border-white/10"
-              aria-label="Toggle language"
-            >
-              <Globe className="w-3.5 h-3.5" />
-              {lang === "pt" ? "EN" : "PT"}
-            </button>
+            <LangDropdown />
             <Sheet open={open} onOpenChange={setOpen}>
               <SheetTrigger className="text-white p-2" aria-label="Abrir menu">
                 {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
