@@ -1,23 +1,24 @@
-const API_URL =
-  "https://raw.githubusercontent.com/openfootball/worldcup.json/master/2026/worldcup.json";
+const API_URL = "https://worldcup26.ir/get/games";
 
-interface ApiMatch {
-  round: string;
-  date: string;
-  time: string;
-  team1: string;
-  team2: string;
-  score1?: number;
-  score2?: number;
-  score1i?: number;
-  score2i?: number;
-  group?: string;
-  ground?: string;
+interface ApiGame {
+  id: string;
+  home_team_name_en: string;
+  away_team_name_en: string;
+  home_score: string;
+  away_score: string;
+  home_scorers: string;
+  away_scorers: string;
+  group: string;
+  matchday: string;
+  local_date: string;
+  stadium_id: string;
+  finished: string;
+  time_elapsed: string;
+  type: string;
 }
 
-interface ApiData {
-  name: string;
-  rounds: { name: string; matches: ApiMatch[] }[];
+interface ApiResponse {
+  games: ApiGame[];
 }
 
 export interface LiveMatch {
@@ -55,6 +56,7 @@ const teamNames: Record<string, Record<string, string>> = {
   "Türkiye": { pt: "Turquia", fr: "Turquie", es: "Turquía" },
   "Germany": { pt: "Alemanha", fr: "Allemagne", es: "Alemania" },
   "Curaçao": { pt: "Curaçao", fr: "Curaçao", es: "Curazao" },
+  "Curacao": { pt: "Curaçao", fr: "Curaçao", es: "Curazao" },
   "Ivory Coast": { pt: "Costa do Marfim", fr: "Côte d'Ivoire", es: "Costa de Marfil" },
   "Côte d'Ivoire": { pt: "Costa do Marfim", fr: "Côte d'Ivoire", es: "Costa de Marfil" },
   "Ecuador": { pt: "Equador", fr: "Équateur", es: "Ecuador" },
@@ -87,6 +89,7 @@ const teamNames: Record<string, Record<string, string>> = {
   "Croatia": { pt: "Croácia", fr: "Croatie", es: "Croacia" },
   "Ghana": { pt: "Gana", fr: "Ghana", es: "Ghana" },
   "Panama": { pt: "Panamá", fr: "Panama", es: "Panamá" },
+  "Costa Rica": { pt: "Costa Rica", fr: "Costa Rica", es: "Costa Rica" },
 };
 
 function translateTeam(name: string, lang: string): string {
@@ -94,70 +97,55 @@ function translateTeam(name: string, lang: string): string {
   return teamNames[name]?.[lang] || name;
 }
 
-function parseUtcOffset(timeStr: string): { hours: number; minutes: number; utcOffset: number } {
-  const match = timeStr.match(/(\d{1,2}):(\d{2})\s*UTC([+-]\d+)/);
-  if (!match) return { hours: 12, minutes: 0, utcOffset: 0 };
-  return {
-    hours: parseInt(match[1]),
-    minutes: parseInt(match[2]),
-    utcOffset: parseInt(match[3]),
-  };
+function parseLocalDate(localDate: string): { date: string; timeBrasilia: string } {
+  // Format: "06/11/2026 13:00" (local time, assumed UTC-6 for Mexico, varies)
+  const [datePart, timePart] = localDate.split(" ");
+  const [month, day, year] = datePart.split("/");
+  const date = `${year}-${month}-${day}`;
+
+  // The API gives local venue time; we store it as-is since our static data
+  // already has correct Brasília times. We'll use static times as primary.
+  return { date, timeBrasilia: timePart || "00:00" };
 }
 
-function toBrasiliaTime(timeStr: string): string {
-  const { hours, minutes, utcOffset } = parseUtcOffset(timeStr);
-  const utcHours = hours - utcOffset;
-  const brtHours = utcHours - 3;
-  const normalized = ((brtHours % 24) + 24) % 24;
-  return `${String(normalized).padStart(2, "0")}:${String(minutes).padStart(2, "0")}`;
-}
-
-function mapStage(roundName: string): string {
-  const lower = roundName.toLowerCase();
-  if (lower.includes("matchday") || lower.includes("group")) return "Fase de Grupos";
-  if (lower.includes("round of 32")) return "Oitavas (32)";
-  if (lower.includes("round of 16")) return "16 avos";
-  if (lower.includes("quarterfinal") || lower.includes("quarter-final")) return "Quartas de Final";
-  if (lower.includes("semifinal") || lower.includes("semi-final")) return "Semifinal";
-  if (lower.includes("third") || lower.includes("3rd")) return "3º Lugar";
-  if (lower.includes("final") && !lower.includes("semi") && !lower.includes("quarter")) return "Final";
-  return roundName;
-}
-
-function extractGroup(groupStr?: string): string | null {
-  if (!groupStr) return null;
-  const match = groupStr.match(/Group\s+([A-L])/i);
-  return match ? match[1] : null;
+function mapStage(type: string): string {
+  switch (type) {
+    case "group": return "Fase de Grupos";
+    case "round_of_32": return "Oitavas (32)";
+    case "round_of_16": return "16 avos";
+    case "quarterfinal": return "Quartas de Final";
+    case "semifinal": return "Semifinal";
+    case "third_place": return "3º Lugar";
+    case "final": return "Final";
+    default: return "Fase de Grupos";
+  }
 }
 
 export async function fetchLiveMatches(lang: string = "pt"): Promise<LiveMatch[]> {
-  const res = await fetch(API_URL, { next: { revalidate: 300 } });
+  const res = await fetch(API_URL, { cache: "no-store" });
   if (!res.ok) throw new Error("Failed to fetch World Cup data");
 
-  const data: ApiData = await res.json();
-  let id = 0;
+  const data: ApiResponse = await res.json();
 
-  const matches: LiveMatch[] = [];
+  return data.games.map((g) => {
+    const { date, timeBrasilia } = parseLocalDate(g.local_date);
+    const isFinished = g.finished === "TRUE";
+    const homeScore = isFinished ? parseInt(g.home_score) : null;
+    const awayScore = isFinished ? parseInt(g.away_score) : null;
 
-  for (const round of data.rounds) {
-    for (const m of round.matches) {
-      id++;
-      matches.push({
-        id,
-        date: m.date,
-        timeBrasilia: toBrasiliaTime(m.time),
-        homeTeam: translateTeam(m.team1, lang),
-        awayTeam: translateTeam(m.team2, lang),
-        homeScore: m.score1 ?? null,
-        awayScore: m.score2 ?? null,
-        halfHomeScore: m.score1i ?? null,
-        halfAwayScore: m.score2i ?? null,
-        group: extractGroup(m.group),
-        stage: mapStage(round.name),
-        venue: m.ground || "",
-      });
-    }
-  }
-
-  return matches;
+    return {
+      id: parseInt(g.id),
+      date,
+      timeBrasilia,
+      homeTeam: translateTeam(g.home_team_name_en, lang),
+      awayTeam: translateTeam(g.away_team_name_en, lang),
+      homeScore: isNaN(homeScore as number) ? null : homeScore,
+      awayScore: isNaN(awayScore as number) ? null : awayScore,
+      halfHomeScore: null,
+      halfAwayScore: null,
+      group: g.group || null,
+      stage: mapStage(g.type),
+      venue: "",
+    };
+  });
 }

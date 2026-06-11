@@ -16,6 +16,12 @@ export const metadata: Metadata = {
     title: "PaixaoBR - A Seleção Brasileira",
     description: "Pentacampeã mundial. Acompanhe tudo sobre a Seleção Canarinho.",
     type: "website",
+    siteName: "PaixaoBR",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "PaixaoBR - A Seleção Brasileira",
+    description: "Pentacampeã mundial. Acompanhe tudo sobre a Seleção Canarinho.",
   },
 };
 

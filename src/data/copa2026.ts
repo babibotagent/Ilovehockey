@@ -38,7 +38,7 @@ export const copa2026Matches: Copa2026Match[] = [
   // ======== FASE DE GRUPOS ========
 
   // Dia 1 - 11/06
-  { id: 1, date: "2026-06-11", timeBrasilia: "16:00", homeTeam: "México", awayTeam: "África do Sul", group: "A", stage: "Fase de Grupos", venue: "Estadio Azteca", city: "Cidade do México", country: "México" },
+  { id: 1, date: "2026-06-11", timeBrasilia: "16:00", homeTeam: "México", awayTeam: "África do Sul", homeScore: 2, awayScore: 0, group: "A", stage: "Fase de Grupos", venue: "Estadio Azteca", city: "Cidade do México", country: "México" },
   { id: 2, date: "2026-06-11", timeBrasilia: "23:00", homeTeam: "Coreia do Sul", awayTeam: "Tchéquia", group: "A", stage: "Fase de Grupos", venue: "Estadio Akron", city: "Zapopan", country: "México" },
 
   // Dia 2 - 12/06

@@ -9,8 +9,8 @@ import { useLang } from "@/contexts/LanguageContext";
 function convertTime(time: string, lang: string) {
   if ((lang === "en" || lang === "fr") && time.includes(":")) {
     const [h, m] = time.split(":").map(Number);
-    const estH = ((h - 2) + 24) % 24;
-    return `${String(estH).padStart(2, "0")}:${String(m).padStart(2, "0")}`;
+    const edtH = ((h - 1) + 24) % 24;
+    return `${String(edtH).padStart(2, "0")}:${String(m).padStart(2, "0")}`;
   }
   return time;
 }
