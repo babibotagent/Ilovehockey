@@ -2,13 +2,14 @@ export interface Selecao {
   slug: string;
   name: string;
   emoji: string;
+  feminino?: string;
 }
 
 export const selecoes: Selecao[] = [
-  { slug: "volei", name: "Vôlei", emoji: "🏐" },
-  { slug: "basquete", name: "Basquete", emoji: "🏀" },
-  { slug: "handebol", name: "Handebol", emoji: "🤾" },
-  { slug: "futsal", name: "Futsal", emoji: "⚽" },
+  { slug: "volei", name: "Vôlei Masculino", emoji: "🏐", feminino: "volei-feminino" },
+  { slug: "basquete", name: "Basquete Masculino", emoji: "🏀", feminino: "basquete-feminino" },
+  { slug: "handebol", name: "Handebol Masculino", emoji: "🤾", feminino: "handebol-feminino" },
+  { slug: "futsal", name: "Futsal Masculino", emoji: "⚽", feminino: "futsal-feminino" },
   { slug: "futebol-feminino", name: "Futebol Feminino", emoji: "⚽" },
   { slug: "natacao", name: "Natação", emoji: "🏊" },
   { slug: "atletismo", name: "Atletismo", emoji: "🏃" },

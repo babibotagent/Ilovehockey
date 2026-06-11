@@ -11,6 +11,9 @@ export default function SelecaoPage() {
   const { esporte } = useParams<{ esporte: string }>();
   const { t } = useLang();
   const selecao = selecoes.find((s) => s.slug === esporte);
+  const isFeminino = esporte?.endsWith("-feminino");
+  const masculinoSlug = esporte?.replace("-feminino", "");
+  const masculinoSelecao = isFeminino ? selecoes.find((s) => s.slug === masculinoSlug) : null;
 
   return (
     <div className="min-h-screen flex items-center justify-center px-4">
@@ -19,7 +22,7 @@ export default function SelecaoPage() {
         animate={{ opacity: 1, y: 0 }}
         className="text-center max-w-lg"
       >
-        <div className="text-8xl mb-6">{selecao?.emoji || "🏅"}</div>
+        <div className="text-8xl mb-6">{selecao?.emoji || masculinoSelecao?.emoji || "🏅"}</div>
         <Construction className="w-16 h-16 text-[#FFDF00] mx-auto mb-4" />
         <h1 className="text-3xl font-black text-white mb-2">
           {t("outras.title")}
@@ -27,13 +30,23 @@ export default function SelecaoPage() {
         <p className="text-white/50 text-lg mb-8">
           {t("outras.desc")} <strong className="text-[#FFDF00]">{selecao?.name || esporte}</strong>.
         </p>
-        <Link
-          href="/"
-          className="inline-flex items-center gap-2 px-6 py-3 bg-[#FFDF00] text-[#006B2D] font-bold rounded-xl hover:bg-[#FFDF00]/90 transition-colors"
-        >
-          <ArrowLeft className="w-4 h-4" />
-          {t("outras.voltar")}
-        </Link>
+        <div className="flex flex-col sm:flex-row gap-3 justify-center">
+          <Link
+            href="/"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-[#FFDF00] text-[#006B2D] font-bold rounded-xl hover:bg-[#FFDF00]/90 transition-colors"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            {t("outras.voltar")}
+          </Link>
+          {selecao?.feminino && (
+            <Link
+              href={`/selecoes/${selecao.feminino}`}
+              className="inline-flex items-center gap-2 px-6 py-3 bg-pink-500/20 text-pink-300 font-bold rounded-xl hover:bg-pink-500/30 transition-colors border border-pink-500/30"
+            >
+              👩 {selecao.name.replace("Masculino", "Feminino")}
+            </Link>
+          )}
+        </div>
       </motion.div>
     </div>
   );

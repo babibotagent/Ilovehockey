@@ -49,6 +49,12 @@ export default function BasqueteHome() {
                 Ver Elenco
               </Link>
               <Link
+                href="/selecoes/basquete-feminino"
+                className="px-6 py-3 bg-pink-500/20 text-pink-300 font-bold rounded-xl hover:bg-pink-500/30 transition-colors border border-white/10"
+              >
+                👩 Basquete Feminino
+              </Link>
+              <Link
                 href="/selecoes/basquete/historia"
                 className="px-6 py-3 bg-white/10 text-white font-bold rounded-xl hover:bg-white/20 transition-colors border border-white/10"
               >

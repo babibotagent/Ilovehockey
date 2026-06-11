@@ -50,6 +50,12 @@ export default function VoleiHome() {
                 Ver Elenco
               </Link>
               <Link
+                href="/selecoes/volei-feminino"
+                className="px-6 py-3 bg-pink-500/20 text-pink-300 font-bold rounded-xl hover:bg-pink-500/30 transition-colors border border-pink-500/30"
+              >
+                👩 Vôlei Feminino
+              </Link>
+              <Link
                 href="/selecoes/volei/historia"
                 className="px-6 py-3 bg-white/10 text-white font-bold rounded-xl hover:bg-white/20 transition-colors border border-white/10"
               >
