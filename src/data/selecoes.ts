@@ -10,7 +10,7 @@ export const selecoes: Selecao[] = [
   { slug: "basquete", name: "Basquete Masculino", emoji: "🏀", feminino: "basquete-feminino" },
   { slug: "handebol", name: "Handebol Masculino", emoji: "🤾", feminino: "handebol-feminino" },
   { slug: "futsal", name: "Futsal Masculino", emoji: "⚽", feminino: "futsal-feminino" },
-  { slug: "futebol-feminino", name: "Futebol Feminino", emoji: "⚽" },
+  // { slug: "futebol-feminino", name: "Futebol Feminino", emoji: "⚽" }, // moved to navbar
   // { slug: "natacao", name: "Natação", emoji: "🏊" },
   // { slug: "atletismo", name: "Atletismo", emoji: "🏃" },
   // { slug: "ginastica", name: "Ginástica", emoji: "🤸" },

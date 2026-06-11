@@ -141,6 +141,17 @@ export function Navbar() {
               </Link>
             ))}
             <OutrasDropdown />
+            <Link
+              href="/selecoes/futebol-feminino"
+              className={cn(
+                "px-3 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-1.5",
+                pathname === "/selecoes/futebol-feminino"
+                  ? "bg-pink-500/30 text-pink-200"
+                  : "text-white/80 hover:text-white hover:bg-white/10"
+              )}
+            >
+              ⚽ Fut. Feminino
+            </Link>
             <LangDropdown className="ml-2" />
           </div>
 
@@ -167,6 +178,13 @@ export function Navbar() {
                       {t(link.key)}
                     </Link>
                   ))}
+                  <Link
+                    href="/selecoes/futebol-feminino"
+                    onClick={() => setOpen(false)}
+                    className="flex items-center gap-2 px-4 py-3 rounded-lg text-base font-medium text-pink-300 hover:bg-white/10 transition-colors"
+                  >
+                    ⚽ Futebol Feminino
+                  </Link>
                   <div className="border-t border-white/10 mt-2 pt-2">
                     <p className="px-4 py-2 text-xs text-[#FFDF00] font-semibold uppercase tracking-wider">
                       {t("nav.outras")}
