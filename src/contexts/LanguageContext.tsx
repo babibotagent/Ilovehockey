@@ -186,7 +186,7 @@ const translations: Record<string, Record<Lang, string>> = {
   },
   "copa.hosts": { pt: "EUA · México · Canadá", en: "USA · Mexico · Canada", fr: "USA · Mexique · Canada", es: "EUA · México · Canadá" },
   "copa.dates": { pt: "11 jun – 19 jul 2026", en: "11 Jun – 19 Jul 2026", fr: "11 juin – 19 juil. 2026", es: "11 jun – 19 jul 2026" },
-  "copa.timezone": { pt: "Horário de Brasília (BRT / UTC-3)", en: "Brasília Time (BRT / UTC-3)", fr: "Heure de Brasília (BRT / UTC-3)", es: "Horario de Brasilia (BRT / UTC-3)" },
+  "copa.timezone": { pt: "Horário de Brasília (BRT / UTC-3)", en: "Eastern Time (EST / UTC-5)", fr: "Heure de l'Est (EST / UTC-5)", es: "Horario de Brasilia (BRT / UTC-3)" },
   "copa.live": { pt: "Dados ao vivo", en: "Live data", fr: "Données en direct", es: "Datos en vivo" },
   "copa.static": { pt: "Dados estáticos", en: "Static data", fr: "Données statiques", es: "Datos estáticos" },
   "copa.withResults": { pt: "jogos com resultado", en: "matches with results", fr: "matchs avec résultat", es: "partidos con resultado" },

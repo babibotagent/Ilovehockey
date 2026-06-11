@@ -44,6 +44,15 @@ function formatDate(dateStr: string, lang: string) {
   return d.toLocaleDateString(localeMap[lang] || "pt-BR", options);
 }
 
+function convertTime(timeBrasilia: string, lang: string) {
+  if (lang === "en" || lang === "fr") {
+    const [h, m] = timeBrasilia.split(":").map(Number);
+    const estH = ((h - 2) + 24) % 24;
+    return `${String(estH).padStart(2, "0")}:${String(m).padStart(2, "0")}`;
+  }
+  return timeBrasilia;
+}
+
 function MatchRow({ match, lang, t }: { match: UnifiedMatch; lang: string; t: (k: string) => string }) {
   const isBrazil = isBrazilMatch(match);
   const hasScore = match.homeScore !== null && match.awayScore !== null;
@@ -81,7 +90,7 @@ function MatchRow({ match, lang, t }: { match: UnifiedMatch; lang: string; t: (k
         </span>
         <span className="text-[#FFDF00] font-mono font-bold">
           <Clock className="w-3 h-3 inline mr-1" />
-          {match.timeBrasilia}
+          {convertTime(match.timeBrasilia, lang)}
         </span>
       </div>
 
