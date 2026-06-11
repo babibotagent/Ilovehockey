@@ -6,6 +6,15 @@ import { Match } from "@/data/types";
 import { Badge } from "@/components/ui/badge";
 import { useLang } from "@/contexts/LanguageContext";
 
+function convertTime(time: string, lang: string) {
+  if ((lang === "en" || lang === "fr") && time.includes(":")) {
+    const [h, m] = time.split(":").map(Number);
+    const estH = ((h - 2) + 24) % 24;
+    return `${String(estH).padStart(2, "0")}:${String(m).padStart(2, "0")}`;
+  }
+  return time;
+}
+
 export function MatchCard({ match, index = 0 }: { match: Match; index?: number }) {
   const { lang, t } = useLang();
   const date = new Date(match.date + "T12:00:00");
@@ -54,7 +63,7 @@ export function MatchCard({ match, index = 0 }: { match: Match; index?: number }
           ) : (
             <div className="flex items-center gap-1 text-[#FFDF00]">
               <Clock className="w-3 h-3" />
-              <span className="text-sm font-semibold">{match.time}</span>
+              <span className="text-sm font-semibold">{convertTime(match.time, lang)}</span>
             </div>
           )}
         </div>
