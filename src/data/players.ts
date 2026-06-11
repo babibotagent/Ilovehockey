@@ -14,7 +14,7 @@ export const players: Player[] = [
     birthDate: "02/10/1992",
     height: "1,91m",
     nationality: "Brasileiro",
-    image: "/images/players/alisson.jpg",
+    image: "/images/players/alisson.png",
     stats: { games: 70, goals: 0, assists: 0, debut: "2015" },
     career: [
       { year: "2013-2016", club: "Internacional", description: "Revelado nas categorias de base" },
