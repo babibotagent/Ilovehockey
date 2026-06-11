@@ -12,10 +12,10 @@ export const langLabels: Record<Lang, string> = {
 };
 
 export const langFlags: Record<Lang, string> = {
-  pt: "🇧🇷",
+  pt: "BR",
   en: "EN",
-  fr: "🇫🇷",
-  es: "🇪🇸",
+  fr: "FR",
+  es: "ES",
 };
 
 interface LanguageContextType {
