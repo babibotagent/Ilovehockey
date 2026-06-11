@@ -13,7 +13,7 @@ export const langLabels: Record<Lang, string> = {
 
 export const langFlags: Record<Lang, string> = {
   pt: "🇧🇷",
-  en: "🇬🇧",
+  en: "EN",
   fr: "🇫🇷",
   es: "🇪🇸",
 };
