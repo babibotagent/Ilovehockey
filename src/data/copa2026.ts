@@ -43,7 +43,7 @@ export const copa2026Matches: Copa2026Match[] = [
 
   // Dia 2 - 12/06
   { id: 3, date: "2026-06-12", timeBrasilia: "16:00", homeTeam: "Canadá", awayTeam: "Bósnia e Herzegovina", group: "B", stage: "Fase de Grupos", venue: "BMO Field", city: "Toronto", country: "Canadá" },
-  { id: 4, date: "2026-06-12", timeBrasilia: "22:00", homeTeam: "Estados Unidos", awayTeam: "Paraguai", group: "D", stage: "Fase de Grupos", venue: "SoFi Stadium", city: "Inglewood", country: "EUA" },
+  { id: 4, date: "2026-06-12", timeBrasilia: "23:00", homeTeam: "Estados Unidos", awayTeam: "Paraguai", group: "D", stage: "Fase de Grupos", venue: "SoFi Stadium", city: "Inglewood", country: "EUA" },
 
   // Dia 3 - 13/06
   { id: 5, date: "2026-06-13", timeBrasilia: "16:00", homeTeam: "Catar", awayTeam: "Suíça", group: "B", stage: "Fase de Grupos", venue: "Levi's Stadium", city: "Santa Clara", country: "EUA" },

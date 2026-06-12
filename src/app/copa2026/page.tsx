@@ -168,7 +168,17 @@ export default function Copa2026Page() {
     try {
       const liveMatches = await fetchLiveMatches(lang);
       if (liveMatches.length > 0) {
-        setMatches(liveMatches.map(liveToUnified));
+        const liveMap = new Map(liveMatches.map((m) => [m.id, m]));
+        const merged = copa2026Matches.map((staticMatch) => {
+          const live = liveMap.get(staticMatch.id);
+          const base = staticToUnified(staticMatch);
+          if (live && live.homeScore !== null) {
+            base.homeScore = live.homeScore;
+            base.awayScore = live.awayScore;
+          }
+          return base;
+        });
+        setMatches(merged);
         setIsLive(true);
         setLastUpdate(new Date());
       }
