@@ -7,9 +7,9 @@ import { useEffect, useState } from "react";
 
 const navKeys = [
   { href: "/", key: "nav.home" },
-  { href: "/roster", key: "nav.roster" },
-  { href: "/history", key: "nav.history" },
-  { href: "/schedule", key: "nav.schedule" },
+  { href: "/elenco", key: "nav.elenco" },
+  { href: "/historia", key: "nav.historia" },
+  { href: "/partidas", key: "nav.partidas" },
 ];
 
 function VisitorCounter() {
@@ -83,12 +83,21 @@ export function Footer() {
             </div>
           </div>
           <div>
-            <h3 className="font-semibold mb-3 text-[#C8102E]">About</h3>
+            <h3 className="font-semibold mb-3 text-[#C8102E]">{t("footer.about")}</h3>
             <Link
-              href="/about"
-              className="text-white/60 hover:text-white text-sm transition-colors"
+              href="/idealizadores"
+              className="flex items-center gap-3 text-white/60 hover:text-white text-sm transition-colors"
             >
-              Meet the team
+              <div className="w-10 h-10 rounded-full overflow-hidden shrink-0 border border-white/20">
+                <img
+                  src="/images/Mauro-jr.png"
+                  alt="Mauro Jr"
+                  width={40}
+                  height={40}
+                  className="object-cover w-full h-full"
+                />
+              </div>
+              {t("footer.meetTeam")}
             </Link>
           </div>
         </div>

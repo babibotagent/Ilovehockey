@@ -6,9 +6,6 @@ import Link from "next/link";
 
 const idealizadores = [
   { name: "Mauro Jr", image: "/images/Mauro-jr.png" },
-  { name: "Rogério Gomes", image: "/images/Rogerio-gomes.png" },
-  { name: "Carlos Moura", image: "/images/Carlos-moura.png" },
-  { name: "Anderson Alexandrino", image: "/images/Anderson-alexandrino.png" },
 ];
 
 function PhotoCard({ person, index }: { person: typeof idealizadores[0]; index: number }) {
@@ -17,7 +14,7 @@ function PhotoCard({ person, index }: { person: typeof idealizadores[0]; index: 
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: index * 0.1 }}
-      className="rounded-2xl overflow-hidden border border-white/10 bg-gradient-to-br from-[#003DA5] to-[#0a0e1a] hover:border-[#C8102E]/30 transition-all"
+      className="rounded-2xl overflow-hidden border border-white/10 bg-gradient-to-br from-[#003DA5] to-[#0a0e1a] hover:border-[#C8102E]/30 transition-all w-64"
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
@@ -48,7 +45,7 @@ export default function IdealizadoresPage() {
           <h1 className="text-4xl font-black text-white">About</h1>
           <p className="text-white/50 mt-2">The minds behind the project</p>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div className="flex justify-center">
           {idealizadores.map((person, i) => (
             <PhotoCard key={person.name} person={person} index={i} />
           ))}
