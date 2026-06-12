@@ -1627,4 +1627,132 @@ export const matches: Match[] = [
     awayScore: 1,
     status: "finished",
   },
+
+  // =============================================
+  // 2025-26 NHL PLAYOFFS — FIRST ROUND
+  // =============================================
+
+  // --- (E) Buffalo Sabres vs Boston Bruins (BUF wins 4-2) ---
+  { id: "26p1-1", date: "2026-04-19", time: "19:00", homeTeam: "Buffalo Sabres", awayTeam: "Boston Bruins", homeFlag: "🏒", awayFlag: "🏒", competition: "NHL Playoffs", venue: "KeyBank Center", city: "Buffalo, NY", homeScore: 4, awayScore: 3, status: "finished" },
+  { id: "26p1-2", date: "2026-04-21", time: "19:00", homeTeam: "Buffalo Sabres", awayTeam: "Boston Bruins", homeFlag: "🏒", awayFlag: "🏒", competition: "NHL Playoffs", venue: "KeyBank Center", city: "Buffalo, NY", homeScore: 2, awayScore: 4, status: "finished" },
+  { id: "26p1-3", date: "2026-04-23", time: "19:00", homeTeam: "Boston Bruins", awayTeam: "Buffalo Sabres", homeFlag: "🏒", awayFlag: "🏒", competition: "NHL Playoffs", venue: "TD Garden", city: "Boston, MA", homeScore: 1, awayScore: 3, status: "finished" },
+  { id: "26p1-4", date: "2026-04-26", time: "19:00", homeTeam: "Boston Bruins", awayTeam: "Buffalo Sabres", homeFlag: "🏒", awayFlag: "🏒", competition: "NHL Playoffs", venue: "TD Garden", city: "Boston, MA", homeScore: 1, awayScore: 6, status: "finished" },
+  { id: "26p1-5", date: "2026-04-28", time: "19:00", homeTeam: "Buffalo Sabres", awayTeam: "Boston Bruins", homeFlag: "🏒", awayFlag: "🏒", competition: "NHL Playoffs", venue: "KeyBank Center", city: "Buffalo, NY", homeScore: 1, awayScore: 2, status: "finished" },
+  { id: "26p1-6", date: "2026-05-01", time: "19:00", homeTeam: "Boston Bruins", awayTeam: "Buffalo Sabres", homeFlag: "🏒", awayFlag: "🏒", competition: "NHL Playoffs", venue: "TD Garden", city: "Boston, MA", homeScore: 1, awayScore: 4, status: "finished" },
+
+  // --- (E) Tampa Bay Lightning vs Montreal Canadiens (MTL wins 4-3) ---
+  { id: "26p2-1", date: "2026-04-19", time: "19:00", homeTeam: "Tampa Bay Lightning", awayTeam: "Montreal Canadiens", homeFlag: "🏒", awayFlag: "🏒", competition: "NHL Playoffs", venue: "Amalie Arena", city: "Tampa, FL", homeScore: 3, awayScore: 4, status: "finished" },
+  { id: "26p2-2", date: "2026-04-21", time: "19:00", homeTeam: "Tampa Bay Lightning", awayTeam: "Montreal Canadiens", homeFlag: "🏒", awayFlag: "🏒", competition: "NHL Playoffs", venue: "Amalie Arena", city: "Tampa, FL", homeScore: 3, awayScore: 2, status: "finished" },
+  { id: "26p2-3", date: "2026-04-24", time: "19:00", homeTeam: "Montreal Canadiens", awayTeam: "Tampa Bay Lightning", homeFlag: "🏒", awayFlag: "🏒", competition: "NHL Playoffs", venue: "Bell Centre", city: "Montreal, QC", homeScore: 3, awayScore: 2, status: "finished" },
+  { id: "26p2-4", date: "2026-04-26", time: "19:00", homeTeam: "Montreal Canadiens", awayTeam: "Tampa Bay Lightning", homeFlag: "🏒", awayFlag: "🏒", competition: "NHL Playoffs", venue: "Bell Centre", city: "Montreal, QC", homeScore: 2, awayScore: 3, status: "finished" },
+  { id: "26p2-5", date: "2026-04-29", time: "19:00", homeTeam: "Tampa Bay Lightning", awayTeam: "Montreal Canadiens", homeFlag: "🏒", awayFlag: "🏒", competition: "NHL Playoffs", venue: "Amalie Arena", city: "Tampa, FL", homeScore: 2, awayScore: 3, status: "finished" },
+  { id: "26p2-6", date: "2026-05-01", time: "19:00", homeTeam: "Montreal Canadiens", awayTeam: "Tampa Bay Lightning", homeFlag: "🏒", awayFlag: "🏒", competition: "NHL Playoffs", venue: "Bell Centre", city: "Montreal, QC", homeScore: 0, awayScore: 1, status: "finished" },
+  { id: "26p2-7", date: "2026-05-03", time: "19:00", homeTeam: "Tampa Bay Lightning", awayTeam: "Montreal Canadiens", homeFlag: "🏒", awayFlag: "🏒", competition: "NHL Playoffs", venue: "Amalie Arena", city: "Tampa, FL", homeScore: 1, awayScore: 2, status: "finished" },
+
+  // --- (E) Carolina Hurricanes vs Ottawa Senators (CAR wins 4-0) ---
+  { id: "26p3-1", date: "2026-04-18", time: "19:00", homeTeam: "Carolina Hurricanes", awayTeam: "Ottawa Senators", homeFlag: "🏒", awayFlag: "🏒", competition: "NHL Playoffs", venue: "Lenovo Center", city: "Raleigh, NC", homeScore: 2, awayScore: 0, status: "finished" },
+  { id: "26p3-2", date: "2026-04-20", time: "19:00", homeTeam: "Carolina Hurricanes", awayTeam: "Ottawa Senators", homeFlag: "🏒", awayFlag: "🏒", competition: "NHL Playoffs", venue: "Lenovo Center", city: "Raleigh, NC", homeScore: 3, awayScore: 2, status: "finished" },
+  { id: "26p3-3", date: "2026-04-23", time: "19:00", homeTeam: "Ottawa Senators", awayTeam: "Carolina Hurricanes", homeFlag: "🏒", awayFlag: "🏒", competition: "NHL Playoffs", venue: "Canadian Tire Centre", city: "Ottawa, ON", homeScore: 1, awayScore: 2, status: "finished" },
+  { id: "26p3-4", date: "2026-04-25", time: "19:00", homeTeam: "Ottawa Senators", awayTeam: "Carolina Hurricanes", homeFlag: "🏒", awayFlag: "🏒", competition: "NHL Playoffs", venue: "Canadian Tire Centre", city: "Ottawa, ON", homeScore: 2, awayScore: 4, status: "finished" },
+
+  // --- (E) Pittsburgh Penguins vs Philadelphia Flyers (PHI wins 4-2) ---
+  { id: "26p4-1", date: "2026-04-18", time: "19:00", homeTeam: "Pittsburgh Penguins", awayTeam: "Philadelphia Flyers", homeFlag: "🏒", awayFlag: "🏒", competition: "NHL Playoffs", venue: "PPG Paints Arena", city: "Pittsburgh, PA", homeScore: 2, awayScore: 3, status: "finished" },
+  { id: "26p4-2", date: "2026-04-20", time: "19:00", homeTeam: "Pittsburgh Penguins", awayTeam: "Philadelphia Flyers", homeFlag: "🏒", awayFlag: "🏒", competition: "NHL Playoffs", venue: "PPG Paints Arena", city: "Pittsburgh, PA", homeScore: 0, awayScore: 3, status: "finished" },
+  { id: "26p4-3", date: "2026-04-22", time: "19:00", homeTeam: "Philadelphia Flyers", awayTeam: "Pittsburgh Penguins", homeFlag: "🏒", awayFlag: "🏒", competition: "NHL Playoffs", venue: "Wells Fargo Center", city: "Philadelphia, PA", homeScore: 5, awayScore: 2, status: "finished" },
+  { id: "26p4-4", date: "2026-04-25", time: "19:00", homeTeam: "Philadelphia Flyers", awayTeam: "Pittsburgh Penguins", homeFlag: "🏒", awayFlag: "🏒", competition: "NHL Playoffs", venue: "Wells Fargo Center", city: "Philadelphia, PA", homeScore: 2, awayScore: 4, status: "finished" },
+  { id: "26p4-5", date: "2026-04-27", time: "19:00", homeTeam: "Pittsburgh Penguins", awayTeam: "Philadelphia Flyers", homeFlag: "🏒", awayFlag: "🏒", competition: "NHL Playoffs", venue: "PPG Paints Arena", city: "Pittsburgh, PA", homeScore: 3, awayScore: 2, status: "finished" },
+  { id: "26p4-6", date: "2026-04-29", time: "19:00", homeTeam: "Philadelphia Flyers", awayTeam: "Pittsburgh Penguins", homeFlag: "🏒", awayFlag: "🏒", competition: "NHL Playoffs", venue: "Wells Fargo Center", city: "Philadelphia, PA", homeScore: 1, awayScore: 0, status: "finished" },
+
+  // --- (W) Colorado Avalanche vs Los Angeles Kings (COL wins 4-0) ---
+  { id: "26p5-1", date: "2026-04-19", time: "21:00", homeTeam: "Colorado Avalanche", awayTeam: "Los Angeles Kings", homeFlag: "🏒", awayFlag: "🏒", competition: "NHL Playoffs", venue: "Ball Arena", city: "Denver, CO", homeScore: 2, awayScore: 1, status: "finished" },
+  { id: "26p5-2", date: "2026-04-21", time: "21:00", homeTeam: "Colorado Avalanche", awayTeam: "Los Angeles Kings", homeFlag: "🏒", awayFlag: "🏒", competition: "NHL Playoffs", venue: "Ball Arena", city: "Denver, CO", homeScore: 2, awayScore: 1, status: "finished" },
+  { id: "26p5-3", date: "2026-04-23", time: "22:00", homeTeam: "Los Angeles Kings", awayTeam: "Colorado Avalanche", homeFlag: "🏒", awayFlag: "🏒", competition: "NHL Playoffs", venue: "Crypto.com Arena", city: "Los Angeles, CA", homeScore: 2, awayScore: 4, status: "finished" },
+  { id: "26p5-4", date: "2026-04-26", time: "22:00", homeTeam: "Los Angeles Kings", awayTeam: "Colorado Avalanche", homeFlag: "🏒", awayFlag: "🏒", competition: "NHL Playoffs", venue: "Crypto.com Arena", city: "Los Angeles, CA", homeScore: 1, awayScore: 5, status: "finished" },
+
+  // --- (W) Dallas Stars vs Minnesota Wild (MIN wins 4-2) ---
+  { id: "26p6-1", date: "2026-04-18", time: "20:00", homeTeam: "Dallas Stars", awayTeam: "Minnesota Wild", homeFlag: "🏒", awayFlag: "🏒", competition: "NHL Playoffs", venue: "American Airlines Center", city: "Dallas, TX", homeScore: 1, awayScore: 6, status: "finished" },
+  { id: "26p6-2", date: "2026-04-20", time: "20:00", homeTeam: "Dallas Stars", awayTeam: "Minnesota Wild", homeFlag: "🏒", awayFlag: "🏒", competition: "NHL Playoffs", venue: "American Airlines Center", city: "Dallas, TX", homeScore: 4, awayScore: 2, status: "finished" },
+  { id: "26p6-3", date: "2026-04-22", time: "20:00", homeTeam: "Minnesota Wild", awayTeam: "Dallas Stars", homeFlag: "🏒", awayFlag: "🏒", competition: "NHL Playoffs", venue: "Xcel Energy Center", city: "St. Paul, MN", homeScore: 3, awayScore: 4, status: "finished" },
+  { id: "26p6-4", date: "2026-04-25", time: "20:00", homeTeam: "Minnesota Wild", awayTeam: "Dallas Stars", homeFlag: "🏒", awayFlag: "🏒", competition: "NHL Playoffs", venue: "Xcel Energy Center", city: "St. Paul, MN", homeScore: 3, awayScore: 2, status: "finished" },
+  { id: "26p6-5", date: "2026-04-28", time: "20:00", homeTeam: "Dallas Stars", awayTeam: "Minnesota Wild", homeFlag: "🏒", awayFlag: "🏒", competition: "NHL Playoffs", venue: "American Airlines Center", city: "Dallas, TX", homeScore: 2, awayScore: 4, status: "finished" },
+  { id: "26p6-6", date: "2026-04-30", time: "20:00", homeTeam: "Minnesota Wild", awayTeam: "Dallas Stars", homeFlag: "🏒", awayFlag: "🏒", competition: "NHL Playoffs", venue: "Xcel Energy Center", city: "St. Paul, MN", homeScore: 5, awayScore: 2, status: "finished" },
+
+  // --- (W) Vegas Golden Knights vs Utah Mammoth (VGK wins 4-2) ---
+  { id: "26p7-1", date: "2026-04-19", time: "22:00", homeTeam: "Vegas Golden Knights", awayTeam: "Utah Mammoth", homeFlag: "🏒", awayFlag: "🏒", competition: "NHL Playoffs", venue: "T-Mobile Arena", city: "Las Vegas, NV", homeScore: 4, awayScore: 2, status: "finished" },
+  { id: "26p7-2", date: "2026-04-21", time: "22:00", homeTeam: "Vegas Golden Knights", awayTeam: "Utah Mammoth", homeFlag: "🏒", awayFlag: "🏒", competition: "NHL Playoffs", venue: "T-Mobile Arena", city: "Las Vegas, NV", homeScore: 2, awayScore: 3, status: "finished" },
+  { id: "26p7-3", date: "2026-04-24", time: "21:00", homeTeam: "Utah Mammoth", awayTeam: "Vegas Golden Knights", homeFlag: "🏒", awayFlag: "🏒", competition: "NHL Playoffs", venue: "Delta Center", city: "Salt Lake City, UT", homeScore: 4, awayScore: 2, status: "finished" },
+  { id: "26p7-4", date: "2026-04-27", time: "21:00", homeTeam: "Utah Mammoth", awayTeam: "Vegas Golden Knights", homeFlag: "🏒", awayFlag: "🏒", competition: "NHL Playoffs", venue: "Delta Center", city: "Salt Lake City, UT", homeScore: 4, awayScore: 5, status: "finished" },
+  { id: "26p7-5", date: "2026-04-29", time: "22:00", homeTeam: "Vegas Golden Knights", awayTeam: "Utah Mammoth", homeFlag: "🏒", awayFlag: "🏒", competition: "NHL Playoffs", venue: "T-Mobile Arena", city: "Las Vegas, NV", homeScore: 5, awayScore: 4, status: "finished" },
+  { id: "26p7-6", date: "2026-05-01", time: "21:00", homeTeam: "Utah Mammoth", awayTeam: "Vegas Golden Knights", homeFlag: "🏒", awayFlag: "🏒", competition: "NHL Playoffs", venue: "Delta Center", city: "Salt Lake City, UT", homeScore: 1, awayScore: 5, status: "finished" },
+
+  // --- (W) Edmonton Oilers vs Anaheim Ducks (ANA wins 4-2) ---
+  { id: "26p8-1", date: "2026-04-20", time: "21:00", homeTeam: "Edmonton Oilers", awayTeam: "Anaheim Ducks", homeFlag: "🏒", awayFlag: "🏒", competition: "NHL Playoffs", venue: "Rogers Place", city: "Edmonton, AB", homeScore: 4, awayScore: 3, status: "finished" },
+  { id: "26p8-2", date: "2026-04-22", time: "21:00", homeTeam: "Edmonton Oilers", awayTeam: "Anaheim Ducks", homeFlag: "🏒", awayFlag: "🏒", competition: "NHL Playoffs", venue: "Rogers Place", city: "Edmonton, AB", homeScore: 4, awayScore: 6, status: "finished" },
+  { id: "26p8-3", date: "2026-04-24", time: "22:00", homeTeam: "Anaheim Ducks", awayTeam: "Edmonton Oilers", homeFlag: "🏒", awayFlag: "🏒", competition: "NHL Playoffs", venue: "Honda Center", city: "Anaheim, CA", homeScore: 7, awayScore: 4, status: "finished" },
+  { id: "26p8-4", date: "2026-04-26", time: "22:00", homeTeam: "Anaheim Ducks", awayTeam: "Edmonton Oilers", homeFlag: "🏒", awayFlag: "🏒", competition: "NHL Playoffs", venue: "Honda Center", city: "Anaheim, CA", homeScore: 4, awayScore: 3, status: "finished" },
+  { id: "26p8-5", date: "2026-04-28", time: "21:00", homeTeam: "Edmonton Oilers", awayTeam: "Anaheim Ducks", homeFlag: "🏒", awayFlag: "🏒", competition: "NHL Playoffs", venue: "Rogers Place", city: "Edmonton, AB", homeScore: 4, awayScore: 1, status: "finished" },
+  { id: "26p8-6", date: "2026-04-30", time: "22:00", homeTeam: "Anaheim Ducks", awayTeam: "Edmonton Oilers", homeFlag: "🏒", awayFlag: "🏒", competition: "NHL Playoffs", venue: "Honda Center", city: "Anaheim, CA", homeScore: 5, awayScore: 2, status: "finished" },
+
+  // =============================================
+  // 2025-26 NHL PLAYOFFS — SECOND ROUND
+  // =============================================
+
+  // --- (E) Buffalo Sabres vs Montreal Canadiens (MTL wins 4-3) ---
+  { id: "26p9-1", date: "2026-05-06", time: "19:00", homeTeam: "Buffalo Sabres", awayTeam: "Montreal Canadiens", homeFlag: "🏒", awayFlag: "🏒", competition: "NHL Playoffs", venue: "KeyBank Center", city: "Buffalo, NY", homeScore: 4, awayScore: 2, status: "finished" },
+  { id: "26p9-2", date: "2026-05-08", time: "19:00", homeTeam: "Buffalo Sabres", awayTeam: "Montreal Canadiens", homeFlag: "🏒", awayFlag: "🏒", competition: "NHL Playoffs", venue: "KeyBank Center", city: "Buffalo, NY", homeScore: 1, awayScore: 5, status: "finished" },
+  { id: "26p9-3", date: "2026-05-10", time: "19:00", homeTeam: "Montreal Canadiens", awayTeam: "Buffalo Sabres", homeFlag: "🏒", awayFlag: "🏒", competition: "NHL Playoffs", venue: "Bell Centre", city: "Montreal, QC", homeScore: 6, awayScore: 2, status: "finished" },
+  { id: "26p9-4", date: "2026-05-12", time: "19:00", homeTeam: "Montreal Canadiens", awayTeam: "Buffalo Sabres", homeFlag: "🏒", awayFlag: "🏒", competition: "NHL Playoffs", venue: "Bell Centre", city: "Montreal, QC", homeScore: 2, awayScore: 3, status: "finished" },
+  { id: "26p9-5", date: "2026-05-14", time: "19:00", homeTeam: "Buffalo Sabres", awayTeam: "Montreal Canadiens", homeFlag: "🏒", awayFlag: "🏒", competition: "NHL Playoffs", venue: "KeyBank Center", city: "Buffalo, NY", homeScore: 3, awayScore: 6, status: "finished" },
+  { id: "26p9-6", date: "2026-05-16", time: "19:00", homeTeam: "Montreal Canadiens", awayTeam: "Buffalo Sabres", homeFlag: "🏒", awayFlag: "🏒", competition: "NHL Playoffs", venue: "Bell Centre", city: "Montreal, QC", homeScore: 3, awayScore: 8, status: "finished" },
+  { id: "26p9-7", date: "2026-05-18", time: "19:00", homeTeam: "Buffalo Sabres", awayTeam: "Montreal Canadiens", homeFlag: "🏒", awayFlag: "🏒", competition: "NHL Playoffs", venue: "KeyBank Center", city: "Buffalo, NY", homeScore: 2, awayScore: 3, status: "finished" },
+
+  // --- (E) Carolina Hurricanes vs Philadelphia Flyers (CAR wins 4-0) ---
+  { id: "26p10-1", date: "2026-05-02", time: "19:00", homeTeam: "Carolina Hurricanes", awayTeam: "Philadelphia Flyers", homeFlag: "🏒", awayFlag: "🏒", competition: "NHL Playoffs", venue: "Lenovo Center", city: "Raleigh, NC", homeScore: 3, awayScore: 0, status: "finished" },
+  { id: "26p10-2", date: "2026-05-04", time: "19:00", homeTeam: "Carolina Hurricanes", awayTeam: "Philadelphia Flyers", homeFlag: "🏒", awayFlag: "🏒", competition: "NHL Playoffs", venue: "Lenovo Center", city: "Raleigh, NC", homeScore: 3, awayScore: 2, status: "finished" },
+  { id: "26p10-3", date: "2026-05-07", time: "19:00", homeTeam: "Philadelphia Flyers", awayTeam: "Carolina Hurricanes", homeFlag: "🏒", awayFlag: "🏒", competition: "NHL Playoffs", venue: "Wells Fargo Center", city: "Philadelphia, PA", homeScore: 1, awayScore: 4, status: "finished" },
+  { id: "26p10-4", date: "2026-05-09", time: "19:00", homeTeam: "Philadelphia Flyers", awayTeam: "Carolina Hurricanes", homeFlag: "🏒", awayFlag: "🏒", competition: "NHL Playoffs", venue: "Wells Fargo Center", city: "Philadelphia, PA", homeScore: 2, awayScore: 3, status: "finished" },
+
+  // --- (W) Colorado Avalanche vs Minnesota Wild (COL wins 4-1) ---
+  { id: "26p11-1", date: "2026-05-03", time: "20:00", homeTeam: "Colorado Avalanche", awayTeam: "Minnesota Wild", homeFlag: "🏒", awayFlag: "🏒", competition: "NHL Playoffs", venue: "Ball Arena", city: "Denver, CO", homeScore: 9, awayScore: 6, status: "finished" },
+  { id: "26p11-2", date: "2026-05-05", time: "20:00", homeTeam: "Colorado Avalanche", awayTeam: "Minnesota Wild", homeFlag: "🏒", awayFlag: "🏒", competition: "NHL Playoffs", venue: "Ball Arena", city: "Denver, CO", homeScore: 5, awayScore: 2, status: "finished" },
+  { id: "26p11-3", date: "2026-05-09", time: "20:00", homeTeam: "Minnesota Wild", awayTeam: "Colorado Avalanche", homeFlag: "🏒", awayFlag: "🏒", competition: "NHL Playoffs", venue: "Xcel Energy Center", city: "St. Paul, MN", homeScore: 5, awayScore: 1, status: "finished" },
+  { id: "26p11-4", date: "2026-05-11", time: "20:00", homeTeam: "Minnesota Wild", awayTeam: "Colorado Avalanche", homeFlag: "🏒", awayFlag: "🏒", competition: "NHL Playoffs", venue: "Xcel Energy Center", city: "St. Paul, MN", homeScore: 2, awayScore: 5, status: "finished" },
+  { id: "26p11-5", date: "2026-05-13", time: "20:00", homeTeam: "Colorado Avalanche", awayTeam: "Minnesota Wild", homeFlag: "🏒", awayFlag: "🏒", competition: "NHL Playoffs", venue: "Ball Arena", city: "Denver, CO", homeScore: 4, awayScore: 3, status: "finished" },
+
+  // --- (W) Vegas Golden Knights vs Anaheim Ducks (VGK wins 4-3) ---
+  { id: "26p12-1", date: "2026-05-04", time: "22:00", homeTeam: "Vegas Golden Knights", awayTeam: "Anaheim Ducks", homeFlag: "🏒", awayFlag: "🏒", competition: "NHL Playoffs", venue: "T-Mobile Arena", city: "Las Vegas, NV", homeScore: 3, awayScore: 2, status: "finished" },
+  { id: "26p12-2", date: "2026-05-06", time: "22:00", homeTeam: "Vegas Golden Knights", awayTeam: "Anaheim Ducks", homeFlag: "🏒", awayFlag: "🏒", competition: "NHL Playoffs", venue: "T-Mobile Arena", city: "Las Vegas, NV", homeScore: 1, awayScore: 3, status: "finished" },
+  { id: "26p12-3", date: "2026-05-08", time: "22:00", homeTeam: "Anaheim Ducks", awayTeam: "Vegas Golden Knights", homeFlag: "🏒", awayFlag: "🏒", competition: "NHL Playoffs", venue: "Honda Center", city: "Anaheim, CA", homeScore: 2, awayScore: 6, status: "finished" },
+  { id: "26p12-4", date: "2026-05-10", time: "22:00", homeTeam: "Anaheim Ducks", awayTeam: "Vegas Golden Knights", homeFlag: "🏒", awayFlag: "🏒", competition: "NHL Playoffs", venue: "Honda Center", city: "Anaheim, CA", homeScore: 4, awayScore: 3, status: "finished" },
+  { id: "26p12-5", date: "2026-05-12", time: "22:00", homeTeam: "Vegas Golden Knights", awayTeam: "Anaheim Ducks", homeFlag: "🏒", awayFlag: "🏒", competition: "NHL Playoffs", venue: "T-Mobile Arena", city: "Las Vegas, NV", homeScore: 3, awayScore: 2, status: "finished" },
+  { id: "26p12-6", date: "2026-05-14", time: "22:00", homeTeam: "Anaheim Ducks", awayTeam: "Vegas Golden Knights", homeFlag: "🏒", awayFlag: "🏒", competition: "NHL Playoffs", venue: "Honda Center", city: "Anaheim, CA", homeScore: 1, awayScore: 5, status: "finished" },
+
+  // =============================================
+  // 2025-26 NHL PLAYOFFS — CONFERENCE FINALS
+  // =============================================
+
+  // --- (E) Carolina Hurricanes vs Montreal Canadiens (CAR wins 4-1) ---
+  { id: "26p13-1", date: "2026-05-21", time: "20:00", homeTeam: "Carolina Hurricanes", awayTeam: "Montreal Canadiens", homeFlag: "🏒", awayFlag: "🏒", competition: "NHL Playoffs", venue: "Lenovo Center", city: "Raleigh, NC", homeScore: 2, awayScore: 6, status: "finished" },
+  { id: "26p13-2", date: "2026-05-23", time: "20:00", homeTeam: "Carolina Hurricanes", awayTeam: "Montreal Canadiens", homeFlag: "🏒", awayFlag: "🏒", competition: "NHL Playoffs", venue: "Lenovo Center", city: "Raleigh, NC", homeScore: 3, awayScore: 2, status: "finished" },
+  { id: "26p13-3", date: "2026-05-25", time: "20:00", homeTeam: "Montreal Canadiens", awayTeam: "Carolina Hurricanes", homeFlag: "🏒", awayFlag: "🏒", competition: "NHL Playoffs", venue: "Bell Centre", city: "Montreal, QC", homeScore: 2, awayScore: 3, status: "finished" },
+  { id: "26p13-4", date: "2026-05-27", time: "20:00", homeTeam: "Montreal Canadiens", awayTeam: "Carolina Hurricanes", homeFlag: "🏒", awayFlag: "🏒", competition: "NHL Playoffs", venue: "Bell Centre", city: "Montreal, QC", homeScore: 0, awayScore: 4, status: "finished" },
+  { id: "26p13-5", date: "2026-05-29", time: "20:00", homeTeam: "Carolina Hurricanes", awayTeam: "Montreal Canadiens", homeFlag: "🏒", awayFlag: "🏒", competition: "NHL Playoffs", venue: "Lenovo Center", city: "Raleigh, NC", homeScore: 6, awayScore: 1, status: "finished" },
+
+  // --- (W) Colorado Avalanche vs Vegas Golden Knights (VGK wins 4-0) ---
+  { id: "26p14-1", date: "2026-05-20", time: "20:00", homeTeam: "Colorado Avalanche", awayTeam: "Vegas Golden Knights", homeFlag: "🏒", awayFlag: "🏒", competition: "NHL Playoffs", venue: "Ball Arena", city: "Denver, CO", homeScore: 2, awayScore: 4, status: "finished" },
+  { id: "26p14-2", date: "2026-05-22", time: "20:00", homeTeam: "Colorado Avalanche", awayTeam: "Vegas Golden Knights", homeFlag: "🏒", awayFlag: "🏒", competition: "NHL Playoffs", venue: "Ball Arena", city: "Denver, CO", homeScore: 1, awayScore: 3, status: "finished" },
+  { id: "26p14-3", date: "2026-05-24", time: "22:00", homeTeam: "Vegas Golden Knights", awayTeam: "Colorado Avalanche", homeFlag: "🏒", awayFlag: "🏒", competition: "NHL Playoffs", venue: "T-Mobile Arena", city: "Las Vegas, NV", homeScore: 5, awayScore: 3, status: "finished" },
+  { id: "26p14-4", date: "2026-05-26", time: "22:00", homeTeam: "Vegas Golden Knights", awayTeam: "Colorado Avalanche", homeFlag: "🏒", awayFlag: "🏒", competition: "NHL Playoffs", venue: "T-Mobile Arena", city: "Las Vegas, NV", homeScore: 2, awayScore: 1, status: "finished" },
+
+  // =============================================
+  // 2025-26 STANLEY CUP FINAL
+  // Carolina Hurricanes vs Vegas Golden Knights (series 3-2 CAR, in progress)
+  // =============================================
+  { id: "26scf-1", date: "2026-06-02", time: "20:00", homeTeam: "Carolina Hurricanes", awayTeam: "Vegas Golden Knights", homeFlag: "🏒", awayFlag: "🏒", competition: "NHL Playoffs", venue: "Lenovo Center", city: "Raleigh, NC", homeScore: 4, awayScore: 5, status: "finished" },
+  { id: "26scf-2", date: "2026-06-04", time: "20:00", homeTeam: "Carolina Hurricanes", awayTeam: "Vegas Golden Knights", homeFlag: "🏒", awayFlag: "🏒", competition: "NHL Playoffs", venue: "Lenovo Center", city: "Raleigh, NC", homeScore: 4, awayScore: 3, status: "finished" },
+  { id: "26scf-3", date: "2026-06-06", time: "20:00", homeTeam: "Vegas Golden Knights", awayTeam: "Carolina Hurricanes", homeFlag: "🏒", awayFlag: "🏒", competition: "NHL Playoffs", venue: "T-Mobile Arena", city: "Las Vegas, NV", homeScore: 5, awayScore: 4, status: "finished" },
+  { id: "26scf-4", date: "2026-06-09", time: "20:00", homeTeam: "Vegas Golden Knights", awayTeam: "Carolina Hurricanes", homeFlag: "🏒", awayFlag: "🏒", competition: "NHL Playoffs", venue: "T-Mobile Arena", city: "Las Vegas, NV", homeScore: 3, awayScore: 5, status: "finished" },
+  { id: "26scf-5", date: "2026-06-11", time: "20:00", homeTeam: "Carolina Hurricanes", awayTeam: "Vegas Golden Knights", homeFlag: "🏒", awayFlag: "🏒", competition: "NHL Playoffs", venue: "Lenovo Center", city: "Raleigh, NC", homeScore: 4, awayScore: 2, status: "finished" },
+  { id: "26scf-6", date: "2026-06-14", time: "20:00", homeTeam: "Vegas Golden Knights", awayTeam: "Carolina Hurricanes", homeFlag: "🏒", awayFlag: "🏒", competition: "NHL Playoffs", venue: "T-Mobile Arena", city: "Las Vegas, NV", status: "upcoming" },
+  { id: "26scf-7", date: "2026-06-17", time: "20:00", homeTeam: "Carolina Hurricanes", awayTeam: "Vegas Golden Knights", homeFlag: "🏒", awayFlag: "🏒", competition: "NHL Playoffs", venue: "Lenovo Center", city: "Raleigh, NC", status: "upcoming" },
 ];
