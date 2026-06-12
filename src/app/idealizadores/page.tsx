@@ -7,7 +7,7 @@ import Link from "next/link";
 const idealizadores = [
   { name: "Mauro Jr", image: "/images/Mauro-jr.png" },
   { name: "Rogério Gomes", image: "/images/Rogerio-gomes.png" },
-  { name: "Carlos Moura", image: "/images/Carlos-moura.jpg" },
+  { name: "Carlos Moura", image: "/images/Carlos-moura.png" },
   { name: "Anderson Alexandrino", image: "/images/Anderson-alexandrino.png" },
 ];
 
