@@ -69,13 +69,3 @@ export type Competition =
   | "NHL Regular Season"
   | "NHL Playoffs"
   | "NHL Preseason";
-
-export interface WorldCup {
-  year: number;
-  host: string;
-  final: string;
-  coach: string;
-  topScorer: string;
-  goals: number;
-  description: string;
-}
