@@ -98,13 +98,9 @@ function translateTeam(name: string, lang: string): string {
 }
 
 function parseLocalDate(localDate: string): { date: string; timeBrasilia: string } {
-  // Format: "06/11/2026 13:00" (local time, assumed UTC-6 for Mexico, varies)
   const [datePart, timePart] = localDate.split(" ");
   const [month, day, year] = datePart.split("/");
   const date = `${year}-${month}-${day}`;
-
-  // The API gives local venue time; we store it as-is since our static data
-  // already has correct Brasília times. We'll use static times as primary.
   return { date, timeBrasilia: timePart || "00:00" };
 }
 
