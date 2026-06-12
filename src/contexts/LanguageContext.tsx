@@ -164,6 +164,8 @@ const translations: Record<string, Record<Lang, string>> = {
   "footer.institucional": { en: "About", fr: "À propos" },
   "footer.copy": { en: "Fan project. Unofficial.", fr: "Projet de fan. Non officiel." },
   "footer.visitantes": { en: "visitors", fr: "visiteurs" },
+  "footer.about": { en: "About", fr: "À propos" },
+  "footer.meetTeam": { en: "Meet the team", fr: "Rencontrer l'équipe" },
 
   // Stanley Cup (Cup section)
   "cup.title": { en: "Stanley Cup", fr: "Coupe Stanley" },
