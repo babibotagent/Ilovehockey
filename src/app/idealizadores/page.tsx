@@ -26,8 +26,9 @@ function PhotoCard({ person, index }: { person: typeof idealizadores[0]; index: 
         className="w-full h-auto"
         onError={(e) => { e.currentTarget.style.display = "none"; e.currentTarget.nextElementSibling?.classList.remove("hidden"); }}
       />
-      <div className="hidden aspect-square flex items-center justify-center">
-        <User className="w-20 h-20 text-white/30" />
+      <div className="hidden aspect-square flex flex-col items-center justify-center gap-3">
+        <User className="w-16 h-16 text-white/30" />
+        <span className="text-white/60 text-sm font-semibold">{person.name}</span>
       </div>
     </motion.div>
   );
