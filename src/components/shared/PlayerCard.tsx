@@ -16,14 +16,14 @@ function PlayerAvatar({ player, size = 64 }: { player: Player; size?: number }) 
 
   if (imgError) {
     return (
-      <div className={`${sizeClass} rounded-full bg-gradient-to-br from-[#192168] to-[#0a0e1a] flex items-center justify-center shrink-0`}>
+      <div className={`${sizeClass} rounded-full bg-gradient-to-br from-[#003DA5] to-[#0a0e1a] flex items-center justify-center shrink-0`}>
         <User className={`${iconSize} text-white/60`} />
       </div>
     );
   }
 
   return (
-    <div className={`${sizeClass} rounded-full overflow-hidden bg-gradient-to-br from-[#192168] to-[#0a0e1a] shrink-0 relative`}>
+    <div className={`${sizeClass} rounded-full overflow-hidden bg-gradient-to-br from-[#003DA5] to-[#0a0e1a] shrink-0 relative`}>
       <Image
         src={player.image}
         alt={player.shortName}
@@ -56,7 +56,7 @@ export function PlayerCard({ player, variant = "compact", index = 0 }: PlayerCar
         className="relative group"
       >
         <Link href={`/jogador/${player.slug}`}>
-          <div className="relative h-[420px] rounded-2xl overflow-hidden bg-gradient-to-b from-[#192168]/20 to-[#0a0e1a]/40 border border-white/10 backdrop-blur-sm">
+          <div className="relative h-[420px] rounded-2xl overflow-hidden bg-gradient-to-b from-[#003DA5]/20 to-[#0a0e1a]/40 border border-white/10 backdrop-blur-sm">
             {!imgError ? (
               <Image
                 src={player.image}
@@ -72,25 +72,25 @@ export function PlayerCard({ player, variant = "compact", index = 0 }: PlayerCar
               </div>
             )}
             <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 via-black/40 to-transparent">
-              <span className="text-[#AF1E2D] text-6xl font-black opacity-30 absolute top-2 right-4">
+              <span className="text-[#C8102E] text-6xl font-black opacity-30 absolute top-2 right-4">
                 {player.number}
               </span>
-              <span className="text-xs uppercase tracking-wider text-[#AF1E2D] font-semibold">
+              <span className="text-xs uppercase tracking-wider text-[#C8102E] font-semibold">
                 {t(`pos.${player.position}`)}
               </span>
               <h3 className="text-2xl font-bold text-white mt-1">{player.shortName}</h3>
               <p className="text-white/60 text-sm">{player.club}</p>
               <div className="flex gap-4 mt-3 text-sm">
                 <span className="text-white/80">
-                  <strong className="text-[#AF1E2D]">{player.stats.games}</strong> {t("shared.jogos")}
+                  <strong className="text-[#C8102E]">{player.stats.games}</strong> {t("shared.jogos")}
                 </span>
                 <span className="text-white/80">
-                  <strong className="text-[#AF1E2D]">{player.stats.goals}</strong> {t("shared.gols")}
+                  <strong className="text-[#C8102E]">{player.stats.goals}</strong> {t("shared.gols")}
                 </span>
               </div>
             </div>
             <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
-              <div className="bg-[#AF1E2D] text-white rounded-full p-2">
+              <div className="bg-[#C8102E] text-white rounded-full p-2">
                 <ArrowRight className="w-4 h-4" />
               </div>
             </div>
@@ -110,19 +110,19 @@ export function PlayerCard({ player, variant = "compact", index = 0 }: PlayerCar
       <Link href={`/jogador/${player.slug}`}>
         <div
           className={cn(
-            "group relative rounded-xl overflow-hidden border border-white/10 bg-white/5 backdrop-blur-sm hover:border-[#AF1E2D]/50 transition-all hover:shadow-lg hover:shadow-[#AF1E2D]/5",
+            "group relative rounded-xl overflow-hidden border border-white/10 bg-white/5 backdrop-blur-sm hover:border-[#C8102E]/50 transition-all hover:shadow-lg hover:shadow-[#C8102E]/5",
             variant === "detailed" ? "p-6" : "p-4"
           )}
         >
           <div className="flex items-center gap-4">
             <div className="relative">
               <PlayerAvatar player={player} size={64} />
-              <span className="absolute -bottom-1 -right-1 bg-[#AF1E2D] text-white text-xs font-bold w-6 h-6 rounded-full flex items-center justify-center">
+              <span className="absolute -bottom-1 -right-1 bg-[#C8102E] text-white text-xs font-bold w-6 h-6 rounded-full flex items-center justify-center">
                 {player.number}
               </span>
             </div>
             <div className="min-w-0">
-              <h3 className="font-bold text-white group-hover:text-[#AF1E2D] transition-colors truncate">
+              <h3 className="font-bold text-white group-hover:text-[#C8102E] transition-colors truncate">
                 {player.shortName}
               </h3>
               <p className="text-sm text-white/50">{t(`pos.${player.position}`)} · {player.club}</p>
@@ -134,7 +134,7 @@ export function PlayerCard({ player, variant = "compact", index = 0 }: PlayerCar
                 </div>
               )}
             </div>
-            <ArrowRight className="w-4 h-4 text-white/30 group-hover:text-[#AF1E2D] ml-auto shrink-0 transition-colors" />
+            <ArrowRight className="w-4 h-4 text-white/30 group-hover:text-[#C8102E] ml-auto shrink-0 transition-colors" />
           </div>
         </div>
       </Link>

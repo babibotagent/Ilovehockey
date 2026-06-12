@@ -17,21 +17,21 @@ function StanleyCupCard({ cup, index }: { cup: StanleyCupEdition; index: number 
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: index * 0.05 }}
-      className="rounded-2xl border border-[#AF1E2D]/30 bg-gradient-to-br from-[#AF1E2D]/10 to-transparent p-5"
+      className="rounded-2xl border border-[#C8102E]/30 bg-gradient-to-br from-[#C8102E]/10 to-transparent p-5"
     >
       <div className="flex items-center gap-3 mb-4 flex-wrap">
-        <div className="font-black text-lg px-4 py-1 rounded-lg bg-[#AF1E2D] text-white">
+        <div className="font-black text-lg px-4 py-1 rounded-lg bg-[#C8102E] text-white">
           {cup.year}
         </div>
         <span className="text-white/60 text-sm">vs {cup.opponent}</span>
-        <span className="flex items-center gap-1 bg-[#AF1E2D]/20 text-[#AF1E2D] text-xs font-bold px-3 py-1 rounded-full">
+        <span className="flex items-center gap-1 bg-[#C8102E]/20 text-[#C8102E] text-xs font-bold px-3 py-1 rounded-full">
           <Trophy className="w-3 h-3" /> Champions
         </span>
       </div>
 
       <div className="flex flex-wrap gap-4 mb-3 text-sm">
         <span className="text-white/80">
-          <strong className="text-[#AF1E2D]">Series:</strong> {cup.result}
+          <strong className="text-[#C8102E]">Series:</strong> {cup.result}
         </span>
         <span className="text-white/60">
           <strong className="text-white/80">Coach:</strong> {cup.coach}
@@ -45,7 +45,7 @@ function StanleyCupCard({ cup, index }: { cup: StanleyCupEdition; index: number 
 
       <button
         onClick={() => setExpanded(!expanded)}
-        className="flex items-center gap-2 text-sm text-[#AF1E2D] hover:text-[#AF1E2D]/80 transition-colors font-medium"
+        className="flex items-center gap-2 text-sm text-[#C8102E] hover:text-[#C8102E]/80 transition-colors font-medium"
       >
         {expanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
         {expanded ? "Collapse" : "Key Players & Facts"}
@@ -62,7 +62,7 @@ function StanleyCupCard({ cup, index }: { cup: StanleyCupEdition; index: number 
           >
             <div className="mt-6 space-y-6">
               <div>
-                <h4 className="text-sm font-bold text-[#AF1E2D] mb-3 flex items-center gap-2">
+                <h4 className="text-sm font-bold text-[#C8102E] mb-3 flex items-center gap-2">
                   <Users className="w-4 h-4" /> Key Players
                 </h4>
                 <div className="flex flex-wrap gap-2">
@@ -74,10 +74,10 @@ function StanleyCupCard({ cup, index }: { cup: StanleyCupEdition; index: number 
                       <strong className="text-white">{p.name}</strong>
                       <span className="text-white/30 ml-1">({p.position})</span>
                       {p.goals !== undefined && p.goals > 0 && (
-                        <span className="text-[#AF1E2D] ml-1">{p.goals}G</span>
+                        <span className="text-[#C8102E] ml-1">{p.goals}G</span>
                       )}
                       {p.assists !== undefined && p.assists > 0 && (
-                        <span className="text-[#192168] ml-1">{p.assists}A</span>
+                        <span className="text-[#003DA5] ml-1">{p.assists}A</span>
                       )}
                     </span>
                   ))}
@@ -85,11 +85,11 @@ function StanleyCupCard({ cup, index }: { cup: StanleyCupEdition; index: number 
               </div>
 
               <div>
-                <h4 className="text-sm font-bold text-[#AF1E2D] mb-3">Key Facts</h4>
+                <h4 className="text-sm font-bold text-[#C8102E] mb-3">Key Facts</h4>
                 <ul className="space-y-1.5">
                   {cup.keyFacts.map((fact, i) => (
                     <li key={i} className="text-xs text-white/50 flex items-start gap-2">
-                      <span className="text-[#AF1E2D] mt-0.5">•</span>
+                      <span className="text-[#C8102E] mt-0.5">•</span>
                       {fact}
                     </li>
                   ))}
@@ -109,17 +109,17 @@ export default function HistoriaPage() {
   return (
     <div className="relative min-h-screen">
       <section className="relative py-20 px-4 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#192168]/30 to-transparent" />
-        <div className="absolute top-0 right-0 w-96 h-96 bg-[#AF1E2D]/5 rounded-full blur-[120px]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#003DA5]/30 to-transparent" />
+        <div className="absolute top-0 right-0 w-96 h-96 bg-[#C8102E]/5 rounded-full blur-[120px]" />
         <div className="relative max-w-4xl mx-auto text-center">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }}>
             <div className="flex justify-center gap-1 mb-6">
               {Array.from({ length: 5 }).map((_, i) => (
-                <Star key={i} className="w-8 h-8 text-[#AF1E2D] fill-[#AF1E2D]" />
+                <Star key={i} className="w-8 h-8 text-[#C8102E] fill-[#C8102E]" />
               ))}
             </div>
             <h1 className="text-4xl md:text-6xl font-black text-white">
-              {t("historia.title")} <span className="text-[#AF1E2D]">{t("historia.title2")}</span>
+              {t("historia.title")} <span className="text-[#C8102E]">{t("historia.title2")}</span>
             </h1>
             <p className="text-white/50 text-lg mt-4 max-w-2xl mx-auto">
               {t("historia.subtitle")}
@@ -171,11 +171,11 @@ export default function HistoriaPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.05 }}
-                className="rounded-xl border border-white/10 bg-white/5 p-4 hover:border-[#AF1E2D]/30 transition-colors"
+                className="rounded-xl border border-white/10 bg-white/5 p-4 hover:border-[#C8102E]/30 transition-colors"
               >
                 <h3 className="text-white font-bold">{legend.name}</h3>
                 {legend.shortName && legend.shortName !== legend.name && (
-                  <p className="text-[#AF1E2D] text-xs font-medium">&quot;{legend.shortName}&quot;</p>
+                  <p className="text-[#C8102E] text-xs font-medium">&quot;{legend.shortName}&quot;</p>
                 )}
                 <p className="text-white/40 text-xs mt-1">{legend.position} · {legend.era}</p>
                 <p className="text-white/60 text-sm mt-2 line-clamp-3">{legend.description}</p>
@@ -184,7 +184,7 @@ export default function HistoriaPage() {
                   <span>{legend.stats.goals} G</span>
                   {legend.stats.assists !== undefined && <span>{legend.stats.assists} A</span>}
                   {legend.stats.stanleyCups !== undefined && (
-                    <span className="text-[#AF1E2D]">{legend.stats.stanleyCups} Cups</span>
+                    <span className="text-[#C8102E]">{legend.stats.stanleyCups} Cups</span>
                   )}
                 </div>
               </motion.div>

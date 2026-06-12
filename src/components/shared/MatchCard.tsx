@@ -31,7 +31,7 @@ export function MatchCard({ match, index = 0 }: { match: Match; index?: number }
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: index * 0.1 }}
-      className="rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm p-5 hover:border-[#AF1E2D]/30 transition-all"
+      className="rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm p-5 hover:border-[#C8102E]/30 transition-all"
     >
       <div className="flex items-center justify-between mb-4">
         <Badge
@@ -39,7 +39,7 @@ export function MatchCard({ match, index = 0 }: { match: Match; index?: number }
           className={
             match.status === "finished"
               ? "border-white/20 text-white/60"
-              : "border-[#AF1E2D]/50 text-[#AF1E2D]"
+              : "border-[#C8102E]/50 text-[#C8102E]"
           }
         >
           {match.competition}
@@ -61,7 +61,7 @@ export function MatchCard({ match, index = 0 }: { match: Match; index?: number }
               {match.homeScore} <span className="text-white/30">-</span> {match.awayScore}
             </div>
           ) : (
-            <div className="flex items-center gap-1 text-[#AF1E2D]">
+            <div className="flex items-center gap-1 text-[#C8102E]">
               <Clock className="w-3 h-3" />
               <span className="text-sm font-semibold">{convertTime(match.time, lang)}</span>
             </div>

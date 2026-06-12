@@ -43,7 +43,7 @@ export default function ElencoPage() {
               placeholder={t("elenco.buscar")}
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-white/30 focus:outline-none focus:border-[#AF1E2D]/50 transition-colors"
+              className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-white/30 focus:outline-none focus:border-[#C8102E]/50 transition-colors"
             />
           </div>
           <div className="flex gap-2 flex-wrap">
@@ -53,7 +53,7 @@ export default function ElencoPage() {
                 onClick={() => setPosition(pos)}
                 className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
                   position === pos
-                    ? "bg-[#AF1E2D] text-white"
+                    ? "bg-[#C8102E] text-white"
                     : "bg-white/5 text-white/60 hover:bg-white/10 border border-white/10"
                 }`}
               >

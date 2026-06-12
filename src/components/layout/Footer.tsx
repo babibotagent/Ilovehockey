@@ -48,20 +48,20 @@ export function Footer() {
   const { t } = useLang();
 
   return (
-    <footer className="bg-[#192168] text-white border-t border-white/10">
+    <footer className="bg-[#003DA5] text-white border-t border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <Trophy className="h-6 w-6 text-[#AF1E2D]" />
+              <Trophy className="h-6 w-6 text-[#C8102E]" />
               <span className="text-lg font-bold">
-                <span className="text-[#AF1E2D]">ILove</span>Hockey
+                <span className="text-[#C8102E]">ILove</span>Hockey
               </span>
             </div>
             <p className="text-white/60 text-sm">{t("footer.acompanhe")}</p>
           </div>
           <div>
-            <h3 className="font-semibold mb-3 text-[#AF1E2D]">{t("footer.navegacao")}</h3>
+            <h3 className="font-semibold mb-3 text-[#C8102E]">{t("footer.navegacao")}</h3>
             <div className="flex flex-col gap-2">
               {navKeys.map((link) => (
                 <Link
@@ -75,7 +75,7 @@ export function Footer() {
             </div>
           </div>
           <div>
-            <h3 className="font-semibold mb-3 text-[#AF1E2D]">{t("footer.institucional")}</h3>
+            <h3 className="font-semibold mb-3 text-[#C8102E]">{t("footer.institucional")}</h3>
             <div className="flex flex-col gap-2 text-white/60 text-sm">
               <span>Montreal Canadiens - Centre Bell</span>
               <span>1909 Avenue des Canadiens-de-Montréal</span>
@@ -83,7 +83,7 @@ export function Footer() {
             </div>
           </div>
           <div>
-            <h3 className="font-semibold mb-3 text-[#AF1E2D]">About</h3>
+            <h3 className="font-semibold mb-3 text-[#C8102E]">About</h3>
             <Link
               href="/about"
               className="text-white/60 hover:text-white text-sm transition-colors"

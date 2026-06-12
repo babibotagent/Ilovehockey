@@ -17,7 +17,7 @@ function PhotoCard({ person, index }: { person: typeof idealizadores[0]; index: 
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: index * 0.1 }}
-      className="rounded-2xl overflow-hidden border border-white/10 bg-gradient-to-br from-[#192168] to-[#0a0e1a] hover:border-[#AF1E2D]/30 transition-all"
+      className="rounded-2xl overflow-hidden border border-white/10 bg-gradient-to-br from-[#003DA5] to-[#0a0e1a] hover:border-[#C8102E]/30 transition-all"
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img

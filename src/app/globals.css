@@ -56,31 +56,31 @@
   --card-foreground: #ffffff;
   --popover: #111827;
   --popover-foreground: #ffffff;
-  --primary: #AF1E2D;
+  --primary: #C8102E;
   --primary-foreground: #ffffff;
-  --secondary: #192168;
+  --secondary: #003DA5;
   --secondary-foreground: #ffffff;
   --muted: #1a1f35;
   --muted-foreground: #9ca3af;
-  --accent: #AF1E2D;
+  --accent: #C8102E;
   --accent-foreground: #ffffff;
   --destructive: #ef4444;
   --border: rgba(255, 255, 255, 0.1);
   --input: rgba(255, 255, 255, 0.15);
-  --ring: #AF1E2D;
-  --chart-1: #AF1E2D;
-  --chart-2: #192168;
+  --ring: #C8102E;
+  --chart-1: #C8102E;
+  --chart-2: #003DA5;
   --chart-3: #ffffff;
   --chart-4: #6b7280;
   --chart-5: #3b82f6;
   --sidebar: #111827;
   --sidebar-foreground: #ffffff;
-  --sidebar-primary: #AF1E2D;
+  --sidebar-primary: #C8102E;
   --sidebar-primary-foreground: #ffffff;
   --sidebar-accent: #1a1f35;
   --sidebar-accent-foreground: #ffffff;
   --sidebar-border: rgba(255, 255, 255, 0.1);
-  --sidebar-ring: #AF1E2D;
+  --sidebar-ring: #C8102E;
 }
 
 @layer base {
@@ -96,6 +96,6 @@
 }
 
 ::selection {
-  background: #AF1E2D;
+  background: #C8102E;
   color: #ffffff;
 }

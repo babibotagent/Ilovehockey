@@ -46,7 +46,7 @@ export default function PartidasPage() {
               onClick={() => setFilter(comp)}
               className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
                 filter === comp
-                  ? "bg-[#AF1E2D] text-white"
+                  ? "bg-[#C8102E] text-white"
                   : "bg-white/5 text-white/60 hover:bg-white/10 border border-white/10"
               }`}
             >
@@ -58,7 +58,7 @@ export default function PartidasPage() {
         {upcoming.length > 0 && (
           <div className="mb-12">
             <h2 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-[#AF1E2D] animate-pulse" />
+              <span className="w-2 h-2 rounded-full bg-[#C8102E] animate-pulse" />
               {t("partidas.proximos")}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
