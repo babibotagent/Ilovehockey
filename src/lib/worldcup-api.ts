@@ -129,9 +129,9 @@ export async function fetchLiveMatches(lang: string = "pt"): Promise<LiveMatch[]
 
   return data.games.map((g) => {
     const { date, timeBrasilia } = parseLocalDate(g.local_date);
-    const isFinished = g.finished === "TRUE";
-    const homeScore = isFinished ? parseInt(g.home_score) : null;
-    const awayScore = isFinished ? parseInt(g.away_score) : null;
+    const hasScore = g.home_score !== "null" && g.home_score !== "" && g.time_elapsed !== "notstarted";
+    const homeScore = hasScore ? parseInt(g.home_score) : null;
+    const awayScore = hasScore ? parseInt(g.away_score) : null;
 
     return {
       id: parseInt(g.id),
