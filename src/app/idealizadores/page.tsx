@@ -1,49 +1,33 @@
 "use client";
 
-import Image from "next/image";
 import { motion } from "framer-motion";
-import { useState } from "react";
 import { User, ArrowLeft } from "lucide-react";
 import Link from "next/link";
 
 const idealizadores = [
-  { name: "Mauro Jr", image: "/images/Mauro-jr.png", role: "Idealizador" },
-  { name: "Rogério Gomes", image: "/images/Rogerio-gomes.png", role: "Idealizador" },
-  { name: "Carlos Moura", image: "/images/Carlos-moura.png", role: "Idealizador" },
-  { name: "Anderson Alexandrino", image: "/images/Anderson-alexandrino.png", role: "Idealizador" },
+  { name: "Mauro Jr", image: "/images/Mauro-jr.png" },
+  { name: "Rogério Gomes", image: "/images/Rogerio-gomes.png" },
+  { name: "Carlos Moura", image: "/images/Carlos-moura.png" },
+  { name: "Anderson Alexandrino", image: "/images/Anderson-alexandrino.png" },
 ];
 
 function PhotoCard({ person, index }: { person: typeof idealizadores[0]; index: number }) {
-  const [err, setErr] = useState(false);
-
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: index * 0.1 }}
-      className="relative rounded-2xl overflow-hidden border border-white/10 bg-gradient-to-b from-white/5 to-white/[0.02] hover:border-[#FFDF00]/30 transition-all group"
+      className="rounded-2xl overflow-hidden border border-white/10 bg-gradient-to-br from-[#009C3B] to-[#006B2D] hover:border-[#FFDF00]/30 transition-all"
     >
-      <div className="aspect-square relative bg-gradient-to-br from-[#009C3B] to-[#006B2D]">
-        {!err ? (
-          <Image
-            src={person.image}
-            alt={person.name}
-            fill
-            className="object-cover object-top"
-            sizes="(max-width: 640px) 50vw, 25vw"
-            onError={() => setErr(true)}
-          />
-        ) : (
-          <div className="w-full h-full flex items-center justify-center">
-            <User className="w-20 h-20 text-white/30" />
-          </div>
-        )}
-      </div>
-      <div className="p-5 text-center">
-        <h2 className="text-xl font-bold text-white group-hover:text-[#FFDF00] transition-colors">
-          {person.name}
-        </h2>
-        <p className="text-white/50 text-sm mt-1">{person.role}</p>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={person.image}
+        alt={person.name}
+        className="w-full h-auto"
+        onError={(e) => { e.currentTarget.style.display = "none"; e.currentTarget.nextElementSibling?.classList.remove("hidden"); }}
+      />
+      <div className="hidden aspect-square flex items-center justify-center">
+        <User className="w-20 h-20 text-white/30" />
       </div>
     </motion.div>
   );
