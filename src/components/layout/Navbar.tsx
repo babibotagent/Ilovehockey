@@ -121,7 +121,7 @@ export function Navbar() {
           <Link href="/" className="flex items-center gap-2 group">
             <Trophy className="h-7 w-7 text-[#FFDF00] group-hover:rotate-12 transition-transform" />
             <span className="text-xl font-bold text-white tracking-tight">
-              <span className="text-[#FFDF00]">Paixao</span>BR
+              <span className="text-[#FFDF00]">Paixão</span>BR
             </span>
           </Link>
 

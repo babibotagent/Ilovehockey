@@ -23,9 +23,11 @@ export default function Home() {
     <>
       {/* Hero */}
       <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#006B2D] via-[#071a0e] to-[#009C3B]/30" />
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#FFDF00]/10 rounded-full blur-[120px]" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#009C3B]/10 rounded-full blur-[120px]" />
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: "url('/images/bg-selecoes.jpg')" }}
+        />
+        <div className="absolute inset-0 bg-[#071a0e]/70" />
 
         <div className="relative z-10 text-center px-4 max-w-5xl">
           <motion.div

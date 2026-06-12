@@ -15,12 +15,23 @@ export default function SelecaoPage() {
   const masculinoSlug = esporte?.replace("-feminino", "");
   const masculinoSelecao = isFeminino ? selecoes.find((s) => s.slug === masculinoSlug) : null;
 
+  const showBg = esporte === "futebol-feminino";
+
   return (
-    <div className="min-h-screen flex items-center justify-center px-4">
+    <div className="relative min-h-screen flex items-center justify-center px-4">
+      {showBg && (
+        <>
+          <div
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+            style={{ backgroundImage: "url('/images/bg-selecoes.jpg')" }}
+          />
+          <div className="absolute inset-0 bg-[#071a0e]/75" />
+        </>
+      )}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
-        className="text-center max-w-lg"
+        className="relative z-10 text-center max-w-lg"
       >
         <div className="text-8xl mb-6">{selecao?.emoji || masculinoSelecao?.emoji || "🏅"}</div>
         <Construction className="w-16 h-16 text-[#FFDF00] mx-auto mb-4" />

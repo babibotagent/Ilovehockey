@@ -1,0 +1,70 @@
+=====================================================
+ CONFIGURAÇÃO DNS - selecoesdobrasil.com.br
+ AWS Amplify - App: d16ykjnyb5dfiu
+=====================================================
+
+=====================================================
+ PASSO 0 - MIGRAR DNS PARA O CLOUDFLARE
+=====================================================
+O Registro.br não aceita CNAME na raiz (@).
+O Cloudflare aceita (CNAME flattening automático).
+
+1. Acesse https://dash.cloudflare.com e faça login
+2. Clique em "Add a site" (Adicionar site)
+3. Digite: selecoesdobrasil.com.br
+4. Escolha o plano FREE (gratuito)
+5. O Cloudflare vai escanear os registros DNS atuais
+   - Revise e confirme os registros existentes
+6. O Cloudflare vai mostrar 2 nameservers, ex:
+   - ns1.cloudflare.com (ex: ada.ns.cloudflare.com)
+   - ns2.cloudflare.com (ex: bob.ns.cloudflare.com)
+7. Acesse o Registro.br:
+   - Entre em https://registro.br com sua conta
+   - Clique no domínio selecoesdobrasil.com.br
+   - Vá em "Alterar servidores DNS"
+   - Substitua os nameservers atuais pelos do Cloudflare
+   - Salve
+8. Aguarde a propagação (pode levar até 24h, geralmente
+   30 min a 2h)
+9. O Cloudflare mostrará status "Active" quando pronto
+
+=====================================================
+ PASSO 1 - VALIDAÇÃO DO CERTIFICADO SSL
+=====================================================
+No painel DNS do Cloudflare, adicione:
+
+Tipo:    CNAME
+Nome:    _6cb7cf5c3984f0853331e2cd75fc927c
+Destino: _7603c7b4ef5fb62705b26e8a8f654df0.jkddzztszm.acm-validations.aws.
+Proxy:   DNS only (nuvem CINZA)
+
+=====================================================
+ PASSO 2 - APONTAR DOMÍNIO PARA O SITE
+=====================================================
+No painel DNS do Cloudflare, adicione:
+
+Tipo:    CNAME
+Nome:    @ (ou selecoesdobrasil.com.br)
+Destino: d3ekiqljqlgvv0.cloudfront.net
+Proxy:   DNS only (nuvem CINZA)
+
+=====================================================
+ PASSO 3 - CONFIGURAÇÃO SSL NO CLOUDFLARE
+=====================================================
+1. No Cloudflare, vá em SSL/TLS
+2. Mude o modo para "Full" (não Full Strict)
+3. Isso evita conflito com o certificado do AWS Amplify
+
+=====================================================
+ NOTAS IMPORTANTES
+=====================================================
+- SEMPRE usar nuvem CINZA (DNS only) nos registros
+  acima. Nuvem laranja (Proxied) causa conflito com
+  o CloudFront da AWS.
+- A validação SSL da AWS pode levar até 48h, mas
+  geralmente fica pronta em 10-30 minutos após os
+  registros DNS estarem ativos.
+- Após tudo configurado, o site estará acessível em:
+  https://selecoesdobrasil.com.br
+- O domínio fcbrasil.babiservices.ca continua
+  funcionando normalmente em paralelo.

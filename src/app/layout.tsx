@@ -9,19 +9,19 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "PaixaoBR - A Seleção Brasileira",
+  title: "PaixãoBR - A Seleção Brasileira",
   description:
-    "Tudo sobre a Seleção Brasileira de Futebol: elenco, história, partidas e muito mais. Pentacampeã mundial.",
+    "Tudo sobre a Seleção Brasileira de Futebol: elenco, história, partidas e muito mais. Pentacampeão mundial.",
   openGraph: {
-    title: "PaixaoBR - A Seleção Brasileira",
-    description: "Pentacampeã mundial. Acompanhe tudo sobre a Seleção Canarinho.",
+    title: "PaixãoBR - A Seleção Brasileira",
+    description: "Pentacampeão mundial. Acompanhe tudo sobre a Seleção Canarinho.",
     type: "website",
-    siteName: "PaixaoBR",
+    siteName: "PaixãoBR",
   },
   twitter: {
     card: "summary_large_image",
-    title: "PaixaoBR - A Seleção Brasileira",
-    description: "Pentacampeã mundial. Acompanhe tudo sobre a Seleção Canarinho.",
+    title: "PaixãoBR - A Seleção Brasileira",
+    description: "Pentacampeão mundial. Acompanhe tudo sobre a Seleção Canarinho.",
   },
 };
 
