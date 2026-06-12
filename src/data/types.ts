@@ -1,4 +1,4 @@
-export type Position = "Goleiro" | "Zagueiro" | "Lateral" | "Meio-campista" | "Atacante";
+export type Position = "Center" | "Left Wing" | "Right Wing" | "Defenseman" | "Goaltender";
 
 export interface Player {
   id: string;
@@ -35,12 +35,15 @@ export interface Legend {
   slug: string;
   name: string;
   shortName: string;
+  nickname?: string;
   position: Position;
   image: string;
   era: string;
   stats: {
     games: number;
     goals: number;
+    assists: number;
+    stanleyCups: number;
   };
   description: string;
   achievements: string[];
@@ -63,6 +66,9 @@ export interface Match {
 }
 
 export type Competition =
+  | "NHL Regular Season"
+  | "NHL Playoffs"
+  | "NHL Preseason"
   | "Eliminatórias"
   | "Copa América"
   | "Copa do Mundo"

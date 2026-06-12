@@ -7,9 +7,9 @@ import { useEffect, useState } from "react";
 
 const navKeys = [
   { href: "/", key: "nav.home" },
-  { href: "/elenco", key: "nav.elenco" },
-  { href: "/historia", key: "nav.historia" },
-  { href: "/partidas", key: "nav.partidas" },
+  { href: "/roster", key: "nav.roster" },
+  { href: "/history", key: "nav.history" },
+  { href: "/schedule", key: "nav.schedule" },
 ];
 
 function VisitorCounter() {
@@ -19,13 +19,13 @@ function VisitorCounter() {
   useEffect(() => {
     const counted = sessionStorage.getItem("counted");
     if (counted) {
-      fetch("https://api.counterapi.dev/v1/fcbrasil-babiservices/visits/")
+      fetch("https://api.counterapi.dev/v1/ilovehockey-babiservices/visits/")
         .then((r) => r.json())
         .then((d) => setCount(d.count))
         .catch(() => {});
       return;
     }
-    fetch("https://api.counterapi.dev/v1/fcbrasil-babiservices/visits/up")
+    fetch("https://api.counterapi.dev/v1/ilovehockey-babiservices/visits/up")
       .then((r) => r.json())
       .then((d) => {
         setCount(d.count);
@@ -48,20 +48,20 @@ export function Footer() {
   const { t } = useLang();
 
   return (
-    <footer className="bg-[#006B2D] text-white border-t border-white/10">
+    <footer className="bg-[#192168] text-white border-t border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <Trophy className="h-6 w-6 text-[#FFDF00]" />
+              <Trophy className="h-6 w-6 text-[#AF1E2D]" />
               <span className="text-lg font-bold">
-                <span className="text-[#FFDF00]">Paixão</span>BR
+                <span className="text-[#AF1E2D]">ILove</span>Hockey
               </span>
             </div>
             <p className="text-white/60 text-sm">{t("footer.acompanhe")}</p>
           </div>
           <div>
-            <h3 className="font-semibold mb-3 text-[#FFDF00]">{t("footer.navegacao")}</h3>
+            <h3 className="font-semibold mb-3 text-[#AF1E2D]">{t("footer.navegacao")}</h3>
             <div className="flex flex-col gap-2">
               {navKeys.map((link) => (
                 <Link
@@ -75,27 +75,27 @@ export function Footer() {
             </div>
           </div>
           <div>
-            <h3 className="font-semibold mb-3 text-[#FFDF00]">{t("footer.institucional")}</h3>
+            <h3 className="font-semibold mb-3 text-[#AF1E2D]">{t("footer.institucional")}</h3>
             <div className="flex flex-col gap-2 text-white/60 text-sm">
-              <span>CBF - Confederação Brasileira de Futebol</span>
-              <span>Rua Victor Civita, 66 - Rio de Janeiro</span>
-              <span>contato@cbf.com.br</span>
+              <span>Montreal Canadiens - Centre Bell</span>
+              <span>1909 Avenue des Canadiens-de-Montréal</span>
+              <span>Montréal, QC</span>
             </div>
           </div>
           <div>
-            <h3 className="font-semibold mb-3 text-[#FFDF00]">Idealizadores</h3>
+            <h3 className="font-semibold mb-3 text-[#AF1E2D]">About</h3>
             <Link
-              href="/idealizadores"
+              href="/about"
               className="text-white/60 hover:text-white text-sm transition-colors"
             >
-              Conheça a equipe
+              Meet the team
             </Link>
           </div>
         </div>
         <div className="border-t border-white/10 mt-8 pt-6 flex flex-col items-center gap-2">
           <VisitorCounter />
           <span className="text-white/40 text-sm">
-            © {new Date().getFullYear()} PaixãoBR. {t("footer.copy")}
+            © {new Date().getFullYear()} ILoveHockey. {t("footer.copy")}
           </span>
         </div>
       </div>

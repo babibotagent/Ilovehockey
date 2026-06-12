@@ -44,7 +44,7 @@ export function StatBlock({ value, label, suffix = "", delay = 0 }: StatBlockPro
       transition={{ delay: delay / 1000 }}
       className="text-center p-6"
     >
-      <div className="text-5xl md:text-6xl font-black text-[#FFDF00] tabular-nums">
+      <div className="text-5xl md:text-6xl font-black text-[#AF1E2D] tabular-nums">
         {count}
         {suffix}
       </div>

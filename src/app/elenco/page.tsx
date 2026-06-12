@@ -7,29 +7,28 @@ import { PlayerCard } from "@/components/shared/PlayerCard";
 import { Position } from "@/data/types";
 import { useLang } from "@/contexts/LanguageContext";
 
-const positions: (Position | "Todos")[] = [
-  "Todos",
-  "Goleiro",
-  "Zagueiro",
-  "Lateral",
-  "Meio-campista",
-  "Atacante",
+const positions: (Position | "All")[] = [
+  "All",
+  "Goaltender",
+  "Defenseman",
+  "Center",
+  "Left Wing",
+  "Right Wing",
 ];
 
 export default function ElencoPage() {
   const [search, setSearch] = useState("");
-  const [position, setPosition] = useState<Position | "Todos">("Todos");
+  const [position, setPosition] = useState<Position | "All">("All");
   const { t } = useLang();
 
   const filtered = players.filter((p) => {
     const matchesSearch = p.shortName.toLowerCase().includes(search.toLowerCase());
-    const matchesPosition = position === "Todos" || p.position === position;
+    const matchesPosition = position === "All" || p.position === position;
     return matchesSearch && matchesPosition;
   });
 
   return (
     <div className="relative min-h-screen px-4 py-12">
-      <div className="fixed inset-0 bg-no-repeat bg-center opacity-[0.07] pointer-events-none" style={{ backgroundImage: "url('/images/bg-selecoes.jpg')", backgroundSize: "40%" }} />
       <div className="max-w-6xl mx-auto">
         <div className="mb-10">
           <h1 className="text-4xl font-black text-white">{t("elenco.title")}</h1>
@@ -44,7 +43,7 @@ export default function ElencoPage() {
               placeholder={t("elenco.buscar")}
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-white/30 focus:outline-none focus:border-[#FFDF00]/50 transition-colors"
+              className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-white/30 focus:outline-none focus:border-[#AF1E2D]/50 transition-colors"
             />
           </div>
           <div className="flex gap-2 flex-wrap">
@@ -54,11 +53,11 @@ export default function ElencoPage() {
                 onClick={() => setPosition(pos)}
                 className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
                   position === pos
-                    ? "bg-[#FFDF00] text-[#006B2D]"
+                    ? "bg-[#AF1E2D] text-white"
                     : "bg-white/5 text-white/60 hover:bg-white/10 border border-white/10"
                 }`}
               >
-                {pos === "Todos" ? t("elenco.todos") : t(`pos.${pos}`)}
+                {pos === "All" ? t("elenco.todos") : pos}
               </button>
             ))}
           </div>

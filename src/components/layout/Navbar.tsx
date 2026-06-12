@@ -7,17 +7,16 @@ import { Menu, X, Trophy, Globe, ChevronDown } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
 import { useLang, Lang, langLabels, langFlags } from "@/contexts/LanguageContext";
-import { selecoes } from "@/data/selecoes";
 
 const navKeys = [
   { href: "/", key: "nav.home" },
   { href: "/elenco", key: "nav.elenco" },
   { href: "/historia", key: "nav.historia" },
   { href: "/partidas", key: "nav.partidas" },
-  { href: "/copa2026", key: "nav.copa2026" },
+  { href: "/stanleycup", key: "nav.stanleycup" },
 ];
 
-const langs: Lang[] = ["pt", "en", "fr", "es"];
+const langs: Lang[] = ["en", "fr"];
 
 function useClickOutside(ref: React.RefObject<HTMLElement | null>, handler: () => void) {
   useEffect(() => {
@@ -46,7 +45,7 @@ function LangDropdown({ className }: { className?: string }) {
         <span className="hidden sm:inline">{lang.toUpperCase()}</span>
       </button>
       {open && (
-        <div className="absolute right-0 top-full mt-1 bg-[#0a2618] border border-white/10 rounded-lg shadow-xl overflow-hidden z-50 min-w-[160px]">
+        <div className="absolute right-0 top-full mt-1 bg-[#111827] border border-white/10 rounded-lg shadow-xl overflow-hidden z-50 min-w-[160px]">
           {langs.map((l) => (
             <button
               key={l}
@@ -54,7 +53,7 @@ function LangDropdown({ className }: { className?: string }) {
               className={cn(
                 "w-full flex items-center gap-2 px-4 py-2.5 text-sm transition-colors",
                 l === lang
-                  ? "bg-[#FFDF00]/10 text-[#FFDF00] font-medium"
+                  ? "bg-[#AF1E2D]/10 text-[#AF1E2D] font-medium"
                   : "text-white/70 hover:bg-white/5"
               )}
             >
@@ -68,60 +67,19 @@ function LangDropdown({ className }: { className?: string }) {
   );
 }
 
-function OutrasDropdown({ className, onNavigate }: { className?: string; onNavigate?: () => void }) {
-  const { t } = useLang();
-  const [open, setOpen] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
-  const pathname = usePathname();
-  const isActive = pathname.startsWith("/selecoes");
-  useClickOutside(ref, () => setOpen(false));
-
-  return (
-    <div ref={ref} className={cn("relative", className)}>
-      <button
-        onClick={() => setOpen(!open)}
-        className={cn(
-          "flex items-center gap-1 px-4 py-2 rounded-lg text-sm font-medium transition-colors",
-          isActive
-            ? "bg-[#FFDF00] text-[#006B2D]"
-            : "text-white/80 hover:text-white hover:bg-white/10"
-        )}
-      >
-        {t("nav.outras")}
-        <ChevronDown className={cn("w-3.5 h-3.5 transition-transform", open && "rotate-180")} />
-      </button>
-      {open && (
-        <div className="absolute left-0 top-full mt-1 bg-[#0a2618] border border-white/10 rounded-xl shadow-xl overflow-hidden z-50 min-w-[220px] max-h-[400px] overflow-y-auto">
-          {selecoes.map((s) => (
-            <Link
-              key={s.slug}
-              href={`/selecoes/${s.slug}`}
-              onClick={() => { setOpen(false); onNavigate?.(); }}
-              className="flex items-center gap-2.5 px-4 py-2.5 text-sm text-white/70 hover:bg-white/5 hover:text-[#FFDF00] transition-colors"
-            >
-              <span className="text-base">{s.emoji}</span>
-              <span>{s.name}</span>
-            </Link>
-          ))}
-        </div>
-      )}
-    </div>
-  );
-}
-
 export function Navbar() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const { t } = useLang();
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#006B2D]/90 backdrop-blur-md border-b border-white/10">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#192168]/90 backdrop-blur-md border-b border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <Link href="/" className="flex items-center gap-2 group">
-            <Trophy className="h-7 w-7 text-[#FFDF00] group-hover:rotate-12 transition-transform" />
+            <Trophy className="h-7 w-7 text-[#AF1E2D] group-hover:rotate-12 transition-transform" />
             <span className="text-xl font-bold text-white tracking-tight">
-              <span className="text-[#FFDF00]">Paixão</span>BR
+              <span className="text-[#AF1E2D]">ILove</span>Hockey
             </span>
           </Link>
 
@@ -133,35 +91,23 @@ export function Navbar() {
                 className={cn(
                   "px-4 py-2 rounded-lg text-sm font-medium transition-colors",
                   pathname === link.href
-                    ? "bg-[#FFDF00] text-[#006B2D]"
+                    ? "bg-[#AF1E2D] text-white"
                     : "text-white/80 hover:text-white hover:bg-white/10"
                 )}
               >
                 {t(link.key)}
               </Link>
             ))}
-            <OutrasDropdown />
-            <Link
-              href="/selecoes/futebol-feminino"
-              className={cn(
-                "px-3 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-1.5",
-                pathname === "/selecoes/futebol-feminino"
-                  ? "bg-pink-500/30 text-pink-200"
-                  : "text-white/80 hover:text-white hover:bg-white/10"
-              )}
-            >
-              ⚽ Fut. Feminino
-            </Link>
             <LangDropdown className="ml-2" />
           </div>
 
           <div className="flex items-center gap-2 md:hidden">
             <LangDropdown />
             <Sheet open={open} onOpenChange={setOpen}>
-              <SheetTrigger className="text-white p-2" aria-label="Abrir menu">
+              <SheetTrigger className="text-white p-2" aria-label="Open menu">
                 {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
               </SheetTrigger>
-              <SheetContent side="right" className="bg-[#006B2D] border-[#006B2D] w-64">
+              <SheetContent side="right" className="bg-[#192168] border-[#192168] w-64">
                 <div className="flex flex-col gap-2 mt-8">
                   {navKeys.map((link) => (
                     <Link
@@ -171,36 +117,13 @@ export function Navbar() {
                       className={cn(
                         "px-4 py-3 rounded-lg text-base font-medium transition-colors",
                         pathname === link.href
-                          ? "bg-[#FFDF00] text-[#006B2D]"
+                          ? "bg-[#AF1E2D] text-white"
                           : "text-white/80 hover:text-white hover:bg-white/10"
                       )}
                     >
                       {t(link.key)}
                     </Link>
                   ))}
-                  <Link
-                    href="/selecoes/futebol-feminino"
-                    onClick={() => setOpen(false)}
-                    className="flex items-center gap-2 px-4 py-3 rounded-lg text-base font-medium text-pink-300 hover:bg-white/10 transition-colors"
-                  >
-                    ⚽ Futebol Feminino
-                  </Link>
-                  <div className="border-t border-white/10 mt-2 pt-2">
-                    <p className="px-4 py-2 text-xs text-[#FFDF00] font-semibold uppercase tracking-wider">
-                      {t("nav.outras")}
-                    </p>
-                    {selecoes.map((s) => (
-                      <Link
-                        key={s.slug}
-                        href={`/selecoes/${s.slug}`}
-                        onClick={() => setOpen(false)}
-                        className="flex items-center gap-2 px-4 py-2.5 text-sm text-white/70 hover:text-white transition-colors"
-                      >
-                        <span>{s.emoji}</span>
-                        <span>{s.name}</span>
-                      </Link>
-                    ))}
-                  </div>
                 </div>
               </SheetContent>
             </Sheet>

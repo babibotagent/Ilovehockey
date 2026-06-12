@@ -9,19 +9,19 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "PaixãoBR - A Seleção Brasileira",
+  title: "ILoveHockey - Montreal Canadiens Fan Page",
   description:
-    "Tudo sobre a Seleção Brasileira de Futebol: elenco, história, partidas e muito mais. Pentacampeã mundial.",
+    "Everything about the Montreal Canadiens: roster, history, games and more. 24x Stanley Cup champions.",
   openGraph: {
-    title: "PaixãoBR - A Seleção Brasileira",
-    description: "Pentacampeã mundial. Acompanhe tudo sobre a Seleção Canarinho.",
+    title: "ILoveHockey - Montreal Canadiens Fan Page",
+    description: "24x Stanley Cup champions. Follow everything about the Habs.",
     type: "website",
-    siteName: "PaixãoBR",
+    siteName: "ILoveHockey",
   },
   twitter: {
     card: "summary_large_image",
-    title: "PaixãoBR - A Seleção Brasileira",
-    description: "Pentacampeã mundial. Acompanhe tudo sobre a Seleção Canarinho.",
+    title: "ILoveHockey - Montreal Canadiens Fan Page",
+    description: "24x Stanley Cup champions. Follow everything about the Habs.",
   },
 };
 
@@ -31,8 +31,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR" className={`${inter.variable} antialiased`}>
-      <body className="min-h-screen flex flex-col bg-[#071a0e]">
+    <html lang="en" className={`${inter.variable} antialiased`}>
+      <body className="min-h-screen flex flex-col bg-[#0a0e1a]">
         <ClientLayout>{children}</ClientLayout>
       </body>
     </html>
