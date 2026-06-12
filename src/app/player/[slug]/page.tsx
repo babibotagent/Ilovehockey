@@ -36,7 +36,7 @@ export default function JogadorPage() {
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-2xl font-bold text-white mb-4">{t("jogador.naoEncontrado")}</h1>
-          <Link href="/elenco" className="text-[#C8102E] hover:underline">
+          <Link href="/roster" className="text-[#C8102E] hover:underline">
             {t("jogador.voltar")}
           </Link>
         </div>
@@ -48,7 +48,7 @@ export default function JogadorPage() {
     <div className="relative min-h-screen px-4 py-12">
       <div className="max-w-4xl mx-auto">
         <Link
-          href="/elenco"
+          href="/roster"
           className="inline-flex items-center gap-2 text-white/50 hover:text-white mb-8 transition-colors"
         >
           <ArrowLeft className="w-4 h-4" /> {t("jogador.voltar")}

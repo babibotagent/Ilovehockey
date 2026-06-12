@@ -10,10 +10,10 @@ import { useLang, Lang, langLabels, langFlags } from "@/contexts/LanguageContext
 
 const navKeys = [
   { href: "/", key: "nav.home" },
-  { href: "/elenco", key: "nav.elenco" },
-  { href: "/historia", key: "nav.historia" },
-  { href: "/partidas", key: "nav.partidas" },
-  { href: "/stanleycup", key: "nav.stanleycup" },
+  { href: "/roster", key: "nav.elenco" },
+  { href: "/history", key: "nav.historia" },
+  { href: "/schedule", key: "nav.partidas" },
+  { href: "/stanley-cup", key: "nav.stanleycup" },
   { href: "/season", key: "nav.season" },
 ];
 

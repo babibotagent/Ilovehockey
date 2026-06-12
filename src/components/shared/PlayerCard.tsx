@@ -55,7 +55,7 @@ export function PlayerCard({ player, variant = "compact", index = 0 }: PlayerCar
         transition={{ delay: index * 0.1 }}
         className="relative group"
       >
-        <Link href={`/jogador/${player.slug}`}>
+        <Link href={`/player/${player.slug}`}>
           <div className="relative h-[420px] rounded-2xl overflow-hidden bg-gradient-to-b from-[#003DA5]/20 to-[#0a0e1a]/40 border border-white/10 backdrop-blur-sm">
             {!imgError ? (
               <Image
@@ -107,7 +107,7 @@ export function PlayerCard({ player, variant = "compact", index = 0 }: PlayerCar
       viewport={{ once: true }}
       transition={{ delay: index * 0.05 }}
     >
-      <Link href={`/jogador/${player.slug}`}>
+      <Link href={`/player/${player.slug}`}>
         <div
           className={cn(
             "group relative rounded-xl overflow-hidden border border-white/10 bg-white/5 backdrop-blur-sm hover:border-[#C8102E]/50 transition-all hover:shadow-lg hover:shadow-[#C8102E]/5",

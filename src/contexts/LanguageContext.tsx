@@ -44,8 +44,8 @@ const translations: Record<string, Record<Lang, string>> = {
   "season.otl": { en: "OTL", fr: "DP" },
 
   // Home — Hero
-  "home.hero.pre": { en: "I Love ", fr: "J'aime le " },
-  "home.hero.highlight": { en: "Hockey", fr: "Hockey" },
+  "home.hero.pre": { en: "Montreal ", fr: "Canadiens de " },
+  "home.hero.highlight": { en: "Canadiens", fr: "Montréal" },
   "home.subtitle": {
     en: "The most decorated franchise in NHL history. 24 Stanley Cup titles. Discover the legends who wore the bleu, blanc et rouge.",
     fr: "La franchise la plus titrée de l'histoire de la LNH. 24 Coupes Stanley. Découvrez les légendes qui ont porté le bleu, blanc et rouge.",

@@ -13,12 +13,11 @@ const siteUrl = "https://ilovehockey.zynox.ca";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "ILoveHockey — Montreal Canadiens Fan Hub | 24x Stanley Cup Champions",
+    default: "Montreal Canadiens Fan Hub — Roster, Schedule & 24 Cups",
     template: "%s | ILoveHockey",
   },
   description:
     "The ultimate Montreal Canadiens fan site. Roster, history, 24 Stanley Cup championships, schedules, and playoff results. Go Habs Go!",
-  keywords: ["Montreal Canadiens", "Habs", "NHL", "Stanley Cup", "hockey", "Canadiens de Montréal", "Centre Bell"],
   openGraph: {
     title: "ILoveHockey — Montreal Canadiens Fan Hub",
     description: "24x Stanley Cup champions. Roster, history, schedules, and more. The most decorated franchise in NHL history.",

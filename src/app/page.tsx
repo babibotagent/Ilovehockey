@@ -14,7 +14,9 @@ const featuredPlayers = players.filter((p) =>
   ["nick-suzuki", "cole-caufield", "juraj-slafkovsky", "patrik-laine", "lane-hutson", "samuel-montembeault"].includes(p.slug)
 );
 
-const upcomingMatches = matches.filter((m) => m.status === "upcoming").slice(0, 3);
+const upcomingMatches = matches
+  .filter((m) => m.status === "upcoming" && (m.homeTeam === "Montreal Canadiens" || m.awayTeam === "Montreal Canadiens"))
+  .slice(0, 3);
 
 export default function Home() {
   const { t } = useLang();
@@ -49,13 +51,13 @@ export default function Home() {
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10">
               <Link
-                href="/elenco"
+                href="/roster"
                 className="bg-[#C8102E] text-[#003DA5] px-8 py-3 rounded-xl font-bold text-lg hover:bg-[#C8102E]/90 transition-colors flex items-center gap-2"
               >
                 {t("home.cta.elenco")} <ArrowRight className="w-5 h-5" />
               </Link>
               <Link
-                href="/historia"
+                href="/history"
                 className="border border-white/20 text-white px-8 py-3 rounded-xl font-medium text-lg hover:bg-white/5 transition-colors"
               >
                 {t("home.cta.historia")}
@@ -84,7 +86,7 @@ export default function Home() {
               <p className="text-white/50 mt-1">{t("home.proximos.sub")}</p>
             </div>
             <Link
-              href="/partidas"
+              href="/schedule"
               className="text-[#C8102E] hover:underline flex items-center gap-1 text-sm font-medium"
             >
               {t("home.vertodos")} <ArrowRight className="w-4 h-4" />
@@ -107,7 +109,7 @@ export default function Home() {
               <p className="text-white/50 mt-1">{t("home.destaques.sub")}</p>
             </div>
             <Link
-              href="/elenco"
+              href="/roster"
               className="text-[#C8102E] hover:underline flex items-center gap-1 text-sm font-medium"
             >
               {t("home.elenco.completo")} <ArrowRight className="w-4 h-4" />
@@ -139,7 +141,7 @@ export default function Home() {
                 {t("home.cta.desc")}
               </p>
               <Link
-                href="/historia"
+                href="/history"
                 className="inline-flex items-center gap-2 bg-[#C8102E] text-[#003DA5] px-8 py-3 rounded-xl font-bold hover:bg-[#C8102E]/90 transition-colors"
               >
                 {t("home.cta.explorar")} <ArrowRight className="w-5 h-5" />
