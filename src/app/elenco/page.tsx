@@ -28,7 +28,8 @@ export default function ElencoPage() {
   });
 
   return (
-    <div className="min-h-screen px-4 py-12">
+    <div className="relative min-h-screen px-4 py-12">
+      <div className="fixed inset-0 bg-no-repeat bg-center opacity-[0.07] pointer-events-none" style={{ backgroundImage: "url('/images/bg-selecoes.jpg')", backgroundSize: "40%" }} />
       <div className="max-w-6xl mx-auto">
         <div className="mb-10">
           <h1 className="text-4xl font-black text-white">{t("elenco.title")}</h1>

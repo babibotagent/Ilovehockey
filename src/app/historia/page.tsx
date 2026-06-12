@@ -214,7 +214,8 @@ export default function HistoriaPage() {
     : worldCupEditions;
 
   return (
-    <div className="min-h-screen">
+    <div className="relative min-h-screen">
+      <div className="fixed inset-0 bg-no-repeat bg-center opacity-[0.07] pointer-events-none" style={{ backgroundImage: "url('/images/bg-selecoes.jpg')", backgroundSize: "40%" }} />
       {/* Hero */}
       <section className="relative py-20 px-4 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-[#006B2D]/30 to-transparent" />

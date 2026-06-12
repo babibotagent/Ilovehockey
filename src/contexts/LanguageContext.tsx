@@ -42,8 +42,10 @@ const translations: Record<string, Record<Lang, string>> = {
   "outras.voltar": { pt: "Voltar ao início", en: "Back to home", fr: "Retour à l'accueil", es: "Volver al inicio" },
 
   // Home
+  "home.hero.pre": { pt: "A ", en: "The ", fr: "L'Équipe de ", es: "El Equipo de " },
+  "home.hero.highlight": { pt: "Seleção", en: "Dream Team", fr: "Rêve", es: "Ensueño" },
   "home.subtitle": {
-    pt: "Pentacampeão mundial. A maior seleção de todos os tempos. Conheça os craques que vestem a amarelinha.",
+    pt: "Pentacampeã mundial. A maior seleção de todos os tempos. Conheça os craques que vestem a amarelinha.",
     en: "Five-time world champions. The greatest national team of all time. Meet the stars who wear the yellow jersey.",
     fr: "Quintuple championne du monde. La plus grande sélection de tous les temps. Découvrez les stars qui portent le maillot jaune.",
     es: "Pentacampeona mundial. La mayor selección de todos los tiempos. Conoce a las estrellas que visten la amarelinha.",
@@ -108,7 +110,7 @@ const translations: Record<string, Record<Lang, string>> = {
   "historia.title": { pt: "Nossa", en: "Our", fr: "Notre", es: "Nuestra" },
   "historia.title2": { pt: "História", en: "History", fr: "Histoire", es: "Historia" },
   "historia.subtitle": {
-    pt: "Pentacampeãoo mundial. Gerações de craques. A paixão que move o país. A história mais gloriosa do futebol mundial.",
+    pt: "Pentacampeão mundial. Gerações de craques. A paixão que move o país. A história mais gloriosa do futebol mundial.",
     en: "Five-time world champions. Generations of stars. The passion that moves a nation. The most glorious history in world football.",
     fr: "Quintuple champion du monde. Des générations de stars. La passion qui fait vibrer tout un pays. L'histoire la plus glorieuse du football mondial.",
     es: "Pentacampeón mundial. Generaciones de estrellas. La pasión que mueve al país. La historia más gloriosa del fútbol mundial.",
@@ -166,7 +168,7 @@ const translations: Record<string, Record<Lang, string>> = {
 
   // Footer
   "footer.acompanhe": {
-    pt: "Acompanhe tudo sobre a Seleção Brasileira de Futebol. Pentacampeão mundial.",
+    pt: "Acompanhe tudo sobre a Seleção Brasileira de Futebol. Pentacampeã mundial.",
     en: "Follow everything about the Brazilian National Football Team. Five-time world champions.",
     fr: "Suivez tout sur la Seleção brésilienne. Quintuple championne du monde.",
     es: "Sigue todo sobre la Selección Brasileña de Fútbol. Pentacampeona mundial.",

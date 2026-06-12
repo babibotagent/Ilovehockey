@@ -34,7 +34,7 @@ type UnifiedMatch = {
 
 function isBrazilMatch(m: UnifiedMatch) {
   return m.homeTeam === "Brasil" || m.awayTeam === "Brasil" ||
-    m.homeTeam.includes("1ºC") || m.awayTeam.includes("2ºC");
+    m.homeTeam?.includes("1ºC") || m.awayTeam?.includes("2ºC");
 }
 
 function formatDate(dateStr: string, lang: string) {
@@ -209,7 +209,8 @@ export default function Copa2026Page() {
   const localeMap: Record<string, string> = { pt: "pt-BR", en: "en-US", fr: "fr-FR", es: "es-ES" };
 
   return (
-    <div className="min-h-screen">
+    <div className="relative min-h-screen">
+      <div className="fixed inset-0 bg-no-repeat bg-center opacity-[0.07] pointer-events-none" style={{ backgroundImage: "url('/images/bg-selecoes.jpg')", backgroundSize: "40%" }} />
       {/* Hero */}
       <section className="relative py-16 px-4 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-[#006B2D]/30 to-transparent" />

@@ -22,10 +22,10 @@ export default function SelecaoPage() {
       {showBg && (
         <>
           <div
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-            style={{ backgroundImage: "url('/images/bg-selecoes.jpg')" }}
+            className="absolute inset-0 bg-no-repeat bg-center opacity-[0.07]"
+            style={{ backgroundImage: "url('/images/bg-selecoes.jpg')", backgroundSize: "40%" }}
           />
-          <div className="absolute inset-0 bg-[#071a0e]/75" />
+          <div className="absolute inset-0 bg-[#071a0e]/60" />
         </>
       )}
       <motion.div

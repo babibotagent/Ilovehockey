@@ -24,10 +24,10 @@ export default function Home() {
       {/* Hero */}
       <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
         <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: "url('/images/bg-selecoes.jpg')" }}
+          className="absolute inset-0 bg-no-repeat bg-center opacity-[0.07]"
+          style={{ backgroundImage: "url('/images/bg-selecoes.jpg')", backgroundSize: "40%" }}
         />
-        <div className="absolute inset-0 bg-[#071a0e]/70" />
+        <div className="absolute inset-0 bg-[#071a0e]/60" />
 
         <div className="relative z-10 text-center px-4 max-w-5xl">
           <motion.div
@@ -46,7 +46,7 @@ export default function Home() {
               ))}
             </div>
             <h1 className="text-6xl sm:text-7xl md:text-8xl font-black text-white leading-tight">
-              A <span className="text-[#FFDF00]">Seleção</span>
+              {t("home.hero.pre")}<span className="text-[#FFDF00]">{t("home.hero.highlight")}</span>
             </h1>
             <p className="text-xl md:text-2xl text-white/60 mt-6 max-w-2xl mx-auto">
               {t("home.subtitle")}

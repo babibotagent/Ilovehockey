@@ -50,12 +50,12 @@ export function Footer() {
   return (
     <footer className="bg-[#006B2D] text-white border-t border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
             <div className="flex items-center gap-2 mb-4">
               <Trophy className="h-6 w-6 text-[#FFDF00]" />
               <span className="text-lg font-bold">
-                <span className="text-[#FFDF00]">Brasil</span>FC
+                <span className="text-[#FFDF00]">Paixão</span>BR
               </span>
             </div>
             <p className="text-white/60 text-sm">{t("footer.acompanhe")}</p>
@@ -81,6 +81,15 @@ export function Footer() {
               <span>Rua Victor Civita, 66 - Rio de Janeiro</span>
               <span>contato@cbf.com.br</span>
             </div>
+          </div>
+          <div>
+            <h3 className="font-semibold mb-3 text-[#FFDF00]">Idealizadores</h3>
+            <Link
+              href="/idealizadores"
+              className="text-white/60 hover:text-white text-sm transition-colors"
+            >
+              Conheça a equipe
+            </Link>
           </div>
         </div>
         <div className="border-t border-white/10 mt-8 pt-6 flex flex-col items-center gap-2">
