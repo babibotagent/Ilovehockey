@@ -6,16 +6,15 @@ import { MatchCard } from "@/components/shared/MatchCard";
 import { Competition } from "@/data/types";
 import { useLang } from "@/contexts/LanguageContext";
 
-const competitions: (Competition | "Todas")[] = [
-  "Todas",
-  "Copa do Mundo",
-  "Eliminatórias",
-  "Copa América",
-  "Amistoso",
+const competitions: (Competition | "All")[] = [
+  "All",
+  "NHL Regular Season",
+  "NHL Playoffs",
+  "NHL Preseason",
 ];
 
 export default function PartidasPage() {
-  const [filter, setFilter] = useState<Competition | "Todas">("Todas");
+  const [filter, setFilter] = useState<Competition | "All">("All");
   const { t } = useLang();
 
   const sorted = [...matches].sort(
@@ -23,7 +22,7 @@ export default function PartidasPage() {
   );
 
   const filtered = sorted.filter(
-    (m) => filter === "Todas" || m.competition === filter
+    (m) => filter === "All" || m.competition === filter
   );
 
   const upcoming = filtered
@@ -50,7 +49,7 @@ export default function PartidasPage() {
                   : "bg-white/5 text-white/60 hover:bg-white/10 border border-white/10"
               }`}
             >
-              {comp === "Todas" ? t("partidas.todas") : comp}
+              {comp === "All" ? t("partidas.todas") : t(`comp.${comp}`)}
             </button>
           ))}
         </div>

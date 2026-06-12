@@ -68,12 +68,7 @@ export interface Match {
 export type Competition =
   | "NHL Regular Season"
   | "NHL Playoffs"
-  | "NHL Preseason"
-  | "Eliminatórias"
-  | "Copa América"
-  | "Copa do Mundo"
-  | "Amistoso"
-  | "Copa das Confederações";
+  | "NHL Preseason";
 
 export interface WorldCup {
   year: number;

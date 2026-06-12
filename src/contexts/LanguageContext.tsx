@@ -211,6 +211,11 @@ const translations: Record<string, Record<Lang, string>> = {
     fr: "De 1956 à 1960, les Canadiens ont remporté cinq Coupes Stanley consécutives — la plus longue séquence de championnats de l'histoire de la LNH. Un exploit jamais répété.",
   },
 
+  // Competition types
+  "comp.NHL Regular Season": { en: "NHL Regular Season", fr: "Saison régulière LNH" },
+  "comp.NHL Playoffs": { en: "NHL Playoffs", fr: "Séries éliminatoires LNH" },
+  "comp.NHL Preseason": { en: "NHL Preseason", fr: "Pré-saison LNH" },
+
   // Stages
   "stage.Todos": { en: "All", fr: "Tous" },
   "stage.Fase de Grupos": { en: "First Round", fr: "Premier tour" },
