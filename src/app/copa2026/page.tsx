@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { Trophy, MapPin, Clock, Calendar, Filter, Star, RefreshCw, Wifi, WifiOff } from "lucide-react";
 import { copa2026Groups, copa2026Matches, Copa2026Match } from "@/data/copa2026";
@@ -163,18 +163,39 @@ export default function Copa2026Page() {
   const [loading, setLoading] = useState(false);
   const [lastUpdate, setLastUpdate] = useState<Date | null>(null);
 
+  const savedScores = useRef<Record<number, { home: number; away: number }>>({});
+
+  useEffect(() => {
+    try {
+      const stored = localStorage.getItem("copa2026-scores");
+      if (stored) savedScores.current = JSON.parse(stored);
+    } catch {}
+  }, []);
+
   const loadLiveData = async () => {
     setLoading(true);
     try {
       const liveMatches = await fetchLiveMatches(lang);
       if (liveMatches.length > 0) {
         const liveMap = new Map(liveMatches.map((m) => [m.id, m]));
+        liveMatches.forEach((m) => {
+          if (m.homeScore !== null) {
+            savedScores.current[m.id] = { home: m.homeScore, away: m.awayScore! };
+          }
+        });
+        try {
+          localStorage.setItem("copa2026-scores", JSON.stringify(savedScores.current));
+        } catch {}
         const merged = copa2026Matches.map((staticMatch) => {
           const live = liveMap.get(staticMatch.id);
+          const cached = savedScores.current[staticMatch.id];
           const base = staticToUnified(staticMatch);
           if (live && live.homeScore !== null) {
             base.homeScore = live.homeScore;
             base.awayScore = live.awayScore;
+          } else if (base.homeScore === null && cached) {
+            base.homeScore = cached.home;
+            base.awayScore = cached.away;
           }
           return base;
         });
