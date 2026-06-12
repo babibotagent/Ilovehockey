@@ -57,7 +57,7 @@ export default function ElencoPage() {
                     : "bg-white/5 text-white/60 hover:bg-white/10 border border-white/10"
                 }`}
               >
-                {pos === "All" ? t("elenco.todos") : pos}
+                {pos === "All" ? t("elenco.todos") : t(`pos.${pos}`)}
               </button>
             ))}
           </div>

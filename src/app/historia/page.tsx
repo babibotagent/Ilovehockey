@@ -8,7 +8,7 @@ import { legends } from "@/data/legends";
 import { StatBlock } from "@/components/shared/StatBlock";
 import { useLang } from "@/contexts/LanguageContext";
 
-function StanleyCupCard({ cup, index }: { cup: StanleyCupEdition; index: number }) {
+function StanleyCupCard({ cup, index, t }: { cup: StanleyCupEdition; index: number; t: (key: string) => string }) {
   const [expanded, setExpanded] = useState(false);
 
   return (
@@ -25,16 +25,16 @@ function StanleyCupCard({ cup, index }: { cup: StanleyCupEdition; index: number 
         </div>
         <span className="text-white/60 text-sm">vs {cup.opponent}</span>
         <span className="flex items-center gap-1 bg-[#C8102E]/20 text-[#C8102E] text-xs font-bold px-3 py-1 rounded-full">
-          <Trophy className="w-3 h-3" /> Champions
+          <Trophy className="w-3 h-3" /> {t("cup.champions")}
         </span>
       </div>
 
       <div className="flex flex-wrap gap-4 mb-3 text-sm">
         <span className="text-white/80">
-          <strong className="text-[#C8102E]">Series:</strong> {cup.result}
+          <strong className="text-[#C8102E]">{t("cup.series")}:</strong> {cup.result}
         </span>
         <span className="text-white/60">
-          <strong className="text-white/80">Coach:</strong> {cup.coach}
+          <strong className="text-white/80">{t("cup.coach")}:</strong> {cup.coach}
         </span>
         <span className="text-white/60">
           <strong className="text-white/80">MVP:</strong> {cup.mvp}
@@ -48,7 +48,7 @@ function StanleyCupCard({ cup, index }: { cup: StanleyCupEdition; index: number 
         className="flex items-center gap-2 text-sm text-[#C8102E] hover:text-[#C8102E]/80 transition-colors font-medium"
       >
         {expanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
-        {expanded ? "Collapse" : "Key Players & Facts"}
+        {expanded ? t("cup.collapse") : t("cup.keyPlayersFacts")}
       </button>
 
       <AnimatePresence>
@@ -63,7 +63,7 @@ function StanleyCupCard({ cup, index }: { cup: StanleyCupEdition; index: number 
             <div className="mt-6 space-y-6">
               <div>
                 <h4 className="text-sm font-bold text-[#C8102E] mb-3 flex items-center gap-2">
-                  <Users className="w-4 h-4" /> Key Players
+                  <Users className="w-4 h-4" /> {t("cup.keyPlayers")}
                 </h4>
                 <div className="flex flex-wrap gap-2">
                   {cup.keyPlayers.map((p) => (
@@ -85,7 +85,7 @@ function StanleyCupCard({ cup, index }: { cup: StanleyCupEdition; index: number 
               </div>
 
               <div>
-                <h4 className="text-sm font-bold text-[#C8102E] mb-3">Key Facts</h4>
+                <h4 className="text-sm font-bold text-[#C8102E] mb-3">{t("cup.keyFacts")}</h4>
                 <ul className="space-y-1.5">
                   {cup.keyFacts.map((fact, i) => (
                     <li key={i} className="text-xs text-white/50 flex items-start gap-2">
@@ -130,25 +130,25 @@ export default function HistoriaPage() {
 
       <section className="py-16 border-y border-white/5 bg-white/[0.02]">
         <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4">
-          <StatBlock value={24} label="Stanley Cups" suffix="x" />
-          <StatBlock value={59} label="Playoff Appearances" delay={100} />
-          <StatBlock value={65} label="Hall of Famers" delay={200} />
-          <StatBlock value={1909} label="Founded" delay={400} />
+          <StatBlock value={24} label={t("historia.statCups")} suffix="x" />
+          <StatBlock value={59} label={t("historia.statPlayoffs")} delay={100} />
+          <StatBlock value={65} label={t("historia.statHOF")} delay={200} />
+          <StatBlock value={1909} label={t("historia.statFounded")} delay={400} />
         </div>
       </section>
 
       <section className="py-16 px-4">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl font-bold text-white mb-2 text-center">
-            All 24 Stanley Cup Championships
+            {t("historia.all24")}
           </h2>
           <p className="text-white/50 text-center mb-10 max-w-xl mx-auto">
-            The most decorated franchise in NHL history
+            {t("historia.all24sub")}
           </p>
 
           <div className="space-y-6">
             {stanleyCups.map((cup, i) => (
-              <StanleyCupCard key={cup.year} cup={cup} index={i} />
+              <StanleyCupCard key={cup.year} cup={cup} index={i} t={t} />
             ))}
           </div>
         </div>
@@ -180,11 +180,11 @@ export default function HistoriaPage() {
                 <p className="text-white/40 text-xs mt-1">{legend.position} · {legend.era}</p>
                 <p className="text-white/60 text-sm mt-2 line-clamp-3">{legend.description}</p>
                 <div className="flex gap-3 mt-3 text-xs text-white/40">
-                  <span>{legend.stats.games} GP</span>
-                  <span>{legend.stats.goals} G</span>
-                  {legend.stats.assists !== undefined && <span>{legend.stats.assists} A</span>}
+                  <span>{legend.stats.games} {t("historia.gp")}</span>
+                  <span>{legend.stats.goals} {t("historia.g")}</span>
+                  {legend.stats.assists !== undefined && <span>{legend.stats.assists} {t("historia.a")}</span>}
                   {legend.stats.stanleyCups !== undefined && (
-                    <span className="text-[#C8102E]">{legend.stats.stanleyCups} Cups</span>
+                    <span className="text-[#C8102E]">{legend.stats.stanleyCups} {t("historia.cups")}</span>
                   )}
                 </div>
               </motion.div>
