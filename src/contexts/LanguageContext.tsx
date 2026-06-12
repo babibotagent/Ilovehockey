@@ -27,6 +27,21 @@ const translations: Record<string, Record<Lang, string>> = {
   "nav.historia": { en: "History", fr: "Histoire" },
   "nav.partidas": { en: "Schedule", fr: "Calendrier" },
   "nav.stanleycup": { en: "Stanley Cup", fr: "Coupe Stanley" },
+  "nav.season": { en: "2025-26", fr: "2025-26" },
+
+  // Current Season
+  "season.title": { en: "2025-26 Season", fr: "Saison 2025-26" },
+  "season.subtitle": { en: "Complete schedule and results for the Montreal Canadiens", fr: "Calendrier complet et résultats des Canadiens de Montréal" },
+  "season.regularSeason": { en: "Regular Season", fr: "Saison régulière" },
+  "season.playoffs": { en: "Playoffs", fr: "Séries éliminatoires" },
+  "season.all": { en: "All Games", fr: "Tous les matchs" },
+  "season.round1": { en: "Round 1 vs Tampa Bay", fr: "1er tour vs Tampa Bay" },
+  "season.round2": { en: "Round 2 vs Buffalo", fr: "2e tour vs Buffalo" },
+  "season.confFinals": { en: "Conf. Finals vs Carolina", fr: "Finale conf. vs Carolina" },
+  "season.record": { en: "Record", fr: "Fiche" },
+  "season.wins": { en: "W", fr: "V" },
+  "season.losses": { en: "L", fr: "D" },
+  "season.otl": { en: "OTL", fr: "DP" },
 
   // Home — Hero
   "home.hero.pre": { en: "I Love ", fr: "J'aime le " },
