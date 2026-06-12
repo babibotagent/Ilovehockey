@@ -195,7 +195,9 @@ export const matches: Match[] = [
     competition: "NHL Regular Season",
     venue: "Centre Bell",
     city: "Montreal, QC",
-    status: "upcoming",
+    homeScore: 3,
+    awayScore: 2,
+    status: "finished",
   },
   {
     id: "rs14",
@@ -206,9 +208,11 @@ export const matches: Match[] = [
     homeFlag: "🏒",
     awayFlag: "🏒",
     competition: "NHL Regular Season",
-    venue: "PNC Arena",
+    venue: "Lenovo Center",
     city: "Raleigh, NC",
-    status: "upcoming",
+    homeScore: 4,
+    awayScore: 1,
+    status: "finished",
   },
   {
     id: "rs15",
@@ -221,7 +225,9 @@ export const matches: Match[] = [
     competition: "NHL Regular Season",
     venue: "Centre Bell",
     city: "Montreal, QC",
-    status: "upcoming",
+    homeScore: 5,
+    awayScore: 3,
+    status: "finished",
   },
   {
     id: "rs16",
@@ -234,7 +240,9 @@ export const matches: Match[] = [
     competition: "NHL Regular Season",
     venue: "Scotiabank Arena",
     city: "Toronto, ON",
-    status: "upcoming",
+    homeScore: 2,
+    awayScore: 4,
+    status: "finished",
   },
   {
     id: "rs17",
@@ -247,7 +255,9 @@ export const matches: Match[] = [
     competition: "NHL Regular Season",
     venue: "Centre Bell",
     city: "Montreal, QC",
-    status: "upcoming",
+    homeScore: 3,
+    awayScore: 1,
+    status: "finished",
   },
   {
     id: "rs18",
@@ -260,7 +270,9 @@ export const matches: Match[] = [
     competition: "NHL Regular Season",
     venue: "TD Garden",
     city: "Boston, MA",
-    status: "upcoming",
+    homeScore: 1,
+    awayScore: 3,
+    status: "finished",
   },
 
   // =============================================
