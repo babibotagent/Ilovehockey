@@ -53,7 +53,7 @@ function isHabsGame(m: Match) {
 function getSeasonGames() {
   return matches
     .filter((m) => m.date >= SEASON_START && m.date < SEASON_END && isHabsGame(m))
-    .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 }
 
 function habsResult(g: Match): "W" | "L" | null {
