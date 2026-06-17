@@ -7,7 +7,7 @@ import { stanleyCups, StanleyCupEdition } from "@/data/worldcups";
 import { useLang } from "@/contexts/LanguageContext";
 
 const recentFinals = [
-  { season: "2025-26", champion: "TBD — Finals in progress", runnerUp: "Carolina Hurricanes vs Vegas Golden Knights", result: "3-2 CAR", mvp: "TBD" },
+  { season: "2025-26", champion: "Carolina Hurricanes", runnerUp: "Vegas Golden Knights", result: "4-2", mvp: "Jordan Staal" },
   { season: "2024-25", champion: "Florida Panthers", runnerUp: "Edmonton Oilers", result: "4-2", mvp: "Sam Bennett" },
   { season: "2023-24", champion: "Florida Panthers", runnerUp: "Edmonton Oilers", result: "4-3", mvp: "Aleksander Barkov" },
   { season: "2022-23", champion: "Vegas Golden Knights", runnerUp: "Florida Panthers", result: "4-1", mvp: "Jonathan Marchessault" },
