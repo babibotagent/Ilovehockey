@@ -9,7 +9,8 @@ export default function sitemap() {
     { url: `${siteUrl}/history`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.8 },
     { url: `${siteUrl}/schedule`, lastModified: new Date(), changeFrequency: "daily" as const, priority: 0.9 },
     { url: `${siteUrl}/stanley-cup`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.7 },
-    { url: `${siteUrl}/season`, lastModified: new Date(), changeFrequency: "daily" as const, priority: 0.9 },
+    { url: `${siteUrl}/season`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.7 },
+    { url: `${siteUrl}/upcoming`, lastModified: new Date(), changeFrequency: "monthly" as const, priority: 0.5 },
     { url: `${siteUrl}/about`, lastModified: new Date(), changeFrequency: "yearly" as const, priority: 0.3 },
   ];
 

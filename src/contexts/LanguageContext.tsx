@@ -28,6 +28,13 @@ const translations: Record<string, Record<Lang, string>> = {
   "nav.partidas": { en: "Schedule", fr: "Calendrier" },
   "nav.stanleycup": { en: "Stanley Cup", fr: "Coupe Stanley" },
   "nav.season": { en: "2025-26", fr: "2025-26" },
+  "nav.upcoming": { en: "2026-27", fr: "2026-27" },
+  "upcoming.title": { en: "2026-27 Season", fr: "Saison 2026-27" },
+  "upcoming.construction": { en: "Under Construction", fr: "En construction" },
+  "upcoming.message": { en: "We're getting ready for the 2026-27 season. Check back soon!", fr: "Nous préparons la saison 2026-27. Revenez bientôt!" },
+  "cup.seasonDetails": { en: "2025-26 Season Details", fr: "Détails de la saison 2025-26" },
+  "cup.viewAllGames": { en: "View all Canadiens games, results & stats from the 2025-26 season", fr: "Voir tous les matchs, résultats et statistiques des Canadiens pour la saison 2025-26" },
+  "cup.viewSeason": { en: "View Full Season", fr: "Voir la saison complète" },
 
   // Current Season
   "season.title": { en: "2025-26 Season", fr: "Saison 2025-26" },

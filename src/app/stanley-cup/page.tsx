@@ -1,8 +1,9 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { Trophy, ChevronDown, ChevronUp, Users, Star, Filter, Calendar } from "lucide-react";
+import { Trophy, ChevronDown, ChevronUp, Users, Star, Filter, Calendar, ArrowRight } from "lucide-react";
 import { stanleyCups, StanleyCupEdition } from "@/data/worldcups";
 import { useLang } from "@/contexts/LanguageContext";
 
@@ -249,6 +250,31 @@ export default function StanleyCupPage() {
             </div>
           </motion.div>
         )}
+      </section>
+
+      {/* 2025-26 Season Link */}
+      <section className="max-w-5xl mx-auto px-4 mb-16">
+        <Link href="/season" className="block group">
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="rounded-2xl border border-[#003DA5]/30 bg-gradient-to-r from-[#003DA5]/10 to-[#C8102E]/10 p-6 hover:border-[#003DA5]/50 transition-colors"
+          >
+            <div className="flex items-center justify-between">
+              <div>
+                <h3 className="text-lg font-bold text-white flex items-center gap-2">
+                  <Calendar className="w-5 h-5 text-[#003DA5]" />
+                  {t("cup.seasonDetails")}
+                </h3>
+                <p className="text-white/40 text-sm mt-1">{t("cup.viewAllGames")}</p>
+              </div>
+              <div className="flex items-center gap-2 text-[#C8102E] font-medium text-sm group-hover:gap-3 transition-all">
+                {t("cup.viewSeason")} <ArrowRight className="w-4 h-4" />
+              </div>
+            </div>
+          </motion.div>
+        </Link>
       </section>
 
       {/* Divider */}
