@@ -1,9 +1,8 @@
 "use client";
 
-import { Trophy, Eye } from "lucide-react";
+import { Trophy } from "lucide-react";
 import Link from "next/link";
 import { useLang } from "@/contexts/LanguageContext";
-import { useEffect, useState } from "react";
 
 const navKeys = [
   { href: "/", key: "nav.home" },
@@ -11,41 +10,6 @@ const navKeys = [
   { href: "/history", key: "nav.historia" },
   { href: "/schedule", key: "nav.partidas" },
 ];
-
-function VisitorCounter() {
-  const [count, setCount] = useState<number | null>(null);
-  const { t } = useLang();
-
-  useEffect(() => {
-    const show = (d: { count?: unknown }) => {
-      if (typeof d.count === "number") setCount(d.count);
-    };
-    const counted = sessionStorage.getItem("counted");
-    if (counted) {
-      fetch("https://api.counterapi.dev/v1/ilovehockey-babiservices/visits/")
-        .then((r) => r.json())
-        .then(show)
-        .catch(() => {});
-      return;
-    }
-    fetch("https://api.counterapi.dev/v1/ilovehockey-babiservices/visits/up")
-      .then((r) => r.json())
-      .then((d) => {
-        show(d);
-        if (typeof d.count === "number") sessionStorage.setItem("counted", "1");
-      })
-      .catch(() => {});
-  }, []);
-
-  if (count === null) return null;
-
-  return (
-    <span className="flex items-center justify-center gap-1.5 text-white/40 text-xs">
-      <Eye className="w-3 h-3" />
-      {count.toLocaleString()} {t("footer.visitantes")}
-    </span>
-  );
-}
 
 export function Footer() {
   const { t } = useLang();
@@ -105,7 +69,6 @@ export function Footer() {
           </div>
         </div>
         <div className="border-t border-white/10 mt-8 pt-6 flex flex-col items-center gap-2">
-          <VisitorCounter />
           <span className="text-white/40 text-sm">
             © {new Date().getFullYear()} ILoveHockey. {t("footer.copy")}
           </span>
