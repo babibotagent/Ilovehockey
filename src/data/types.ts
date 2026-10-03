@@ -63,6 +63,10 @@ export interface Match {
   homeScore?: number;
   awayScore?: number;
   status: "upcoming" | "live" | "finished";
+  homeAbbrev?: string;
+  awayAbbrev?: string;
+  periodType?: "REG" | "OT" | "SO";
+  startUtc?: string;
 }
 
 export type Competition =

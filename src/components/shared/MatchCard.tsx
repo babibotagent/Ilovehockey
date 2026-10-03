@@ -6,15 +6,6 @@ import { Match } from "@/data/types";
 import { Badge } from "@/components/ui/badge";
 import { useLang } from "@/contexts/LanguageContext";
 
-function convertTime(time: string, lang: string) {
-  if ((lang === "en" || lang === "fr") && time.includes(":")) {
-    const [h, m] = time.split(":").map(Number);
-    const edtH = ((h - 1) + 24) % 24;
-    return `${String(edtH).padStart(2, "0")}:${String(m).padStart(2, "0")}`;
-  }
-  return time;
-}
-
 export function MatchCard({ match, index = 0 }: { match: Match; index?: number }) {
   const { lang, t } = useLang();
   const date = new Date(match.date + "T12:00:00");
@@ -47,6 +38,12 @@ export function MatchCard({ match, index = 0 }: { match: Match; index?: number }
         {match.status === "finished" && (
           <span className="text-xs text-white/40 uppercase tracking-wider">{t("partidas.encerrado")}</span>
         )}
+        {match.status === "live" && (
+          <span className="flex items-center gap-1.5 text-xs font-black text-[#C8102E] uppercase tracking-wider">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#C8102E] animate-pulse" />
+            {t("season.live")}
+          </span>
+        )}
       </div>
 
       <div className="flex items-center justify-between gap-4">
@@ -56,14 +53,14 @@ export function MatchCard({ match, index = 0 }: { match: Match; index?: number }
         </div>
 
         <div className="text-center px-4">
-          {match.status === "finished" ? (
+          {match.status !== "upcoming" ? (
             <div className="text-2xl font-black text-white">
               {match.homeScore} <span className="text-white/30">-</span> {match.awayScore}
             </div>
           ) : (
             <div className="flex items-center gap-1 text-[#C8102E]">
               <Clock className="w-3 h-3" />
-              <span className="text-sm font-semibold">{convertTime(match.time, lang)}</span>
+              <span className="text-sm font-semibold">{match.time} ET</span>
             </div>
           )}
         </div>

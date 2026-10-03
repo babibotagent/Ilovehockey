@@ -1,0 +1,98 @@
+"use client";
+
+import { useState } from "react";
+import { MatchCard } from "@/components/shared/MatchCard";
+import { Competition, Match } from "@/data/types";
+import { useLang } from "@/contexts/LanguageContext";
+
+const competitions: (Competition | "All")[] = [
+  "All",
+  "NHL Regular Season",
+  "NHL Playoffs",
+  "NHL Preseason",
+];
+
+export function ScheduleView({ matches }: { matches: Match[] }) {
+  const [filter, setFilter] = useState<Competition | "All">("All");
+  const [showAllUpcoming, setShowAllUpcoming] = useState(false);
+  const { t } = useLang();
+
+  const sorted = [...matches].sort((a, b) =>
+    (b.startUtc ?? b.date).localeCompare(a.startUtc ?? a.date)
+  );
+
+  const filtered = sorted.filter(
+    (m) => filter === "All" || m.competition === filter
+  );
+
+  const upcoming = filtered
+    .filter((m) => m.status !== "finished")
+    .sort((a, b) => (a.startUtc ?? a.date).localeCompare(b.startUtc ?? b.date));
+  const finished = filtered.filter((m) => m.status === "finished");
+
+  return (
+    <div className="relative min-h-screen px-4 py-12">
+      <div className="max-w-6xl mx-auto">
+        <div className="mb-10">
+          <h1 className="text-4xl font-black text-white">{t("partidas.title")}</h1>
+          <p className="text-white/50 mt-2">{t("partidas.subtitle")}</p>
+        </div>
+
+        <div className="flex gap-2 flex-wrap mb-10">
+          {competitions.map((comp) => (
+            <button
+              key={comp}
+              onClick={() => setFilter(comp)}
+              className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+                filter === comp
+                  ? "bg-[#C8102E] text-white"
+                  : "bg-white/5 text-white/60 hover:bg-white/10 border border-white/10"
+              }`}
+            >
+              {comp === "All" ? t("partidas.todas") : t(`comp.${comp}`)}
+            </button>
+          ))}
+        </div>
+
+        {upcoming.length > 0 && (
+          <div className="mb-12">
+            <h2 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-[#C8102E] animate-pulse" />
+              {t("partidas.proximos")}
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {(showAllUpcoming ? upcoming : upcoming.slice(0, 9)).map((match, i) => (
+                <MatchCard key={match.id} match={match} index={i} />
+              ))}
+            </div>
+            {upcoming.length > 9 && (
+              <button
+                onClick={() => setShowAllUpcoming(!showAllUpcoming)}
+                className="mt-4 text-sm text-[#C8102E] hover:underline font-medium"
+              >
+                {showAllUpcoming ? t("season.showLess") : `${t("season.showAll")} (${upcoming.length})`}
+              </button>
+            )}
+          </div>
+        )}
+
+        {finished.length > 0 && (
+          <div>
+            <h2 className="text-xl font-bold text-white mb-6">{t("partidas.resultados")}</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {finished.map((match, i) => (
+                <MatchCard key={match.id} match={match} index={i} />
+              ))}
+            </div>
+          </div>
+        )}
+
+        {filtered.length === 0 && (
+          <div className="text-center py-20 text-white/40">
+            {t("partidas.nenhuma")}
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}

@@ -14,7 +14,7 @@ const navKeys = [
   { href: "/history", key: "nav.historia" },
   { href: "/schedule", key: "nav.partidas" },
   { href: "/stanley-cup", key: "nav.stanleycup" },
-  { href: "/upcoming", key: "nav.upcoming" },
+  { href: "/season/2026-27", key: "nav.upcoming" },
 ];
 
 const langs: Lang[] = ["en", "fr"];
