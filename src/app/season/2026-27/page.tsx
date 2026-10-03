@@ -1,16 +1,16 @@
-import type { Metadata } from "next";
 import { SeasonView, SeasonFilterDef } from "@/components/season/SeasonView";
 import { AutoRefresh } from "@/components/shared/AutoRefresh";
 import { CURRENT_SEASON, getCanadiensSeason, hasActiveGame } from "@/lib/nhl";
+import { pageMetadata } from "@/lib/seo";
 
 export const revalidate = 30;
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Montreal Canadiens 2026-27 Season: Schedule, Scores & Results",
   description:
-    "Live scores, results and the full 2026-27 Montreal Canadiens schedule: preseason, 82-game regular season and Stanley Cup playoffs.",
-  alternates: { canonical: "/season/2026-27" },
-};
+    "Live scores, results and the full 2026-27 Montreal Canadiens schedule: preseason, 84-game regular season and Stanley Cup playoffs.",
+  path: "/season/2026-27",
+});
 
 const filters: SeasonFilterDef[] = [
   { key: "all", labelKey: "season.all" },

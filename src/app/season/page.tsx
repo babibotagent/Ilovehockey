@@ -1,13 +1,13 @@
-import type { Metadata } from "next";
 import { matches } from "@/data/matches";
 import { SeasonView, SeasonFilterDef } from "@/components/season/SeasonView";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Montreal Canadiens 2025-26 Season: Schedule & Results",
   description:
     "Every Montreal Canadiens game from the 2025-26 NHL season: regular season results, playoff series against Tampa Bay, Buffalo and Carolina.",
-  alternates: { canonical: "/season" },
-};
+  path: "/season",
+});
 
 const HABS = "Montreal Canadiens";
 
