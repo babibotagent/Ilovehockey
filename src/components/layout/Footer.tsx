@@ -17,19 +17,22 @@ function VisitorCounter() {
   const { t } = useLang();
 
   useEffect(() => {
+    const show = (d: { count?: unknown }) => {
+      if (typeof d.count === "number") setCount(d.count);
+    };
     const counted = sessionStorage.getItem("counted");
     if (counted) {
       fetch("https://api.counterapi.dev/v1/ilovehockey-babiservices/visits/")
         .then((r) => r.json())
-        .then((d) => setCount(d.count))
+        .then(show)
         .catch(() => {});
       return;
     }
     fetch("https://api.counterapi.dev/v1/ilovehockey-babiservices/visits/up")
       .then((r) => r.json())
       .then((d) => {
-        setCount(d.count);
-        sessionStorage.setItem("counted", "1");
+        show(d);
+        if (typeof d.count === "number") sessionStorage.setItem("counted", "1");
       })
       .catch(() => {});
   }, []);
