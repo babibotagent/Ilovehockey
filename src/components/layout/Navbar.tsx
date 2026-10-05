@@ -9,12 +9,11 @@ import { cn } from "@/lib/utils";
 import { useLang, Lang, langLabels, langFlags } from "@/contexts/LanguageContext";
 
 const navKeys = [
-  { href: "/", key: "nav.home" },
   { href: "/roster", key: "nav.elenco" },
   { href: "/history", key: "nav.historia" },
   { href: "/schedule", key: "nav.partidas" },
   { href: "/stanley-cup", key: "nav.stanleycup" },
-  { href: "/season/2026-27", key: "nav.upcoming" },
+  { href: "/", key: "nav.upcoming" },
 ];
 
 const langs: Lang[] = ["en", "fr"];

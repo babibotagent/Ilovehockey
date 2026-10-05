@@ -3,7 +3,8 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   async redirects() {
     return [
-      { source: "/upcoming", destination: "/season/2026-27", permanent: true },
+      { source: "/upcoming", destination: "/", permanent: true },
+      { source: "/season/2026-27", destination: "/", permanent: true },
       { source: "/elenco", destination: "/roster", permanent: true },
       { source: "/historia", destination: "/history", permanent: true },
       { source: "/partidas", destination: "/schedule", permanent: true },

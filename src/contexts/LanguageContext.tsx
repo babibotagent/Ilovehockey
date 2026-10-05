@@ -36,7 +36,7 @@ const translations: Record<string, Record<Lang, string>> = {
   // Current Season
   "season.title": { en: "2025-26 Season", fr: "Saison 2025-26" },
   "season.subtitle": { en: "Complete schedule and results for the Montreal Canadiens", fr: "Calendrier complet et résultats des Canadiens de Montréal" },
-  "season.title2627": { en: "2026-27 Season", fr: "Saison 2026-27" },
+  "season.titleHome": { en: "Montreal Canadiens 2026-27 Season", fr: "Canadiens de Montréal : saison 2026-27" },
   "season.preseason": { en: "Preseason", fr: "Pré-saison" },
   "season.live": { en: "LIVE", fr: "EN DIRECT" },
   "season.home": { en: "Home", fr: "Domicile" },
