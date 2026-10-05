@@ -79,7 +79,54 @@ function formatRecord(r: { w: number; l: number; otl: number }, showOtl?: boolea
   return showOtl || r.otl > 0 ? `${r.w}-${r.l}-${r.otl}` : `${r.w}-${r.l}`;
 }
 
-function GameRow({ game, lang, liveLabel }: { game: Match; lang: string; liveLabel: string }) {
+function TeamSide({ abbrev, name, side }: { abbrev: string; name: string; side: "left" | "right" }) {
+  const logo = (
+    <img
+      src={`https://assets.nhle.com/logos/nhl/svg/${abbrev}_dark.svg`}
+      alt=""
+      width={28}
+      height={28}
+      loading="lazy"
+      className="w-7 h-7 shrink-0"
+      onError={(e) => {
+        e.currentTarget.style.visibility = "hidden";
+      }}
+    />
+  );
+  const label = (
+    <div className={`${side === "left" ? "text-right" : "text-left"} sm:min-w-0`}>
+      <div className="text-sm font-black text-white leading-tight">{abbrev}</div>
+      <div className="text-[11px] text-white/40 truncate hidden sm:block leading-tight">{name}</div>
+    </div>
+  );
+  return (
+    <div className={`flex items-center gap-2 flex-1 min-w-0 ${side === "left" ? "justify-end" : "justify-start"}`}>
+      {side === "left" ? (
+        <>
+          {label}
+          {logo}
+        </>
+      ) : (
+        <>
+          {logo}
+          {label}
+        </>
+      )}
+    </div>
+  );
+}
+
+function GameRow({
+  game,
+  lang,
+  liveLabel,
+  t,
+}: {
+  game: Match;
+  lang: string;
+  liveLabel: string;
+  t: (k: string) => string;
+}) {
   const date = new Date(game.date + "T12:00:00");
   const formatted = date.toLocaleDateString(lang === "fr" ? "fr-CA" : "en-CA", {
     month: "short",
@@ -109,8 +156,13 @@ function GameRow({ game, lang, liveLabel }: { game: Match; lang: string; liveLab
       : "bg-white/5 text-white/30 border border-white/10";
 
   return (
-    <div className="flex items-center gap-3 px-4 py-3 rounded-lg bg-white/[0.03] hover:bg-white/[0.06] transition-colors border border-white/5">
-      <div className="w-16 text-xs text-white/40 shrink-0">{formatted}</div>
+    <div className="flex items-center gap-2 sm:gap-3 px-3 sm:px-4 py-3 rounded-lg bg-white/[0.03] hover:bg-white/[0.06] transition-colors border border-white/5">
+      <div className="w-12 sm:w-14 shrink-0">
+        <div className="text-xs text-white/50 whitespace-nowrap">{formatted}</div>
+        <div className="text-[10px] uppercase tracking-wide text-white/30">
+          {isHome ? t("season.home") : t("season.away")}
+        </div>
+      </div>
 
       {isLive ? (
         <div className="px-2 h-7 rounded-full flex items-center gap-1 text-[10px] font-black shrink-0 bg-[#C8102E]/20 text-[#C8102E] border border-[#C8102E]/40">
@@ -127,33 +179,33 @@ function GameRow({ game, lang, liveLabel }: { game: Match; lang: string; liveLab
         </div>
       )}
 
-      <div className="flex items-center gap-2 flex-1 min-w-0">
-        <span className="text-[10px] text-white/30 w-6 shrink-0">{isHome ? "vs" : "@"}</span>
-        <span className="text-sm font-bold text-white">{oppAbbrev}</span>
-        <span className="text-xs text-white/30 truncate hidden sm:inline">{opponent}</span>
+      <TeamSide abbrev={isHome ? game.homeAbbrev || "MTL" : game.awayAbbrev || "MTL"} name={HABS} side="left" />
+
+      <div className="w-16 sm:w-24 shrink-0 text-center">
+        {hasScore && habsScore != null && oppScore != null ? (
+          <>
+            <div className="font-mono font-black text-lg leading-none">
+              <span
+                className={
+                  isLive ? "text-white" : result === "W" ? "text-green-400" : result === "OTL" ? "text-amber-400" : "text-red-400"
+                }
+              >
+                {habsScore}
+              </span>
+              <span className="text-white/20 mx-1.5">–</span>
+              <span className="text-white/50">{oppScore}</span>
+            </div>
+            {overtime && <div className="text-[10px] font-bold text-white/40 mt-1">{game.periodType}</div>}
+          </>
+        ) : (
+          <div className="text-xs text-white/40">{game.time} ET</div>
+        )}
       </div>
 
-      {hasScore && habsScore != null && oppScore != null ? (
-        <div className="text-sm font-mono font-bold text-white/80 shrink-0 flex items-center gap-1.5">
-          <span>
-            <span
-              className={
-                isLive ? "text-white" : result === "W" ? "text-green-400" : result === "OTL" ? "text-amber-400" : "text-red-400"
-              }
-            >
-              {habsScore}
-            </span>
-            <span className="text-white/20 mx-1">-</span>
-            <span className="text-white/50">{oppScore}</span>
-          </span>
-          {overtime && <span className="text-[10px] text-white/40">{game.periodType}</span>}
-        </div>
-      ) : (
-        <div className="text-xs text-white/30 shrink-0">{game.time} ET</div>
-      )}
+      <TeamSide abbrev={oppAbbrev} name={opponent} side="right" />
 
       <div
-        className={`text-[10px] px-2 py-0.5 rounded-full shrink-0 ${
+        className={`hidden sm:block text-[10px] px-2 py-0.5 rounded-full shrink-0 ${
           game.competition === "NHL Playoffs"
             ? "bg-[#C8102E]/20 text-[#C8102E] border border-[#C8102E]/30"
             : "bg-white/5 text-white/30 border border-white/10"
@@ -214,10 +266,10 @@ export function SeasonView({ games, titleKey, filters, playoffsNote, showOtl }: 
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="rounded-xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent p-5 text-center"
+            className="rounded-xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent p-3 sm:p-5 text-center"
           >
             <div className="text-[10px] text-white/30 uppercase tracking-widest mb-2">{t("season.regularSeason")}</div>
-            <div className="text-3xl font-black text-white">{formatRecord(rsRecord, showOtl)}</div>
+            <div className="text-2xl sm:text-3xl font-black text-white whitespace-nowrap">{formatRecord(rsRecord, showOtl)}</div>
             <div className="mt-1 text-xs text-white/30">
               {rsTotal} {t("shared.jogos")}
             </div>
@@ -226,10 +278,10 @@ export function SeasonView({ games, titleKey, filters, playoffsNote, showOtl }: 
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.15 }}
-            className="rounded-xl border border-[#C8102E]/30 bg-gradient-to-br from-[#C8102E]/10 to-transparent p-5 text-center"
+            className="rounded-xl border border-[#C8102E]/30 bg-gradient-to-br from-[#C8102E]/10 to-transparent p-3 sm:p-5 text-center"
           >
             <div className="text-[10px] text-[#C8102E]/60 uppercase tracking-widest mb-2">{t("season.playoffs")}</div>
-            <div className="text-3xl font-black text-white flex items-center justify-center gap-1">
+            <div className="text-2xl sm:text-3xl font-black text-white flex items-center justify-center gap-1 whitespace-nowrap">
               <Trophy className="w-5 h-5 text-[#C8102E]" />
               {formatRecord(poRecord)}
             </div>
@@ -239,10 +291,10 @@ export function SeasonView({ games, titleKey, filters, playoffsNote, showOtl }: 
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="rounded-xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent p-5 text-center"
+            className="rounded-xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent p-3 sm:p-5 text-center"
           >
             <div className="text-[10px] text-white/30 uppercase tracking-widest mb-2">{t("season.all")}</div>
-            <div className="text-3xl font-black text-white">{counted.length}</div>
+            <div className="text-2xl sm:text-3xl font-black text-white">{counted.length}</div>
             <div className="mt-1 text-xs text-white/30">{t("shared.jogos")}</div>
           </motion.div>
         </div>
@@ -297,7 +349,7 @@ export function SeasonView({ games, titleKey, filters, playoffsNote, showOtl }: 
             )}
             <div className="flex flex-col gap-1.5">
               {visibleUpcoming.map((game) => (
-                <GameRow key={game.id} game={game} lang={lang} liveLabel={liveLabel} />
+                <GameRow key={game.id} game={game} lang={lang} liveLabel={liveLabel} t={t} />
               ))}
             </div>
             {upcoming.length > UPCOMING_PREVIEW && (
@@ -316,7 +368,7 @@ export function SeasonView({ games, titleKey, filters, playoffsNote, showOtl }: 
             {sections && <h2 className="text-lg font-bold text-white mb-3">{t("partidas.resultados")}</h2>}
             <div className="flex flex-col gap-1.5">
               {results.map((game) => (
-                <GameRow key={game.id} game={game} lang={lang} liveLabel={liveLabel} />
+                <GameRow key={game.id} game={game} lang={lang} liveLabel={liveLabel} t={t} />
               ))}
             </div>
           </div>

@@ -39,6 +39,8 @@ const translations: Record<string, Record<Lang, string>> = {
   "season.title2627": { en: "2026-27 Season", fr: "Saison 2026-27" },
   "season.preseason": { en: "Preseason", fr: "Pré-saison" },
   "season.live": { en: "LIVE", fr: "EN DIRECT" },
+  "season.home": { en: "Home", fr: "Domicile" },
+  "season.away": { en: "Away", fr: "Extérieur" },
   "season.showAll": { en: "Show all upcoming games", fr: "Voir tous les prochains matchs" },
   "season.showLess": { en: "Show less", fr: "Voir moins" },
   "season.regularSeason": { en: "Regular Season", fr: "Saison régulière" },
