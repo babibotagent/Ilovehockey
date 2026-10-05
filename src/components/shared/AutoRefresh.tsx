@@ -7,13 +7,17 @@ export function AutoRefresh({ active }: { active: boolean }) {
   const router = useRouter();
 
   useEffect(() => {
-    const id = setInterval(
-      () => {
-        if (document.visibilityState === "visible") router.refresh();
-      },
-      active ? 30_000 : 300_000
-    );
-    return () => clearInterval(id);
+    const refresh = () => {
+      if (document.visibilityState === "visible") router.refresh();
+    };
+    const catchUp = setTimeout(refresh, 4_000);
+    const interval = setInterval(refresh, active ? 30_000 : 60_000);
+    document.addEventListener("visibilitychange", refresh);
+    return () => {
+      clearTimeout(catchUp);
+      clearInterval(interval);
+      document.removeEventListener("visibilitychange", refresh);
+    };
   }, [active, router]);
 
   return null;
